@@ -1,0 +1,22 @@
+# Source and generated directories and files #
+##############################################
+node_modules/
+public/build/
+public/production/
+tests/
+
+# Locked files #
+################
+package-lock.json
+
+# Image files #
+###############
+*.ico
+*.jpg
+*.jpeg
+*.png
+
+# Logs and databases #
+*.log
+*.sql
+*.sqlite
