@@ -15,10 +15,13 @@ Container
 
     margin: 0 auto;
 
-    /*
-    To be redone
-    */
-    width: 1200px;
+    width: 100%;
+    padding: 0 14px;
+
+    @include breakpoint($break-lg){
+        width: 1200px;
+        padding: 0;
+    }
 }
 
 /*
@@ -26,49 +29,72 @@ Application
 */
 
 .application {
-    @supports(display: grid) {
 
-        @include grid(
-            100%,
-            45px auto auto 589px 45px,
-            0,
-            0
-        );
+    grid-template-rows: auto auto auto 45px;
+    grid-template-columns: 100%;
+    grid-gap: 0;
+    grid-template-areas: 
+        "nav"
+        "head"
+        "main"
+        "foot"
+        "binf";
+
+    & > .top-infobar {
+        display: none;
+    }    
+    & > .mobile-navigation {
+        grid-area: nav;
+    }   
+    & > .site-navigation {
+        display: none;
+    } 
+    & > .site-header {
+        grid-area: head;
+    }  
+    & > .site-content {
+        grid-area: main;
+    }
+    & > .site-footer {
+        grid-area: foot;
+    }
+    & > .site-infobar {
+        grid-area: binf;
+    }
+
+    @include breakpoint($break-xs) {
+        grid-template-rows: 45px 111px auto auto 589px 45px;
         grid-template-areas: 
             "tinf"
+            "nav"
             "head"
             "main"
             "foot"
             "binf";
 
         & > .top-infobar {
+            display: block;
             grid-area: tinf;
+        }       
+        & > .mobile-navigation {
+            display: none;
+            grid-area: unset;
         }
+        & > .site-navigation {
+            display: block;
+            grid-area: nav;
+        } 
         & > .site-header {
             grid-area: head;
-            background-color: navy;
-
-            &.header {
-                &--default {
-                    height: 450px;
-                }
-                &--homepage {
-                    height: 808px;
-                }
-            }
-        }
+        }  
         & > .site-content {
             grid-area: main;
-            background-color: orange;
         }
         & > .site-footer {
             grid-area: foot;
-            background-color: burlywood;
         }
-        & > .bottom-infobar {
+        & > .site-infobar {
             grid-area: binf;
-            background-color: hotpink;
         }
-        
     }
 }

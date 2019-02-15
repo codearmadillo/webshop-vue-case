@@ -1,5 +1,5 @@
 <template>  
-    <nav class="site-navigation">
+    <nav :class="'site-navigation ' + homepage()">
         <ul>
             <li>
                 <a href="/list">Men</a>
@@ -95,6 +95,12 @@
 
 <script>
 
-    export default {}
+    export default {
+        methods: {
+            homepage() {
+                return this.$route.name == 'homepage' ? 'navigation--homepage' : 'navigation--default';
+            }
+        }
+    }
 
 </script>

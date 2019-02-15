@@ -1,9 +1,6 @@
 <template>  
 
     <header :class="homepage()">
-        
-        <site-navigation/>
-
         <div class="shop-content">
             Header
         </div>
@@ -14,9 +11,6 @@
 <script>
 
     export default {
-        components: {
-            'site-navigation' : () => import('@/components/elements/element.navigation.vue')
-        },
         methods: {
             homepage() {
                 let prefix = 'site-header';
