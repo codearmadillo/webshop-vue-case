@@ -1,7 +1,9 @@
 <template>  
 
     <nav class="mobile-navigation">
-    Mobile navigation
+        <div class="shop-content">
+            Mobile navigation
+        </div>
     </nav>
         
 </template>

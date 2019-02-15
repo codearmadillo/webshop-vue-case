@@ -1,9 +1,46 @@
 .btn {
 
-    &--submit {
+    font-family: $f-primary;
+    text-transform: uppercase;
 
+    padding: 21px 32px 20px;
+
+    letter-spacing: 5px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 16px;
+
+    border-radius: 0;
+    border: 2px solid transparent;
+    background-color: transparent;
+
+    transition: 300ms;
+    cursor: pointer;
+
+    &--default {
+        border-color: #737373;
+        background-color: transparent;
+        color: $c-secondary;
+
+        &:hover {
+            border-color: $c-secondary;
+            background-color: $c-secondary;
+            color: #fff;
+        }
     }
-    &--error {
+    &--action {
+        border-color: $c-primary;
+        background-color: transparent;
+        color: $c-primary;
 
+        &:hover {
+            background-color: $c-primary;
+            color: #fff;
+        }
+    }
+    &--disabled {
+        border-color: #737373;
+        background-color: #737373;
+        color: #adadad;
     }
 }
