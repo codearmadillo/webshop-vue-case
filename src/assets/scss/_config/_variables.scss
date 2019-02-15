@@ -1,1 +1,47 @@
-$color-primary: blue;
+/*
+Breakpoints
+*/ 
+$break-xs: 600px;
+$break-md: 920px;
+$break-lg: 1200px;
+$break-hd: 1800px;
+
+/* 
+Colours
+*/
+$c-primary: #00c8c8;
+$c-secondary: #333333;
+$c-error: #bb5465;
+$c-headlines: #575153;
+$c-body: #727272;
+$c-infobar: #777777;
+
+/*
+Font families
+*/
+$f-headline: serif;
+$f-body: sans-serif;
+$f-icons: 'Font Awesome 5 Free';
+
+/*
+Font sizes
+*/
+$fs-small: 13px;
+$fs-regular: 15px;
+$fs-large: 18px;
+
+/*
+Entity specific
+*/
+$fs-buttons: 16px;  
+$fs-inputs: 15px;
+
+/*
+Component specific
+*/
+$fs-minibasket: 13px;
+$fs-navigation: 13px;
+$fs-search: 13px;
+
+$fs-header_headline: 48px;
+$fs-header_subheadline: 30px;

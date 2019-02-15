@@ -1,3 +1,16 @@
-.na {
-    color: $color-primary;
+@mixin breakpoint($rule) {
+    @media only screen and (min-width: #{$rule}) {
+        @content;
+    }
+}
+@mixin grid($c, $r, $cg, $rg) {
+
+    display: grid;
+
+    grid-template-columns: $c;
+    grid-template-rows: $r;
+    
+    grid-column-gap: $cg;
+    grid-row-gap: $rg;
+
 }

@@ -1,0 +1,74 @@
+body, html {
+    margin: 0;
+    font-size: 14px;
+    font-size: 1em;
+
+    & * {
+        box-sizing: border-box;
+    }
+}
+
+/*
+Container
+*/
+.shop-content {
+
+    margin: 0 auto;
+
+    /*
+    To be redone
+    */
+    width: 1200px;
+}
+
+/*
+Application
+*/
+
+.application {
+    @supports(display: grid) {
+
+        @include grid(
+            100%,
+            45px auto auto 589px 45px,
+            0,
+            0
+        );
+        grid-template-areas: 
+            "tinf"
+            "head"
+            "main"
+            "foot"
+            "binf";
+
+        & > .top-infobar {
+            grid-area: tinf;
+        }
+        & > .site-header {
+            grid-area: head;
+            background-color: navy;
+
+            &.header {
+                &--default {
+                    height: 450px;
+                }
+                &--homepage {
+                    height: 808px;
+                }
+            }
+        }
+        & > .site-content {
+            grid-area: main;
+            background-color: orange;
+        }
+        & > .site-footer {
+            grid-area: foot;
+            background-color: burlywood;
+        }
+        & > .bottom-infobar {
+            grid-area: binf;
+            background-color: hotpink;
+        }
+        
+    }
+}

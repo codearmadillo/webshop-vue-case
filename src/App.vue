@@ -1,31 +1,30 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div id="app" class="application">
+
+    <info-top/>
+
+    <page-header/>
+
+    <main class="site-content">
+      <router-view/>
+    </main>
+
+    <page-footer/>
+
+    <info-bottom/>
+
   </div>
 </template>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
+<script>
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+  export default {
+    components: {
+      'page-header' : () => import('@/components/layout/layout.header.vue'),
+      'page-footer' : () => import('@/components/layout/layout.footer.vue'),
+      'info-top'    : () => import('@/components/layout/layout.infobar.top.vue'),
+      'info-bottom' : () => import('@/components/layout/layout.infobar.bottom.vue')
+    }
+  }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+</script>

@@ -5,8 +5,7 @@ const gulp = require('gulp'),
         gutil = require('gulp-util'),
         autoprefixer = require('autoprefixer'),
         sourcemaps = require('gulp-sourcemaps'),
-        postcss = require('gulp-postcss'),
-        babel = require('gulp-babel');
+        postcss = require('gulp-postcss');
 
 const dependencies = {
     javascript: Array(
@@ -35,7 +34,7 @@ gulp.task('watch', ['scss', 'script'], function(){
 gulp.task('scss', function() {
     return gulp.src(input.stylesheet)
         .pipe(gutil.env.type !== 'production' ? sourcemaps.init() : gutil.noop())
-        .pipe(sass({outputStyle: gutil.env.type !== 'production' ? 'compact' : 'compressed'}).on('error', sass.logError))
+        .pipe(sass({outputStyle: gutil.env.type !== 'production' ? 'nested' : 'compressed'}).on('error', sass.logError))
         .pipe(postcss([autoprefixer]))
         .pipe(gutil.env.type !== 'production' ? sourcemaps.write() : gutil.noop())
         .pipe(gutil.env.type !== 'production' ? gulp.dest(output.development) : gulp.dest(output.production));
@@ -43,9 +42,6 @@ gulp.task('scss', function() {
 gulp.task('script', function(){
     return gulp.src(input.javascript)
         .pipe(gutil.env.type !== 'production' ? sourcemaps.init() : gutil.noop())
-        .pipe(babel({
-            presets: ['@babel/env']
-        }))
         .pipe(concat('application.js'))
         .pipe(gutil.env.type !== 'production' ? gutil.noop() : uglify().on('error', gutil.log))
         .pipe(gutil.env.type !== 'production' ? sourcemaps.write() : gutil.noop())

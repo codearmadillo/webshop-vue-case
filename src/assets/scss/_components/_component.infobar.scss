@@ -1,0 +1,21 @@
+.infobar {
+    background-color: $c-secondary;
+    height: 45px;
+    line-height: 45px;
+
+    & > .shop-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 45px;
+
+        & .info__left {
+            grid-column: 1 / 2;
+        }
+        & .info__right {
+            grid-column: 2 / 3;
+            text-align: right;
+        }
+    }
+
+    
+}
