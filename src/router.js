@@ -29,6 +29,11 @@ export default new Router({
       component: () => import('@/views/view.product-list.vue')
     },
     {
+      path: '/search',
+      name: 'search',
+      component : () => import('@/views/view.search.vue')
+    },
+    {
       path: '/brand',
       name: 'brand',
       component: () => import('@/views/view.brand.vue')

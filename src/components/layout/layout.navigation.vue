@@ -1,11 +1,40 @@
 <template>  
     <nav :class="'site-navigation ' + homepage()">
         <div class="shop-content">
-            <ul>
+            <site-search/>
+            <ul class="navigation__menu">
                 <li>
-                    <a href="/list">Men</a>
-                    <ul class="submenu">
-                        <li class="submenu__section">
+                    <a class="item__link has-submenu" href="#">Men</a>
+                    <ul class="item__submenu">
+                        <li class="submenu__section section--50">
+                            <a class="section__headline" href="/list">Casual</a>
+                            <ul class="section__content">
+                                <li><a href="/list">Jackets</a></li>
+                                <li><a href="/list">Hoodies &amp; Sweatshirts And Somethig Nice</a></li>
+                                <li><a href="/list">Polo Shirts</a></li>
+                                <li><a href="/list">Trousers &amp; Chinos</a></li>
+                                <li><a href="/list">T-Shirts</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu__section section--50">
+                            <a class="section__headline" href="/list">Formal</a>
+                            <ul class="section__content">
+                                <li><a href="/list">Jackets</a></li>
+                                <li><a href="/list">Shirts</a></li>
+                                <li><a href="/list">Suits</a></li>
+                                <li><a href="/list">Trousers</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu__section section__sale section--100">
+                            <b>AUTUMN SALE!</b>
+                            <span>UP TO 50% OFF</span>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="item__link has-submenu" href="#">Women</a>
+                    <ul class="item__submenu">
+                        <li class="submenu__section section--50">
                             <a class="section__headline" href="/list">Casual</a>
                             <ul class="section__content">
                                 <li><a href="/list">Jackets</a></li>
@@ -15,7 +44,7 @@
                                 <li><a href="/list">T-Shirts</a></li>
                             </ul>
                         </li>
-                        <li class="submenu__section">
+                        <li class="submenu__section section--50">
                             <a class="section__headline" href="/list">Formal</a>
                             <ul class="section__content">
                                 <li><a href="/list">Jackets</a></li>
@@ -24,39 +53,19 @@
                                 <li><a href="/list">Trousers</a></li>
                             </ul>
                         </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="/list">Women</a>
-                    <ul class="submenu">
-                        <li class="submenu__section">
-                            <a class="section__headline" href="/list">Casual</a>
-                            <ul class="section__content">
-                                <li><a href="/list">Jackets</a></li>
-                                <li><a href="/list">Hoodies &amp; Sweatshirts</a></li>
-                                <li><a href="/list">Polo Shirts</a></li>
-                                <li><a href="/list">Trousers &amp; Chinos</a></li>
-                                <li><a href="/list">T-Shirts</a></li>
-                            </ul>
-                        </li>
-                        <li class="submenu__section">
-                            <a class="section__headline" href="/list">Formal</a>
-                            <ul class="section__content">
-                                <li><a href="/list">Jackets</a></li>
-                                <li><a href="/list">Shirts</a></li>
-                                <li><a href="/list">Suits</a></li>
-                                <li><a href="/list">Trousers</a></li>
-                            </ul>
+                        <li class="submenu__section section__sale section--100">
+                            <b>AUTUMN SALE!</b>
+                            <span>UP TO 50% OFF</span>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="/brand">The Brand</a>
+                    <a class="item__link active" href="/brand">The Brand</a>
                 </li>
                 <li>
-                    <a href="/stores">Local Stores</a>
-                    <ul class="submenu">
-                        <li class="submenu__section">
+                    <a class="item__link has-submenu" href="#">Local Stores</a>
+                    <ul class="item__submenu">
+                        <li class="submenu__section section--50">
                             <a class="section__headline" href="/stores?location=eu">Europe</a>
                             <ul class="section__content">
                                 <li><a href="/stores/prague">Prague</a></li>
@@ -66,7 +75,7 @@
                                 <li><a href="/stores/moscow">Moscow</a></li>
                             </ul>
                         </li>
-                        <li class="submenu__section">
+                        <li class="submenu__section section--50">
                             <a class="section__headline" href="/stores?location=us">United States</a>
                             <ul class="section__content">
                                 <li><a href="/stores/new-york">New York</a></li>
@@ -77,8 +86,8 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">Look Book</a>
-                    <ul class="submenu">
+                    <a class="item__link has-submenu" href="#">Look Book</a>
+                    <ul class="item__submenu">
                         <li class="submenu__link">
                             <a href="#">Spring 2019</a>
                         </li>
@@ -98,6 +107,9 @@
 <script>
 
     export default {
+        components: {
+            'site-search': () => import('@/components/elements/element.site-search.vue')
+        },
         methods: {
             homepage() {
                 return this.$route.name == 'homepage' ? 'navigation--homepage' : 'navigation--default';

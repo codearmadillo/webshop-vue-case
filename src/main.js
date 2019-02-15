@@ -12,13 +12,36 @@ const Application = new Vue({
   render: h => h(App),
   data: {
     settings: {
-      vat: 0.20,
-      currency: 'eur'
+      basket: {
+        items: [],
+        total: 0,
+        subtotal: 0
+      },
+      shop: {
+        vat: 0.20,
+        currency: 'eur'
+      }
     },
-    basket: {
-      items: [],
-      total: 0,
-      subtotal: 0
+    currencies: {
+      eur: {
+        id: 'eur',
+        tag: 'EUR',
+        symbol: '€',
+        value: 1,
+        default: true
+      },
+      usd:  {
+        id: 'usd',
+        tag: 'USD',
+        symbol: '$',
+        value: 1.1298
+      },
+      gbp: {
+        id: 'gbp',
+        tag: 'GBP',
+        symbol: '£',
+        value: 0.8764
+      }
     }
   }
 });

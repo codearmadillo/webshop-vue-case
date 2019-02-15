@@ -30,7 +30,8 @@ Application
 
 .application {
 
-    grid-template-rows: auto auto auto 45px;
+    display: grid;
+    grid-template-rows: auto 75px auto auto 45px;
     grid-template-columns: 100%;
     grid-gap: 0;
     grid-template-areas: 
@@ -62,7 +63,7 @@ Application
         grid-area: binf;
     }
 
-    @include breakpoint($break-xs) {
+    @include breakpoint($break-md) {
         grid-template-rows: 45px 111px auto auto 589px 45px;
         grid-template-areas: 
             "tinf"
