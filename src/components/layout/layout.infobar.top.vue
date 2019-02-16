@@ -1,17 +1,18 @@
 <template>  
     <section class="top-infobar infobar">
-        <div class="shop-content">
-            <span class="info__left">
-
+        <div class="shop-content infobar__grid infobar--desktop">
+            <span class="grid--text-left">
                 <currency-selector/>
-
             </span>
-            <span class="info__right">
-                
+            <span class="grid--text-right">
                 <user-section/>
                 <mini-basket/>
-
             </span>
+        </div>
+        <div class="shop-content infobar--mobile">
+            <router-link to="/" tag="a" class="infobar__site-logo">
+                <img :src="this.$root.$data.settings.shop.logo" />
+            </router-link>
         </div>
     </section>
 </template>

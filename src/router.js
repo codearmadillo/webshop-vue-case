@@ -45,11 +45,11 @@ export default new Router({
       }
     },
     {
-      path: '/search',
+      path: '/search/:query',
       name: 'search',
       component : () => import('@/views/view.search.vue'),
       meta: {
-        title: 'Search results',
+        title: null,
         subtitle: 'Your search results',
         metaTags: [
           {

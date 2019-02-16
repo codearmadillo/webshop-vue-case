@@ -32,10 +32,11 @@ Application
 .application {
 
     display: grid;
-    grid-template-rows: 75px auto auto auto 45px;
+    grid-template-rows: auto 50px auto auto auto 45px;
     grid-template-columns: 100%;
     grid-gap: 0;
     grid-template-areas: 
+        "tinf"
         "nav"
         "head"
         "main"
@@ -43,9 +44,10 @@ Application
         "binf";
 
     & > .top-infobar {
-        display: none;
+        grid-area: tinf;
     }    
     & > .mobile-navigation {
+        position: relative;
         grid-area: nav;
     }   
     & > .site-navigation {

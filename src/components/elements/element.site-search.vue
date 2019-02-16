@@ -31,8 +31,6 @@
             
                 let field = this.$refs.searchfield;
 
-                console.log('Dispatching event');
-
             }
         }
     }

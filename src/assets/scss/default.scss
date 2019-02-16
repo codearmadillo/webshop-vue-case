@@ -15,8 +15,13 @@ Entities
 */
 @import '_entities/buttons';
 @import '_entities/inputs';
-@import '_entities/advanced-select';
-@import '_entities/currency-selector';
+@import '_entities/toggle';
+
+/*
+Elements
+*/
+@import '_elements/element.dropdowns';
+@import '_elements/element.offcanvas';
 
 /*
 Components

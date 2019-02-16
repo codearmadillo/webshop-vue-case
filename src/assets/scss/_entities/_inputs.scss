@@ -78,6 +78,7 @@ input[type=number] {
 
 label {
 
+    position: relative;
     display: inline-block;
 
     & > span:first-of-type {
@@ -190,6 +191,58 @@ label {
             
         }
         
+    }
+
+    &.icon {
+        &-before,
+        &-after {
+            .input__icon {
+
+                position: absolute;
+                width: 40px; height: 40px;
+                padding: 0;
+
+                line-height: 40px;
+                text-align: center;
+
+                &.clickable {
+                    cursor: pointer;
+                }
+                
+            }
+            .icon--before,
+            .icon--after {
+                font-size: 16px;
+                color: #989898;
+                bottom: 0;
+            }
+            .icon--before {
+                left: 0;
+            }
+            .icon--after {
+                right: 0;
+            }
+        }
+        &-before  {
+            &--inner {
+                input  {
+                    padding-left: 40px;
+                }
+            }
+            &--outer {
+                padding-left: 40px;
+            }
+        }
+        &-after {
+            &--inner {
+                input {
+                    padding-right: 40px;
+                }
+            }
+            &--outer {
+                padding-right: 40px;
+            }
+        }
     }
 
 }

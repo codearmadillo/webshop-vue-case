@@ -19,6 +19,10 @@ const Application = new Vue({
   },
   data: {
     settings: {
+      customer: {
+        isCustomerLoggedIn: false,
+        customerName: null
+      },
       basket: {
         items: [],
         total: 0,
@@ -27,7 +31,8 @@ const Application = new Vue({
       favourites: [],
       shop: {
         vat: 0.2,
-        currency: "eur"
+        currency: "eur",
+        logo: "/assets/images/site-logo.svg"
       }
     },
     currencies: {

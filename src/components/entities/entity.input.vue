@@ -1,11 +1,35 @@
 <template>
-    <label v-if="type !== 'select' && type !== 'checkbox'">
-        <span>{{ label }}</span>
+    <label v-if="type !== 'select' && type !== 'checkbox'" :class="(iconBefore == null ? '' : 'icon-before icon-before--' + iconBeforeStyle) + (iconAfter == null ? '' : ' icon-after icon-after--' + iconAfterStyle)">
+        <!-- Label -->
+        <template v-if="plain == false">
+            <span>{{ label }}</span>
+        </template>
+        
+        <!-- Icon before -->
+        <template v-if="iconBefore !== null">
+            <span @click="(isSearch ? search() : null)" :class="(isSearch ? 'clickable ' : '') + 'input__icon icon--before'">
+                <i :class="iconBefore"></i>
+            </span>
+        </template>
+
+        <!-- Input -->
         <input v-model="currentvalue" :name="name" :id="identifier" :type="type" :placeholder="placeholder" :value="currentvalue" :class="classname" @keyup="keypress"/>
-        <span class="input-stepper" v-if="type == 'number'">
-            <i @click="numInc()" class="fa fa-angle-up"></i>
-            <i @click="numDec()" class="fa fa-angle-down"></i>
-        </span>
+        
+        <!-- Icon after -->
+        <template v-if="iconAfter !== null">
+            <span @click="(isSearch ? search() : null)" :class="(isSearch ? 'clickable ' : '') + 'input__icon icon--after'">
+                <i :class="iconAfter"></i>
+            </span>
+        </template>
+
+        <!-- Stepper -->
+        <template v-if="type == 'number'">
+            <span class="input-stepper">
+                <i @click="numInc()" class="fa fa-angle-up"></i>
+                <i @click="numDec()" class="fa fa-angle-down"></i>
+            </span>
+        </template>
+        
     </label>
     <span class="checkbox" v-else-if="type == 'checkbox'">
         <input type="checkbox" :name="name" :id="identifier" />
@@ -73,6 +97,44 @@
             stepper: {
                 type: Number,
                 default: 1
+            },
+
+            isSearch: {
+                type: Boolean,
+                required: false,
+                default: false
+            },
+            validateOnSubmit: {
+                type: Boolean,
+                required: false,
+                default: true
+            },
+
+            iconBefore: {
+                type: String,
+                required: false,
+                default: null
+            },
+            iconBeforeStyle: {
+                type: String,
+                required: false,
+                default: 'inner'
+            },
+            iconAfter: {
+                type: String,
+                required: false,
+                default: null
+            },
+            iconAfterStyle: {
+                type: String,
+                required: false,
+                default: 'inner'
+            },
+
+            plain: {
+                type: Boolean,
+                required: false,
+                default: false
             }
         },
         created() {
@@ -106,8 +168,25 @@
             },
             keypress(event) {
                 if(event.key === 'Enter') {
-                    this.$emit('submit', this.currentvalue);
+                    if(this.isSearch === true) {
+                        this.search();
+                    } else {
+                        this.submit();
+                    }
+                    
                 }
+            },
+            submit() {
+
+                this.$emit('submit', this.currentvalue);
+                
+            },
+            search() {
+                
+                this.$router.push({
+                    path: `/search/${ encodeURIComponent(this.currentvalue) }`
+                });
+
             }
         }
     }

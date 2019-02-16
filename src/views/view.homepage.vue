@@ -74,6 +74,17 @@
           {key: 'l', value: 'Size L'}
         ]"
     />
+
+    <v-input
+      identifier="searchtest"
+      type="text"
+      :plain="true"
+      name="iname-search"
+      iconBefore="fa fa-user"
+      iconBeforeStyle="outer"
+      iconAfter="fa fa-search"
+      classname="testname"
+    />
     
     <!--
     <label>

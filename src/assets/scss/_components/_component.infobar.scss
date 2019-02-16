@@ -1,21 +1,54 @@
 .infobar {
-    background-color: $c-secondary;
-    height: 45px;
-    line-height: 45px;
-
-    & > .shop-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 45px;
-
-        & .info__left {
-            grid-column: 1 / 2;
+    
+    &--desktop {
+        display: none;
+        @include breakpoint($break-md){
+            display: block;
         }
-        & .info__right {
-            grid-column: 2 / 3;
-            text-align: right;
+    }
+    &--mobile {
+        @include breakpoint($break-md){
+            display: none;
         }
     }
 
+}
+
+.top-infobar,
+.bottom-infobar {
+
+    height: auto;
+
+    @include breakpoint($break-md) {
+        height: 45px;
+        line-height: 45px;
+
+        .infobar__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 45px;
+
+            & .grid--text-left  {
+                text-align: left;
+            }
+            & .grid--text-right {
+                text-align: right;
+            }
+        }      
+    }
+    
+}    
+
+.top-infobar {
+
+    background-color: #f8f8f8;
+    text-align: center;
+    padding: 35px 0;
+
+    @include breakpoint($break-md) {
+        text-align: left;
+        background-color: $c-secondary;
+        padding: 0;
+    }
     
 }

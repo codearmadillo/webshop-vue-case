@@ -190,3 +190,33 @@
     }
 
 }
+
+.mobile-navigation {
+
+    .shop-content {
+        padding: 0;
+    }
+
+    .navigation {
+        &__menu {
+            
+            display: block;
+            border-bottom: 2px solid #f8f8f8;
+
+            .menu__link {
+            
+                display: inline-block;
+                width: 25%;
+                height: 50px;
+                color: $c-secondary;
+
+                line-height: 50px;
+                text-align: center;
+
+                font-size: 23px;
+
+            }
+        }
+        
+    }
+}
