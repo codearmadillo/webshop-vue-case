@@ -51,7 +51,7 @@
                         transition: 200ms;
 
                         &:hover,
-                        &.active {
+                        &.router-link-active {
                             color: $c-primary;
                         }
                         &.has-submenu::before {

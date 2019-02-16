@@ -32,7 +32,7 @@ Application
 .application {
 
     display: grid;
-    grid-template-rows: auto 75px auto auto 45px;
+    grid-template-rows: 75px auto auto auto 45px;
     grid-template-columns: 100%;
     grid-gap: 0;
     grid-template-areas: 

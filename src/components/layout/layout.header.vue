@@ -11,7 +11,7 @@
                 <h2 class="header__subtitle" v-if="subtitle !== null">{{ subtitle }}</h2>
                 <ul class="header__breadcrumbs" v-if="subtitle == null && breadcrumbs !== null && breadcrumbs.length > 1">
                     <li class="breadcrumbs__crumb" v-for="crumb in breadcrumbs">
-                        <a class="breadcrumb__link" :href="crumb.path">{{ crumb.title }}</a>  
+                        <router-link tag="a" class="breadcrumb__link" :to="crumb.path">{{ crumb.title }}</router-link>
                     </li>
                 </ul>
             
