@@ -7,55 +7,99 @@ export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
-
     {
       path: '/',
       name: 'homepage',
-      component: () => import('@/views/view.homepage.vue')
+      component: () => import('@/views/view.homepage.vue'),
+      meta: {
+        title: 'Homepage',
+        metaTags: [
+          {
+            name: 'description',
+            content: ''
+          },
+          {
+            name: 'og:description',
+            content: ''
+          }
+        ]
+      }
     },
     {
       path: '/sign-up',
       name: 'sign-up',
-      component: () => import('@/views/view.sign-up.vue')
-    },
-    {
-      path: '/product/:id',
-      name: 'product-details',
-      component: () => import('@/views/view.product-details.vue')
-    },
-    {
-      path: '/list',
-      name: 'product-list',
-      component: () => import('@/views/view.product-list.vue')
+      component: () => import('@/views/view.sign-up.vue'),
+      meta: {
+        title: 'Welcome to AVE',
+        subtitle: 'Sign in or register',
+        metaTags: [
+          {
+            name: 'description',
+            content: ''
+          },
+          {
+            name: 'og:description',
+            content: ''
+          }
+        ]
+      }
     },
     {
       path: '/search',
       name: 'search',
-      component : () => import('@/views/view.search.vue')
+      component : () => import('@/views/view.search.vue'),
+      meta: {
+        title: 'Search results',
+        subtitle: 'Your search results',
+        metaTags: [
+          {
+            name: 'description',
+            content: ''
+          },
+          {
+            name: 'og:description',
+            content: ''
+          }
+        ]
+      }
     },
     {
       path: '/brand',
       name: 'brand',
-      component: () => import('@/views/view.brand.vue')
+      component: () => import('@/views/view.brand.vue'),
+      meta: {
+        title: 'The brand',
+        subtitle: 'Company slogan goes here',
+        metaTags: [
+          {
+            name: 'description',
+            content: ''
+          },
+          {
+            name: 'og:description',
+            content: ''
+          }
+        ]
+      }
     },
     {
       path: '/stores',
       name: 'stores',
-      component: () => import('@/views/view.store-list.vue')
-    },
-    { 
-      path: '/stores/:id',
-      name: 'store-details',
-      component: () => import('@/views/view.store-details.vue')
-    },
-    {
-      path: '/not-found',
-      name: 'not-found',
-      component: () => import('@/views/view.not-found.vue')
-    },
-    {
-      path: '*',
-      redirect: '/not-found'
+      component: () => import('@/views/view.store-list.vue'),
+      meta: {
+        title: 'Our stores',
+        subtitle: 'And some subtitle',
+        metaTags: [
+          {
+            name: 'description',
+            content: ''
+          },
+          {
+            name: 'og:description',
+            content: ''
+          }
+        ]
+      }
     }
   
   ]

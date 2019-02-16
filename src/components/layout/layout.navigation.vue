@@ -7,7 +7,7 @@
                     <a class="item__link has-submenu" href="#">Men</a>
                     <ul class="item__submenu">
                         <li class="submenu__section section--50">
-                            <a class="section__headline" href="/list">Casual</a>
+                            <span class="section__headline">Casual</span>
                             <ul class="section__content">
                                 <li><a href="/list">Jackets</a></li>
                                 <li><a href="/list">Hoodies &amp; Sweatshirts And Somethig Nice</a></li>
@@ -17,7 +17,7 @@
                             </ul>
                         </li>
                         <li class="submenu__section section--50">
-                            <a class="section__headline" href="/list">Formal</a>
+                            <span class="section__headline">Formal</span>
                             <ul class="section__content">
                                 <li><a href="/list">Jackets</a></li>
                                 <li><a href="/list">Shirts</a></li>
@@ -35,7 +35,7 @@
                     <a class="item__link has-submenu" href="#">Women</a>
                     <ul class="item__submenu">
                         <li class="submenu__section section--50">
-                            <a class="section__headline" href="/list">Casual</a>
+                            <span class="section__headline">Casual</span>
                             <ul class="section__content">
                                 <li><a href="/list">Jackets</a></li>
                                 <li><a href="/list">Hoodies &amp; Sweatshirts</a></li>
@@ -45,7 +45,7 @@
                             </ul>
                         </li>
                         <li class="submenu__section section--50">
-                            <a class="section__headline" href="/list">Formal</a>
+                            <span class="section__headline">Formal</span>
                             <ul class="section__content">
                                 <li><a href="/list">Jackets</a></li>
                                 <li><a href="/list">Shirts</a></li>
@@ -66,7 +66,7 @@
                     <a class="item__link has-submenu" href="#">Local Stores</a>
                     <ul class="item__submenu">
                         <li class="submenu__section section--50">
-                            <a class="section__headline" href="/stores?location=eu">Europe</a>
+                            <span class="section__headline">Europe</span>
                             <ul class="section__content">
                                 <li><a href="/stores/prague">Prague</a></li>
                                 <li><a href="/stores/budapest">Budapest</a></li>
@@ -76,7 +76,7 @@
                             </ul>
                         </li>
                         <li class="submenu__section section--50">
-                            <a class="section__headline" href="/stores?location=us">United States</a>
+                            <span class="section__headline">United States</span>
                             <ul class="section__content">
                                 <li><a href="/stores/new-york">New York</a></li>
                                 <li><a href="/stores/washington">Washington</a></li>

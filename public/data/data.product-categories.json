@@ -1,0 +1,187 @@
+{
+    "root" : "/products/",
+    "title" : "Root",
+    "children" : [
+        {
+            "id" : 1,
+            "slug" : "men",
+            "title" : "Men",
+            "hasLink" : true,
+            "children" : [
+                {
+                    "id" : 11,
+                    "slug" : "casual",
+                    "title" : "Casual",
+                    "hasLink" : false,
+                    "children" : [
+                        {
+                            "id" : 111,
+                            "slug" : "jackets",
+                            "title" : "Jackets",
+                            "hasLink" : true
+                        },
+                        {
+                            "id" : 112,
+                            "slug" : "hoodies-and-sweatshirts",
+                            "title" : "Hoodies & Sweatshirts",
+                            "hasLink" : true
+                        },
+                        {
+                            "id" : 113,
+                            "slug" : "polo-shirts",
+                            "title" : "Polo Shirts",
+                            "hasLink" : true
+                        },
+                        {
+                            "id" : 114,
+                            "slug" : "sportswear",
+                            "title" : "Sportswear",
+                            "hasLink" : true
+                        },
+                        {
+                            "id" : 115,
+                            "slug" : "trousers-and-chinos",
+                            "title" : "Trousers & Chinos",
+                            "hasLink" : true
+                        },
+                        {
+                            "id" : 116,
+                            "slug" : "tshirts",
+                            "title" : "T-Shirts",
+                            "hasLink" : true
+                        }
+                    ]
+                },
+                {
+                    "id" : 12,
+                    "slug" : "formal",
+                    "title" : "Formal",
+                    "hasLink" : false,
+                    "children" : [
+                        {
+                            "id" : 121,
+                            "slug" : "jackets",
+                            "title" : "Jackets",
+                            "hasLink" : true
+                        },
+                        {
+                            "id" : 122,
+                            "slug" : "shirts",
+                            "title" : "Shirts",
+                            "hasLink" : true
+                        },
+                        {
+                            "id" : 123,
+                            "slug" : "suits",
+                            "title" : "Suits",
+                            "hasLink" : true
+                        },
+                        {
+                            "id" : 124,
+                            "slug" : "trousers",
+                            "title" : "Trousers",
+                            "hasLink" : true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id" : 2,
+            "slug" : "women",
+            "title" : "Women",
+            "hasLink" : true,
+            "children" : [
+                {
+                    "id" : 21,
+                    "slug" : "casual",
+                    "title" : "Casual",
+                    "hasLink" : false,
+                    "children" : [
+                        {
+                            "id" : 211,
+                            "slug" : "tshirts",
+                            "title" : "T-Shirts",
+                            "hasLink" : true
+                        },
+                        {
+                            "id" : 212,
+                            "slug" : "hoodies-and-sweatshirts",
+                            "title" : "Hoodies & Sweatshirts",
+                            "hasLink" : true
+                        }
+                        ,
+                        {
+                            "id" : 213,
+                            "slug" : "camis",
+                            "title" : "Camis",
+                            "hasLink" : true
+                        }
+                        ,
+                        {
+                            "id" : 214,
+                            "slug" : "sweatpants",
+                            "title" : "Sweatpants",
+                            "hasLink" : true
+                        }
+                        ,
+                        {
+                            "id" : 215,
+                            "slug" : "jeans",
+                            "title" : "Jeans",
+                            "hasLink" : true
+                        }
+                    ]
+                },
+                {
+                    "id" : 22,
+                    "slug" : "formal",
+                    "title" : "Formal",
+                    "hasLink" : false,
+                    "children" : [
+                        {
+                            "id" : 221,
+                            "slug" : "skirts",
+                            "title" : "Skirts",
+                            "hasLink" : true
+                        },
+                        {
+                            "id" : 222,
+                            "slug" : "blouses",
+                            "title" : "Blouses",
+                            "hasLink" : true
+                        }
+                        ,
+                        {
+                            "id" : 223,
+                            "slug" : "slacks",
+                            "title" : "Slacks",
+                            "hasLink" : true
+                        }
+                        ,
+                        {
+                            "id" : 224,
+                            "slug" : "pants",
+                            "title" : "Pants",
+                            "hasLink" : true
+                        }
+                        ,
+                        {
+                            "id" : 225,
+                            "slug" : "cocktail-dresses",
+                            "title" : "Cocktail Dresses",
+                            "hasLink" : true
+                        }
+                        ,
+                        {
+                            "id" : 226,
+                            "slug" : "gowns",
+                            "title" : "Gowns",
+                            "hasLink" : true
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
