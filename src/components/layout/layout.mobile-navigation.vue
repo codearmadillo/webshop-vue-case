@@ -54,6 +54,7 @@
             <template v-if="this.$root.$data.settings.customer.isCustomerLoggedIn == false">
                 <section class="mobile-login">
                     <h3 class="dropdown__subheadline">Log in</h3>
+                    <!--
                     <v-input
                         identifier="m-login"
                         name="m-login"
@@ -74,6 +75,7 @@
                         iconBeforeStyle="outer"
                         :validateOnSubmit="false"
                     />
+                    -->
                 </section>
             </template>
             <template v-else>
@@ -86,6 +88,7 @@
         <!-- START SEARCH DROPDOWN -->
         <section v-if="elements.dropdownsearch" class="dropdown" ref="dropdown-search">
             
+            <!--
             <v-input
                 identifier="mobile-search"
                 type="text"
@@ -96,6 +99,7 @@
                 placeholder="Search..."
                 :isSearch="true"
             />
+            -->
 
         </section>
         <!-- END SEARCH DROPDOWN -->

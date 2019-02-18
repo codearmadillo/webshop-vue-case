@@ -5,7 +5,7 @@ Pseudo checkboxes
 span.checkbox {
     position: relative;
     display: inline-block;
-    padding-left: 38px;
+    
 
     input[type="checkbox"] {
         display: none;
@@ -15,6 +15,7 @@ span.checkbox {
     }
     label {
 
+        padding-left: 38px;
         font-size: 15px;
         font-family: $f-body;
         color: #8e8c8c;
@@ -42,6 +43,15 @@ span.checkbox {
             border: 1px solid #e7e7e7;
         }
 
+        &.error{
+            color: #c20f2d;
+
+            &::before {
+                border-color: #c20f2d;
+                color: #c20f2d;
+            }
+        }
+
     }
 }
 
@@ -61,6 +71,11 @@ input, select {
 
     &::placeholder {
         color: #989898;
+    }
+
+    &.error {
+        border-color: #bb5465;
+        background-color: #fcf6f7;
     }
     
 }

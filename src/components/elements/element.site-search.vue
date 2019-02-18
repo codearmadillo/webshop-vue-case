@@ -1,5 +1,6 @@
 <template>  
     <span class="navigation__search">
+        <!--
         <v-input
             identifier="search"
             name="search"
@@ -9,6 +10,7 @@
             @submit="search"
             ref="searchfield"
         />
+        -->
         <span class="search__icon">
             <i class="fa fa-search" @click="searchbutton"></i>
         </span>

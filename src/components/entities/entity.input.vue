@@ -1,52 +1,90 @@
 <template>
-    <label v-if="type !== 'select' && type !== 'checkbox'" :class="(iconBefore == null ? '' : 'icon-before icon-before--' + iconBeforeStyle) + (iconAfter == null ? '' : ' icon-after icon-after--' + iconAfterStyle)">
-        <!-- Label -->
-        <template v-if="plain == false">
-            <span>{{ label }}</span>
+    <label
+        v-if="Supported && elementType !== 'select' && elementType !== 'checkbox'"
+        :class="(iconBefore == null ? '' : 'icon-before icon-before--' + iconBeforeStyle) + ' ' + (iconAfter == null ? '' : 'icon-after icon-after--' + iconAfterStyle)"
+        >
+
+        <!-- Start Label -->
+        <template v-if="renderLabel == true">
+            <span>{{ elementLabel }}</span>
         </template>
-        
-        <!-- Icon before -->
+        <!-- End label -->
+
+        <!-- Start Icon Before -->
         <template v-if="iconBefore !== null">
-            <span @click="(isSearch ? search() : null)" :class="(isSearch ? 'clickable ' : '') + 'input__icon icon--before'">
+            <span @click="(iconBeforeIsClickable == true ? (isSearch == false ? Submit() : Search()) : null)" :class="(iconBeforeIsClickable == true ? 'clickable ' : '') + 'input__icon icon--before'">
                 <i :class="iconBefore"></i>
             </span>
         </template>
+        <!-- End Icon Before -->
 
-        <!-- Input -->
-        <input v-model="currentvalue" :name="name" :id="identifier" :type="type" :placeholder="placeholder" :value="currentvalue" :class="classname" @keyup="keypress"/>
-        
-        <!-- Icon after -->
+        <!-- Start Input -->
+        <input ref="output"
+            v-model="Value"
+            :name="elementName"
+            :id="elementId"
+            :type="elementType"
+            :placeholder="elementPlaceholder"
+            :value="Value"
+            :class="(elementClassname !== null ? elementClassname : '') + (Valid || elementType == 'search' ? '' : ' error')"
+
+            @keyup="Keypress"
+            @input="Update()"
+            @change="Update()"
+        >
+        <!-- End Input -->
+
+        <!-- Start Stepper -->
+        <template v-if="elementType == 'number' && hasStepper == true">
+            <span class="input-stepper">
+                <i @click="valInc()" class="fa fa-angle-up"></i>
+                <i @click="valDec()" class="fa fa-angle-down"></i>
+            </span>
+        </template>
+        <!-- End Stepper -->
+
+        <!-- Start Icon After -->
         <template v-if="iconAfter !== null">
-            <span @click="(isSearch ? search() : null)" :class="(isSearch ? 'clickable ' : '') + 'input__icon icon--after'">
+            <span @click="(iconAfterIsClickable == true ? (isSearch == false ? Submit() : Search()) : null)" :class="(iconAfterIsClickable == true ? 'clickable ' : '') + 'input__icon icon--after'">
                 <i :class="iconAfter"></i>
             </span>
         </template>
+        <!-- End Icon After -->
 
-        <!-- Stepper -->
-        <template v-if="type == 'number'">
-            <span class="input-stepper">
-                <i @click="numInc()" class="fa fa-angle-up"></i>
-                <i @click="numDec()" class="fa fa-angle-down"></i>
-            </span>
-        </template>
-        
     </label>
-    <span class="checkbox" v-else-if="type == 'checkbox'">
-        <input type="checkbox" :name="name" :id="identifier" />
-        <label :for="identifier">
-            {{ label }}
+    <span 
+        v-else-if="elementType == 'checkbox' && Supported" :class="'checkbox' + (elementClassname !== null ? '' + elementClassname : '')"
+        >
+        <input
+            v-model="Value"
+            :value="elementName"
+            ref="output"
+            type="checkbox"
+            :name="elementName"
+            :id="(elementId == null ? elementName : elementId)"
+            @change="Update()" />
+        <label :class="(Valid ? '' : ' error')" :for="(elementId == null ? elementName : elementId)">
+            {{ elementLabel }}
         </label>
     </span>
-    <label v-else>
-        <span>{{ label }}</span>
+    <label v-else-if="elementType == 'select' && Supported">
+        <span>
+            {{ elementLabel }}
+        </span>
         <span class="selectbox">
-            <select v-model="selected" :name="name" :id="identifier">
+            <select 
+                ref="output"
+                v-model="Value"
+                :name="elementName"
+                :id="elementId"
+                @change="Update">
                 <option v-for="option in options" :disabled="option.disabled == true" :key="option.key" :value="option.key">
                     {{ option.value }}
                 </option>
             </select>
         </span>
     </label>
+    <span v-else>Unsupported element type</span>
 </template>
 
 <script>
@@ -54,62 +92,94 @@
     export default {
         data() {
             return {
-                selected: '',
-                currentvalue: 0
+                Value: '',
+                Supported: true,
+                Valid: true
             }
         },
         props: {
-            identifier: {
+            /*
+            Required
+            */
+            elementType: {
                 type: String,
                 required: true
             },
-            label: {
-                type: String,
-                default: ''
-            },
-            type: {
+            elementName: {
                 type: String,
                 required: true
             },
-            placeholder: {
+
+            /*
+            Optional
+            */
+            elementId: {
+                type: String,
+                required: false,
+                default: null
+            },
+            elementLabel: {
+                type: String,
+                required: false,
+                default: null
+            },
+            elementClassname: {
+                type: String,
+                default: null,
+                required: false
+            },
+            elementPresetValue: {
+                type: String,
+                default: '',
+                required: false
+            },
+
+            /*
+            Input specific
+            */
+            elementPlaceholder: {
                 type: String,
                 required: false,
                 default: ''
             },
+
+            
+            /*
+            Select specific
+            */
             options: {
                 type: Array,
                 default() {
                     return new Array()
                 }
             },
-            classname: {
-                type: String,
-                default: ''
-            },
-            value: {
-                type: String,
-                default: ''
-            },
-            name: {
-                type: String,
-                required: true
-            },
-            stepper: {
+
+            /*
+            Number input specific
+            */
+            numberStepper: {
                 type: Number,
-                default: 1
+                default: 1,
+                required: false
+            },
+            hasStepper: {
+                type: Boolean,
+                default: true,
+                required: false
             },
 
+            /*
+            Search
+            */
             isSearch: {
                 type: Boolean,
                 required: false,
                 default: false
             },
-            validateOnSubmit: {
-                type: Boolean,
-                required: false,
-                default: true
-            },
 
+            /*
+            Icons
+            */
             iconBefore: {
                 type: String,
                 required: false,
@@ -119,6 +189,11 @@
                 type: String,
                 required: false,
                 default: 'inner'
+            },
+            iconBeforeIsClickable: {
+                type: Boolean,
+                required: false,
+                default: false
             },
             iconAfter: {
                 type: String,
@@ -130,65 +205,143 @@
                 required: false,
                 default: 'inner'
             },
+            iconAfterIsClickable: {
+                type: Boolean,
+                required: false,
+                default: false
+            },
 
-            plain: {
+            renderLabel: {
+                type: Boolean,
+                required: false,
+                default: true
+            },
+            isRequired: {
                 type: Boolean,
                 required: false,
                 default: false
             }
         },
-        created() {
-            
-            if(this.type == 'select') {
-                if(this.options.length == 0) {
-                    return false;
-                }
-
-                let preselected = this.options.filter(x => x.selected && x.selected == true);
-                let selected = preselected.length == 0 ? this.options[0].key : preselected[0].key;
-
-                this.selected = selected;
-            } else {
-                if(this.type == 'number') {
-                    this.currentvalue = parseInt(this.value);
-                } else {
-                    this.currentvalue = this.value;
-                }
-            }
-
-            return true;
-
-        },
         methods: {
-            numInc() {
-                this.currentvalue += this.stepper;
+            valInc() {
+
+                this.Value = parseInt(this.Value) + this.numberStepper;
+    	        this.Update();
+
             },
-            numDec() {
-                this.currentvalue -= this.stepper;
+            valDec() {
+                
+                this.Value = parseInt(this.Value) - this.numberStepper;
+                this.Update();
+
             },
-            keypress(event) {
+            Keypress(event) {
+
                 if(event.key === 'Enter') {
                     if(this.isSearch === true) {
-                        this.search();
+                        this.Search();
                     } else {
-                        this.submit();
+                        this.Submit();
                     }
-                    
+                } else {
+                    this.Update();
                 }
-            },
-            submit() {
 
-                this.$emit('submit', this.currentvalue);
+            },
+            Update() {
+
+                this.Valid = true;
+                this.$emit('input', {value: this.Value, valid: this.Valid});
                 
             },
-            search() {
-                
+            Submit() {
+
+                this.Validate();
+                this.$emit('submit', {value: this.Value, valid: this.Valid});
+
+            },
+            Search() {
+
                 this.$router.push({
-                    path: `/search/${ encodeURIComponent(this.currentvalue) }`
+                    path: `/search/${encodeURIComponent(this.Value)}`
                 });
 
+            },
+            Validate() {
+
+                this.Valid = true;
+
+                /*
+                Required checkboxes
+                */
+                if(this.elementType == 'checkbox' && this.isRequired && this.Value == false) {
+                    this.Valid = false;
+                    return false;
+                }
+                /*
+                Check empty elements
+                */
+                if(this.isRequired == true && (this.Value == '' || this.Value == null)) {
+                    this.Valid = false;
+                    return false;
+                }
+                /*
+                HTML5 Checker
+                */
+                if(this.$refs.output.checkValidity() == false) {
+                    this.Valid = false;
+                    return false;
+                }
+                /*
+                Regex email checker fallback
+                */
+                if(this.elementType == 'email') {
+                    let pattern = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/m;
+                    if(pattern.test(this.Value) == false) {
+                        this.Valid = false;
+                        return false;
+                    }
+                }
+
+                return true;
+
             }
+        },
+        beforeMount() {
+
+            var SupportedElements = Array(
+                'button', 'checkbox', 'file', 'hidden', 'image', 'password', 'radio', 'reset', 'submit', 'text', 'select', 'email'
+            );
+
+            if(SupportedElements.indexOf(this.elementType) == -1) {
+                this.Supported = false;
+            }
+
+            switch(this.elementType) {
+                case 'select':
+                    if(this.options.length == 0) {
+                        this.Value = 'null';
+                    } else {
+                        let Preselected = this.options.filter(x => x.selected && x.selected == true);
+                        let Selected = Preselected.length == 0 ? this.options[0].key : Preselected[0].key;
+                        this.Value = Selected;
+                    }
+                    break;
+                case 'number':
+                    this.Value = parseInt(this.elementPresetValue);
+                    break;
+                default:
+                    this.Value = this.elementPresetValue;
+                    break;
+            }
+
+        },
+        mounted() {
+            
+            this.Update();
+
         }
+        
     }
 
 </script>
