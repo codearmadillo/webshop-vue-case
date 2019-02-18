@@ -1,16 +1,46 @@
 <template>  
-    <span class="currency-selector" create-pseudoselector="true">
-        <label class="selector__label" for="selectShopCurrency">Currency:</label>
-        <select class="selector__option-list" id="selectShopCurrency">
-            <option selected value="gbp">GBP</option>
-            <option value="eur">EUR</option>
-            <option value="usd">USD</option>
-        </select>
-    </span>
+
+    <v-input
+        elementType="select"
+        elementName="currency-selector"
+        elementClassname="top-infobar__currency-selector"
+        elementLabel="Currency"
+        :options="[
+            {
+                key: 'gbp',
+                value: 'GBP'
+            },
+            {
+                key: 'eur',
+                value: 'EUR'
+            },
+            {
+                key: 'usd',
+                value: 'USD'
+            }
+        ]"
+        v-model="currency"
+        @input="changeGlobalCurrency"
+    />
+
 </template>
 
 <script>
 
-    export default {}
+    export default {
+        data() {
+            return {
+                'currency': null
+            }
+        },
+        components: {
+            'v-input' : () => import('@/components/entities/entity.input.vue')
+        },
+        methods: {
+            changeGlobalCurrency(response) {
+                this.$root.settings.shop.currency = response.value;
+            }
+        }
+    }
 
 </script>

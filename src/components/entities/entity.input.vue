@@ -67,11 +67,11 @@
             {{ elementLabel }}
         </label>
     </span>
-    <label v-else-if="elementType == 'select' && Supported">
-        <span>
+    <label v-else-if="elementType == 'select' && Supported" :class="elementClassname !== null ? elementClassname : ''">
+        <span v-if="renderLabel == true" class="selectbox__label">
             {{ elementLabel }}
         </span>
-        <span class="selectbox">
+        <span class="selectbox__element">
             <select 
                 ref="output"
                 v-model="Value"

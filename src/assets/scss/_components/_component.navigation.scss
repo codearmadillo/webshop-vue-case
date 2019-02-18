@@ -12,11 +12,11 @@
     .navigation {
         &__menu,
         &__search {
-            display: block;
             float: right;
             height: 111px;
         }
         &__menu {
+            display: block;
             margin: 0;
             padding: 0 110px 0 0;
 
@@ -157,33 +157,22 @@
             }
         }
         &__search {
+            display: flex;
             position: relative;
+            align-items: center; 
 
             label {
-                height: 111px;
-                line-height: 111px;
+                position: relative;
                 
-                & > span {
-                    display: none;
+                & .input__icon,
+                & .search__field {
+                    height: 30px;
+                    line-height: 30px;
                 }
                 & > input {
                     display: inline-block;
-                    height: 30px;
-                    line-height: 30px;
                     font-size: 13px;
                     padding: 0 11px;
-                }
-            }
-            .search__icon {
-                position: absolute;
-                height: 111px;
-                line-height: 111px;
-                color: #989898;
-                font-size: 13px;
-                right: 10px;
-                
-                i {
-                    cursor: pointer;
                 }
             }
         }

@@ -37,18 +37,4 @@
         }      
     }
     
-}    
-
-.top-infobar {
-
-    background-color: #f8f8f8;
-    text-align: center;
-    padding: 35px 0;
-
-    @include breakpoint($break-md) {
-        text-align: left;
-        background-color: $c-secondary;
-        padding: 0;
-    }
-    
-}
+} 

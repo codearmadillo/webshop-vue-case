@@ -54,28 +54,32 @@
             <template v-if="this.$root.$data.settings.customer.isCustomerLoggedIn == false">
                 <section class="mobile-login">
                     <h3 class="dropdown__subheadline">Log in</h3>
-                    <!--
-                    <v-input
-                        identifier="m-login"
-                        name="m-login"
-                        type="email"
-                        :plain="true"
-                        placeholder="Your email"
-                        iconBefore="fa fa-user"
-                        iconBeforeStyle="outer"
-                        :validateOnSubmit="true"
+                    <v-form
+                        :formElements="[
+                            {
+                                elementType: 'email',
+                                elementName: 'mobilelogin-email',
+                                elementPlaceholder: 'Your Email..',
+                                renderLabel: false,
+                                isRequired: true
+                            },
+                            {
+                                elementType: 'password',
+                                elementName: 'mobilelogin-password',
+                                elementPlaceholder: 'Your Password..',
+                                renderLabel: false,
+                                isRequired: true
+                            }
+                        ]"
+                        formClass='mobileform__login'
+                        formButton='Log In'
+                        formButtonClass='btn btn--action'
+                        formErrorMessage='Incorrect password or email'
+                        :formShowErrorMessage='true'
+                        @failure="mobileLoginFailure"
+                        @success="mobileLoginSuccess"
                     />
-                    <v-input
-                        identifier="m-pass"
-                        name="m-pass"
-                        type="password"
-                        :plain="true"
-                        placeholder="Your password"
-                        iconBefore="fa fa-lock"
-                        iconBeforeStyle="outer"
-                        :validateOnSubmit="false"
-                    />
-                    -->
+
                 </section>
             </template>
             <template v-else>
@@ -88,18 +92,16 @@
         <!-- START SEARCH DROPDOWN -->
         <section v-if="elements.dropdownsearch" class="dropdown" ref="dropdown-search">
             
-            <!--
             <v-input
-                identifier="mobile-search"
-                type="text"
-                :plain="true"
-                name="mobile-search"
+                elementType="text"
+                elementName="mobile-search"
+                :renderLabel="false"
+                placeholder="Search.."
                 iconAfter="fa fa-search"
-                classname="dropdown__input input--search"
-                placeholder="Search..."
+                :iconAfterIsClickable="true"
+                iconAfterStyle="inner"
                 :isSearch="true"
             />
-            -->
 
         </section>
         <!-- END SEARCH DROPDOWN -->
@@ -112,7 +114,8 @@
 
     export default {
         components: {
-            'v-input' : () => import('@/components/entities/entity.input.vue')
+            'v-input' : () => import('@/components/entities/entity.input.vue'),
+            'v-form' : () => import('@/components/entities/entity.form.vue')
         },
         data() {
             return {
@@ -158,6 +161,17 @@
                     self.reset();
                 }, 400);
 
+            },
+
+            /*
+            Callbacks
+            */
+            mobileLoginFailure(message) {
+                console.log('Mobile login: Validation Failure');
+            },
+            mobileLoginSuccess(data) {
+                console.log('Mobile login: Validation Passed');
+                console.log('Mobile login: Postback');
             }
         }
     }

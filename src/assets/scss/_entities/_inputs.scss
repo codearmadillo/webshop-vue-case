@@ -108,7 +108,7 @@ label {
         color: #575153;
         font-size: 13px;
     }
-    & > span.selectbox {
+    & .selectbox__element {
 
         display: block;
         height: 40px;
@@ -151,7 +151,7 @@ label {
         }
 
     }
-    & span.input-stepper {
+    & .input-stepper {
         
         position: relative;
         display: block;
@@ -258,6 +258,10 @@ label {
                 padding-right: 40px;
             }
         }
+    }
+
+    input, select {
+        width: 100%;
     }
 
 }

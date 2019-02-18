@@ -7,7 +7,7 @@
             </template>
             <template v-else>
 
-                <h1 class="header__title" v-if="search == false">{{ this.$route.meta.title }}</h1>
+                <h1 class="header__title" v-if="search() == false">{{ this.$route.meta.title }}</h1>
                 <h1 class="header__title" v-else>{{ this.$route.params.query }}</h1>
 
                 <h2 class="header__subtitle" v-if="subtitle !== null">{{ subtitle }}</h2>
@@ -34,7 +34,7 @@
                 return prefix + ' ' + page;
             },
             search() {
-                return this.$route.name == 'search' ? true : false;
+                return this.$route.name == 'search' && this.$route.params.query;
             }
         },
         computed: {

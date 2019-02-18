@@ -1,0 +1,134 @@
+.top-infobar {
+
+    background-color: #f8f8f8;
+    text-align: center;
+    padding: 35px 0;
+
+    @include breakpoint($break-md) {
+        text-align: left;
+        background-color: $c-secondary;
+        padding: 0;
+    }
+    
+    /*
+    Start currency selector
+    */
+    &__currency-selector {
+
+        float: left;
+        height: 45px;
+        align-items: center;
+
+        .selectbox__label,
+        .selectbox__element {
+            display: inline-block;
+            height: 45px;
+            line-height: 45px;
+        }
+        .selectbox__label {
+            padding: 0;
+        }
+        .selectbox__element {
+            background: transparent;
+            border: medium none;
+            font-weight: bold;
+            font-size: 13px;
+            height: unset;
+            margin-left: 8px;
+            
+            select {
+                color: $c-infobar;
+                height: unset;
+                line-height: unset;
+                padding-left: 0;
+            }
+
+            &::after {
+                height: unset;
+                line-height: unset;
+            }
+        }
+
+    }
+    /* 
+    End currency selector
+    */
+
+    /*
+    Start user section
+    */
+    &__user-section {
+
+        display: inline-block;
+        height: 45px;
+        padding-right: 65px;
+
+        .user-section__signup,
+        .user-section__login,
+        .user-section__profile {
+            display: inline-block;
+            padding: 0 12px;
+            line-height: 45px;
+        }
+        .user-section__link {
+
+            color: #999999;
+            font-family: $f-primary;
+            font-size: 13px;
+            text-decoration: none;
+
+            &:hover {
+                color: $c-primary;
+            }
+
+        }   
+
+    }
+    /*
+    End user section
+    */
+
+    /*
+    Start mini basket
+    */
+    &__mini-basket {
+
+        display: inline-block;
+        height: 45px;
+
+        .mini-basket__link {
+
+            position: relative;
+            display: inline-block;
+            height: 45px;
+            line-height: 45px;
+            padding: 0 20px;
+
+            cursor: pointer;
+            color: #fff;
+
+            position: relative;
+            background-color: $c-primary;
+
+            .link__icon {
+                padding-right: 16px;
+            }
+            .link__label {
+                
+                font-family: $f-primary;
+                font-size: 13px;
+
+                &::after {
+                    content: '\f107';
+                    font-family: $f-icons;
+                    padding-left: 8px;
+                }
+            }
+            
+        }
+
+    }
+    /*
+    End mini basket
+    */
+}

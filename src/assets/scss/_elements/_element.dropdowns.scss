@@ -27,13 +27,12 @@
     /*
     Components
     */
-    .mobile-login {
-        input {
-            width: 100%;
-        }
-        label {
-            width: calc(100% - 20px);
-            margin-bottom: 6px;
+    .mobileform__login {
+        width: 100%;
+
+        .v-form__button {
+            padding: 12px 32px 13px;
+            font-size: 15px;
         }
     }
     

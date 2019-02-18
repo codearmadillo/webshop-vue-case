@@ -1,0 +1,74 @@
+.v-form {
+
+    &__instance {
+        position: relative;
+        display: block;
+        float: left;
+    }
+    &__header,
+    &__footer,
+    &__content,
+    &__submit,
+    &__error-message {
+        width: 100%;
+    }
+    &__content {
+        label {
+            display: block;
+            float: left;
+            width: 100%;
+            margin-bottom: 6px;
+
+            @include breakpoint($break-xs) {
+                &:nth-child(odd) {
+                    padding-right: 6px;
+                }
+                &:nth-child(even) {
+                    padding-left: 6px;
+                }
+                width: 50%;
+            }
+            @include breakpoint($break-md) {
+                &:nth-child(5n),
+                &:nth-child(2) {
+                    padding: 0 6px;
+                }
+                width: 33.33332%;
+            }
+
+            input {
+                width: 100%;
+            }
+        }
+    }
+    &__submit {
+        text-align: center;
+        @include breakpoint($break-xs) {
+            text-align: left;
+        }
+        button {
+            width: 100%;
+
+            @include breakpoint($break-xs) {
+                max-width: 200px;
+            }
+        }
+    }
+    &__error-message {
+
+        margin-bottom: 6px;
+        position: relative;
+
+        p {
+            margin: 0;
+            background-color: #c41b37;
+            color: #fff;
+            font-family: $f-primary;
+            font-size: 13px;
+            border-radius: 4px;
+            padding: 12px 6px;
+        }
+
+    }
+
+}

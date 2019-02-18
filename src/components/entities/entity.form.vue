@@ -3,6 +3,9 @@
         <header v-if="formHeader" class="v-form__header">
             <h2 class="v-form__title">{{ formHeader }}</h2>
         </header>
+        <section v-if="errorMessageOn && formErrorMessage !== null" class="v-form__error-message">
+            <p>{{ formErrorMessage }}</p>
+        </section>
         <section v-if="isrendered" class="v-form__content">
             
             <v-input
@@ -65,7 +68,8 @@
                     validation: false
                 },
                 isrendered: true,
-                data: []
+                data: [],
+                errorMessageOn: false
             }
         },
         props: {
@@ -103,6 +107,11 @@
                 type: String,
                 required: false,
                 default: null
+            },
+            formShowErrorMessage: {
+                type: Boolean,
+                required: false,
+                default: false
             }
 
         },
@@ -161,15 +170,19 @@
             Submit() {
 
                 if(this.Validate()) {
+                    this.errorMessageOn = false;
                     this.$emit('success', this.data);
                 } else {
+                    if(this.formShowErrorMessage) {
+                        this.errorMessageOn = true;
+                    }
                     this.$emit('failure', this.formErrorMessage);
                 }
 
             },
 
             Validate() {
-
+            
                 let self = this;
                 self.error.validation = false;
             
