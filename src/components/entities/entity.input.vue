@@ -1,18 +1,18 @@
 <template>
     <label
         v-if="Supported && elementType !== 'select' && elementType !== 'checkbox'"
-        :class="(iconBefore == null ? '' : 'icon-before icon-before--' + iconBeforeStyle) + ' ' + (iconAfter == null ? '' : 'icon-after icon-after--' + iconAfterStyle)"
+        :class="'v-input__instance instance--input' + (elementType == 'number' && hasStepper == true ? ' instance--has-stepper ' : '') + (iconBefore == null ? '' : ' instance--icon-before icon-before icon-before--' + iconBeforeStyle) + (iconAfter == null ? '' : ' instance--icon-after icon-after icon-after--' + iconAfterStyle)" 
         >
 
         <!-- Start Label -->
         <template v-if="renderLabel == true">
-            <span>{{ elementLabel }}</span>
+            <span class="v-input__label">{{ elementLabel }}</span>
         </template>
         <!-- End label -->
 
         <!-- Start Icon Before -->
         <template v-if="iconBefore !== null">
-            <span @click="(iconBeforeIsClickable == true ? (isSearch == false ? Submit() : Search()) : null)" :class="(iconBeforeIsClickable == true ? 'clickable ' : '') + 'input__icon icon--before'">
+            <span @click="(iconBeforeIsClickable == true ? (isSearch == false ? Submit() : Search()) : null)" :class="(iconBeforeIsClickable == true ? 'icon--clickable ' : '') + 'v-input__icon input__icon icon--before'">
                 <i :class="iconBefore"></i>
             </span>
         </template>
@@ -26,7 +26,7 @@
             :type="elementType"
             :placeholder="elementPlaceholder"
             :value="Value"
-            :class="(elementClassname !== null ? elementClassname : '') + (Valid || elementType == 'search' ? '' : ' error')"
+            :class="'v-input__output' + (elementType == 'number' ? ' v-input__output--number ' : ' ' ) + (elementClassname !== null ? elementClassname : '') + (Valid || elementType == 'search' ? '' : ' error')"
 
             @keyup="Keypress"
             @input="Update()"
@@ -36,7 +36,7 @@
 
         <!-- Start Stepper -->
         <template v-if="elementType == 'number' && hasStepper == true">
-            <span class="input-stepper">
+            <span class="v-input__stepper input-stepper">
                 <i @click="valInc()" class="fa fa-angle-up"></i>
                 <i @click="valDec()" class="fa fa-angle-down"></i>
             </span>
@@ -45,7 +45,7 @@
 
         <!-- Start Icon After -->
         <template v-if="iconAfter !== null">
-            <span @click="(iconAfterIsClickable == true ? (isSearch == false ? Submit() : Search()) : null)" :class="(iconAfterIsClickable == true ? 'clickable ' : '') + 'input__icon icon--after'">
+            <span @click="(iconAfterIsClickable == true ? (isSearch == false ? Submit() : Search()) : null)" :class="(iconAfterIsClickable == true ? 'icon--clickable ' : '') + 'v-input__icon input__icon icon--after'">
                 <i :class="iconAfter"></i>
             </span>
         </template>
@@ -53,7 +53,8 @@
 
     </label>
     <span 
-        v-else-if="elementType == 'checkbox' && Supported" :class="'checkbox' + (elementClassname !== null ? '' + elementClassname : '')"
+        v-else-if="elementType == 'checkbox' && Supported"
+        :class="'v-input__instance instance--checkbox checkbox' + (elementClassname !== null ? ' ' + elementClassname : '')"
         >
         <input
             v-model="Value"
@@ -62,29 +63,34 @@
             type="checkbox"
             :name="elementName"
             :id="(elementId == null ? elementName : elementId)"
-            @change="Update()" />
-        <label :class="(Valid ? '' : ' error')" :for="(elementId == null ? elementName : elementId)">
+            @change="Update()"
+            class="v-input__output"
+        />
+        <label :class="'v-input__label ' + (Valid ? '' : ' error')" :for="(elementId == null ? elementName : elementId)">
             {{ elementLabel }}
         </label>
     </span>
-    <label v-else-if="elementType == 'select' && Supported" :class="elementClassname !== null ? elementClassname : ''">
-        <span v-if="renderLabel == true" class="selectbox__label">
+    <span
+        v-else-if="elementType == 'select' && Supported"
+        :class="'v-input__instance instance--select' + (elementClassname !== null ? ' ' + elementClassname : '')">
+        <label v-if="renderLabel == true" class="v-input__label">
             {{ elementLabel }}
-        </span>
-        <span class="selectbox__element">
+        </label>
+        <span :class="'v-input__select-wrapper' + (Valid ? '' : ' error')">
             <select 
                 ref="output"
                 v-model="Value"
                 :name="elementName"
                 :id="elementId"
-                @change="Update">
+                @change="Update"
+                class="v-input__output">
                 <option v-for="option in options" :disabled="option.disabled == true" :key="option.key" :value="option.key">
                     {{ option.value }}
                 </option>
             </select>
         </span>
-    </label>
-    <span v-else>Unsupported element type</span>
+    </span>
+    <span v-else class="v-input__instance instance--error">Unsupported element type</span>
 </template>
 
 <script>
@@ -225,13 +231,23 @@
         methods: {
             valInc() {
 
-                this.Value = parseInt(this.Value) + this.numberStepper;
+                if(isNaN(this.Value)) {
+                    this.Value = 1;
+                } else {
+                    this.Value = parseInt(this.Value) + this.numberStepper;
+                }
+                
     	        this.Update();
 
             },
             valDec() {
                 
-                this.Value = parseInt(this.Value) - this.numberStepper;
+                if(isNaN(this.Value)) {
+                    this.Value = 1;
+                } else {
+                    this.Value = parseInt(this.Value) - this.numberStepper;
+                }
+
                 this.Update();
 
             },
@@ -271,30 +287,22 @@
 
                 this.Valid = true;
 
-                /*
-                Required checkboxes
-                */
+                if(this.elementType == 'select' && this.isRequired && (this.Value == 'null' || this.Value == null)) {
+                    this.Valid = false;
+                    return false;
+                }
                 if(this.elementType == 'checkbox' && this.isRequired && this.Value == false) {
                     this.Valid = false;
                     return false;
                 }
-                /*
-                Check empty elements
-                */
                 if(this.isRequired == true && (this.Value == '' || this.Value == null)) {
                     this.Valid = false;
                     return false;
                 }
-                /*
-                HTML5 Checker
-                */
                 if(this.$refs.output.checkValidity() == false) {
                     this.Valid = false;
                     return false;
                 }
-                /*
-                Regex email checker fallback
-                */
                 if(this.elementType == 'email') {
                     let pattern = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/m;
                     if(pattern.test(this.Value) == false) {
@@ -302,7 +310,7 @@
                         return false;
                     }
                 }
-
+                
                 return true;
 
             }
@@ -310,7 +318,7 @@
         beforeMount() {
 
             var SupportedElements = Array(
-                'button', 'checkbox', 'file', 'hidden', 'image', 'password', 'radio', 'reset', 'submit', 'text', 'select', 'email'
+                'button', 'checkbox', 'file', 'hidden', 'image', 'password', 'radio', 'reset', 'submit', 'text', 'select', 'email', 'number'
             );
 
             if(SupportedElements.indexOf(this.elementType) == -1) {

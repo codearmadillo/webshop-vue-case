@@ -1,267 +1,300 @@
-
-/*
-Pseudo checkboxes
-*/
-span.checkbox {
-    position: relative;
-    display: inline-block;
+.v-input {
     
+    &__instance {
 
-    input[type="checkbox"] {
-        display: none;
-    }
-    input[type=checkbox]:checked + label::before {
-        content: '\f00c';
-    }
-    label {
-
-        padding-left: 38px;
-        font-size: 15px;
-        font-family: $f-body;
-        color: #8e8c8c;
-
-        height: 26px;
-        line-height: 26px;
-
-        &, &::before {
-            cursor: pointer;
-        }
-
-        &::before {
-            content: '';
-            display: inline-block;
-            position: absolute;
-            left: 0; top: 0px;
-            
-            font-family: $f-icons;
-            font-size: 12px;
-            text-align: center;
-
-            width: 24px;
-            height: 24px;
-            background-color: #fff;
-            border: 1px solid #e7e7e7;
-        }
-
-        &.error{
-            color: #c20f2d;
-
-            &::before {
-                border-color: #c20f2d;
-                color: #c20f2d;
-            }
-        }
-
-    }
-}
-
-input, select {
-
-    padding: 0 14px;
-
-    color: #797878;
-    background-color: #fff;
-    font-family: $f-primary;
-    font-size: 15px;
-    line-height: 40px;
-    height: 40px;
-
-    border: 1px solid #e7e7e7;
-    border-radius: 0;
-
-    &::placeholder {
-        color: #989898;
-    }
-
-    &.error {
-        border-color: #bb5465;
-        background-color: #fcf6f7;
-    }
-    
-}
-
-input[type=number] {
-    
-    appearance: none;
-
-    &::-webkit-inner-spin-button,
-    &::-webkit-outer-spin-button {
-        appearance: none;
-        margin: 0;
-    }
-}
-
-label {
-
-    position: relative;
-    display: inline-block;
-
-    & > span:first-of-type {
-        display: block;
-        box-sizing: content-box;
-        padding: 6px 0 15px;
-        height: 13px;
-
-        font-family: $f-primary;
-        text-transform: uppercase;
-        font-weight: bold;
-        color: #575153;
-        font-size: 13px;
-    }
-    & .selectbox__element {
-
-        display: block;
-        height: 40px;
-        position: relative;
-        border: 1px solid #e7e7e7;
-
-        &::after {
-            content: '\f107';
-
-            position: absolute;
-            display: block;
-
-            width: 24px; height: 40px;
-            top: 0; right: 0;   
-
-            line-height: 40px;
-            font-family: $f-icons;
-            color: rgb(151, 151, 151);
-        }
-
-        select {
-            position: relative;
-
-            z-index: 10;
-
-            appearance: none;
-            cursor: pointer;
-            border: medium none;
-            background: transparent;
-
-            padding-right: 32px;
-
-            option {
-
-                &:disabled {
-                    color: rgb(209, 209, 209);
-                }
-
-            }
-        }
-
-    }
-    & .input-stepper {
-        
         position: relative;
         display: block;
-        float: right;
-        height: 40px;
-        width: 82px;
-        border: 1px solid #e7e7e7;
-        border-left: medium none;
+        padding: 0;
 
+        @include breakpoint($break-xs) {
+            padding: 0 4px;
+        }
         @include breakpoint($break-md) {
-            width: 34px;
+            padding: 0 6px;
         }
-        
-        i {
-            box-sizing: content-box;
-            position: relative;
-            display: block;
-            float: left;
 
-            width: 40px;
-            height: 40px;   
-            line-height: 40px;
-            font-size: 15px;
+        &.instance{
+            &--input,
+            &--select {
 
-            text-align: center;
-            color: #989898;
+                .v-input__output,
+                .v-input__select-wrapper {
+                    display: block;
+                    width: 100%;
+                }
 
-            &:first-of-type {
-                border-right: 1px solid #e7e7e7;
+                .v-input__label {
+                    display: block;
+                    width: 100%;
+                    box-sizing: content-box;
+                    padding: 6px 0 15px;
+                    height: 13px;
+
+                    font-family: $f-primary;
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    color: #575153;
+                    font-size: 13px;
+                }
+
             }
+            &--input {
 
-            transition: 170ms;
-            cursor: pointer;
+                .v-input__output {
+                    width: 100%;
+                    display: block;
 
-            @include breakpoint($break-md) {
-                width: 100%;
-                height: 20px;
-                line-height: 20px;
-                font-size: 13px;
+                    padding: 0 14px;
+                    
+                    color: #797878;
+                    background-color: #fff;
+                    font-family: $f-primary;
+                    font-size: 15px;
+                    line-height: 40px;
+                    height: 40px;
 
-                border: medium none;
+                    border: 1px solid #e7e7e7;
+                    border-radius: 0;
 
-                &:first-of-type {
+                    &::placeholder {
+                        color: #989898;
+                    }
+
+                    &--number {
+                        appearance: none;
+
+                        &::-webkit-inner-spin-button,
+                        &::-webkit-outer-spin-button {
+                            appearance: none;
+                            margin: 0;
+                        }
+                    }
+
+                    &.error {
+                        border-color: #bb5465;
+                        background-color: #fcf6f7;
+                    }
+                }
+
+                /*
+                Icons
+                */
+                .v-input__icon {
+
+                    position: absolute;
+                    display: block;
+                    width: 40px;
+                    height: 40px;
+                    z-index: 100;
+                    line-height: 40px;
+                    text-align: center;
+                    color: rgb(163, 163, 163);
+                    font-size: 16px;
+                    bottom: 0;
+
+                    &.icon {
+                        &--clickable {
+                            cursor: pointer;
+                        }
+                        &--after {
+                            right: 0;
+                            @include breakpoint($break-xs) {
+                                right: 4px;
+                            }
+                            @include breakpoint($break-md) {
+                                right: 6px;
+                            }
+                        }
+                        &--before {
+                            left: 0;
+                            @include breakpoint($break-xs) {
+                                left: 4px;
+                            }
+                            @include breakpoint($break-md) {
+                                left: 6px;
+                            }
+                        }
+                    }
+                }
+                &.instance--icon {
+                    &-before {
+                        .v-input__output {
+                            padding-left: 40px;
+                        }
+                    }
+                    &-after {
+                        .v-input__output {
+                            padding-right: 40px;
+                        }
+                    }
+                }
+
+                /*
+                Stepper
+                */
+                &.instance--has-stepper {
+                    .v-input__output {
+                        
+                    }
+                }
+                .v-input__stepper {
+                    display: block;
+                    position: absolute;
+                    width: 82px;
+                    height: 40px;
+                    border: 1px solid #e7e7e7;
                     border-right: medium none;
-                    border-bottom: 1px solid #e7e7e7;
+                    bottom: 0;
+                    right: 0;
+                    z-index: 500;
+
+                    @include breakpoint($break-xs) {
+                        right: 4px;
+                    }
+                    @include breakpoint($break-md) {
+                        width: 34px;
+                        right: 6px;
+                    }
+
+                    i.fa {
+                        box-sizing: content-box;
+                        position: relative;
+                        display: block; float: left;
+
+                        width: 40px; height: 39px;
+                        line-height: 39px;
+
+                        font-size: 15px;
+                        text-align: center;
+                        color: #989898;
+
+                        cursor: pointer;
+                        transition: 170pms;
+
+                        &:first-of-type {
+                            border-right: 1px solid #e7e7e7;
+                        }
+
+                        @include breakpoint($break-md) {
+                            width: 100%;
+                            height: 19px;
+                            line-height: 20px;
+                            font-size: 13px;
+
+                            border: medium none;
+                            
+                            &:first-of-type {
+                                border-right: medium none;
+                                border-bottom: 1px solid #e7e7e7;
+                            }
+                            &:hover {
+                                background-color: #e7e7e7;
+                            }
+                        }
+                    }
                 }
-                &:hover {
-                    background-color: #e7e7e7;
-                }
+
             }
+            &--select {
 
-            
-        }
-        
-    }
+                .v-input__label {
+                    padding: 6px 6px 15px;
+                }
+                .v-input__select-wrapper {
+                    height: 40px;
+                    position: relative;
+                    border: 1px solid #e7e7e7;
 
-    &.icon {
-        &-before,
-        &-after {
-            .input__icon {
+                    .v-input__output {
 
-                position: absolute;
-                width: 40px; height: 40px;
-                padding: 0;
+                        width: 100%;
+                        position: relative;
+                        height: 40px;
+                        padding: 0 32px 0 12px;
 
-                line-height: 40px;
-                text-align: center;
+                        appearance: none;
+                        border: medium none;
+                        border-radius: 0;
+                        background: transparent;
+                        
+                        font-family: $f-primary;
+                        font-size: 15px;
 
-                &.clickable {
+                        option:disabled {
+                            color: rgb(209, 209, 209);
+                        }
+
+                    }
+
+                    &::after {
+                        content: '\f107';
+                        position: absolute;
+                        display: block;
+
+                        width: 24px;
+                        height: 40px;
+                        top: 0; right: 0;
+
+                        line-height: 40px;
+                        font-family: $f-icons;
+                        color: rgb(151, 151, 151);
+                    }
+
+                    &.error {
+                        border-color: #c20f2d;
+                    }
+                }
+
+            }
+            &--checkbox {
+
+                .v-input__output {
+                    display: none;
+                }
+                .v-input__output:checked + label::before {
+                    content: '\f00c';
+                }
+                .v-input__label {
+                    padding-left: 38px;
+                    font-size: 15px;
+                    font-family: $f-body;
+                    color: #8e8e8e;
+                    height: 26px;
+                    line-height: 26px;
                     cursor: pointer;
-                }
-                
-            }
-            .icon--before,
-            .icon--after {
-                font-size: 16px;
-                color: #989898;
-                bottom: 0;
-            }
-            .icon--before {
-                left: 0;
-            }
-            .icon--after {
-                right: 0;
-            }
-        }
-        &-before  {
-            &--inner {
-                input  {
-                    padding-left: 40px;
-                }
-            }
-            &--outer {
-                padding-left: 40px;
-            }
-        }
-        &-after {
-            &--inner {
-                input {
-                    padding-right: 40px;
-                }
-            }
-            &--outer {
-                padding-right: 40px;
-            }
-        }
-    }
 
-    input, select {
-        width: 100%;
+                    &::before {
+                        content: '';
+                        display: inline-block;
+                        position: absolute;
+                        left: 6px; top: 0;
+
+                        font-family: $f-icons;  
+                        text-size: 12px;
+                        text-align: center;
+
+                        width: 24px;
+                        height: 24px;
+                        background-color: transparent;
+                        border: 1px solid #e7e7e7;
+                    }
+
+                    &.error {
+                        color: #c20f2d;
+                    
+                        &::before {
+                            border-color: #c20f2d;
+                            color: #c20f2d;
+                        }
+                    }
+                }
+
+            }
+            &--error {
+
+            }
+        }
+
     }
 
 }

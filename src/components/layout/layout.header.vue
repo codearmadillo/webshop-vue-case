@@ -3,7 +3,7 @@
     <header :class="homepage()">
         <div class="shop-content">
             <template v-if="this.$route.name == 'homepage'">
-                <router-link to="/list" class="btn btn--default">Shop men's collection</router-link>
+                
             </template>
             <template v-else>
 

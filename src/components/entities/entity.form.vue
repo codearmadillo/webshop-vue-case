@@ -1,5 +1,8 @@
 <template>
-    <article :class="'v-form v-form__instance' + (formClass ? ' ' + formClass : '')">
+    <form
+        :class="'v-form v-form__instance' + (formClass ? ' ' + formClass : '')"
+        @submit.prevent="Submit()"
+        >
         <header v-if="formHeader" class="v-form__header">
             <h2 class="v-form__title">{{ formHeader }}</h2>
         </header>
@@ -50,11 +53,10 @@
         <footer v-if="formFooter" class="v-form__footer">
             <p class="v-form__notes">{{ formFooter }}</p>
         </footer>
-    </article>
+    </form>
 </template>
 
 <script>
-
     export default {
         components: {
             'v-input': () => import('@/components/entities/entity.input.vue')
