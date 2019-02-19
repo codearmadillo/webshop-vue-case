@@ -1,0 +1,204 @@
+.site-footer  {
+
+    .shop-content {
+
+        padding: 0;
+
+    }
+
+    background-color: #f8f8f8;
+
+    @include breakpoint($break-md) {
+        padding: 65px 0;
+    }
+
+}
+
+.footer {
+    &__promotion {
+
+        display: block;
+        width: 100%;
+
+        @include breakpoint($break-md) {
+            padding-top: 62px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-column-gap: 30px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .promotion {
+
+            &__element {
+                
+                height: 200px;
+
+                &.element--event {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+
+                    background-color: $c-secondary;
+                    color: #fff;
+                    font-family: $f-primary;
+                    font-size: 36px;
+                    text-decoration: none;
+
+                }
+                &.element--social-media {
+                    display: flex;
+                    color: #fff;
+                    background-color: $c-primary;
+                    align-items: center;
+                    justify-content: center;
+
+                    & .media-account__element {
+                        padding: 0 22px;
+
+                        a {
+                            color: #fff;
+                            text-decoration: none;
+                            font-size: 27px;
+
+                            i {
+                                font-family: $f-icons-brands;
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
+    }
+    &__navigation {
+
+        display: block;
+        width: 100%;
+
+        @include breakpoint($break-md) {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        .navigation {
+            &__dropdown {
+                a {
+                    display: inline-block;
+                    width: 100%;
+                    font-family: $f-primary;
+                    text-decoration: none;
+                    color: #727272;
+
+                    padding: 0 12px;
+                    font-size: 16px;
+                    line-height: 48px;
+
+                    background-color: #ededed;
+
+                    &:not(:first-child) {
+                        border-top: 1px solid #e6e6e6;
+                    }
+
+                    @include breakpoint($break-md) {
+                        padding: 8px 0;
+                        font-size: 13px;
+                        line-height: 13px;
+                        text-align: left;
+                        background-color: transparent;
+                        
+                        &:not(:first-child) {
+                            border: medium none;
+                        }
+                    }
+                }
+
+                &.collapsed {
+                    display: none;
+                    @include breakpoint($break-md) {
+                        display: block;
+                    }
+                }
+
+            }
+            &__header {
+
+                display: block;
+                position: relative;
+                font-family: $f-primary;
+                color: #575153;
+                font-weight: bold;
+                text-transform: uppercase;
+
+                padding: 0 12px;
+                height: 48px;
+                line-height: 48px;
+                border-bottom: 1px solid #ededed;
+
+                @include breakpoint($break-md) {
+                    padding: 0 0 24px;
+                    font-size: 13px;
+                    height: unset;
+                    line-height: initial;
+                    border: medium none;
+                }
+
+                &--has-dropdown {
+
+                    &::after {
+                        content: '\f107';
+                        display: block;
+                        position: absolute;
+                        height: 48px;
+                        line-height: 48px;
+                        text-align: right;
+                        font-size: 23px;
+                        font-family: $f-icons;
+                        width: 25px; padding-right: 12px;
+                        top: 0; right: 0;
+
+                        @include breakpoint($break-md) {
+                            display: none;
+                        }
+                    }
+
+                }
+
+            }
+            &__address {
+                list-style: none;
+
+                margin: 0;
+                padding: 16px 12px;
+
+                @include breakpoint($break-md) {
+                    padding: 0;
+                    margin: 0;
+                }
+
+                li {
+                    display: inline-block;
+                    width: 100%;
+                    font-family: $f-primary;
+                    text-decoration: none;
+                    color: #727272;
+                    padding-bottom: 10px;
+
+                    @include breakpoint($break-md) {
+                        padding: 8px 0;
+                        font-size: 13px;
+                        line-height: 13px;
+                    }
+
+                }
+
+            }
+        }
+
+    }
+}

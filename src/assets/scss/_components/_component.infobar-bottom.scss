@@ -1,0 +1,67 @@
+.bottom-infobar {
+
+    padding: 10px 0;
+    background-color: $c-secondary;
+
+    @include breakpoint($break-md) {
+        padding: 0;
+    }
+
+    .shop-content {
+        display: block;
+
+        @include breakpoint($break-md) {
+            display: grid;
+            grid-template-columns: 30% 70%;
+        }
+
+    }
+    .infobar__section {
+        display: block;
+        float: left;
+        width: 100%;
+
+        @include breakpoint($break-md) {
+            width: unset;
+        }
+
+        span {
+
+            font-family: $f-primary;
+            color: $c-infobar;
+            font-size: 13px;
+            font-weight: bold;
+
+            display: block;
+            float: left;
+            width: 100%;
+            padding: 3px 0;
+
+            @include breakpoint($break-md) {
+                width: unset;
+                display: inline-block;
+                float: unset;
+                padding: 0;
+            }
+        }
+
+        &--right {
+            text-align: left;
+            @include breakpoint($break-md) {
+                text-align: right;
+
+                span {
+                    padding-left: 34px;
+                }
+            }
+        }
+        &--left {
+            text-align: left;
+            
+            span {
+                padding-right: 34px;
+            }
+        }
+    }
+
+}

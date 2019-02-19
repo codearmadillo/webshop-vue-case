@@ -22,12 +22,14 @@ Elements
 @import '_elements/element.dropdowns';
 @import '_elements/element.offcanvas';
 @import '_elements/element.forms';
+@import '_elements/element.currency-selector';
 
 /*
 Components
 */
 @import '_components/component.infobar';
 @import '_components/component.infobar-top';
+@import '_components/component.infobar-bottom';
 @import '_components/component.navigation';
 @import '_components/component.header';
 @import '_components/component.footer';

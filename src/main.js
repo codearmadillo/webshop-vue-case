@@ -3,6 +3,17 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import axios from "axios";
+
+import ViewHomepage from "./views/view.homepage.vue";
+import ViewProductList from "./views/view.product-list.vue";
+import ViewBrand from "./views/view.brand.vue";
+import ViewStoreList from "./views/view.store-list.vue";
+import ViewStoreDetails from "./views/view.store-details.vue";
+import ViewSignup from "./views/view.sign-up.vue";
+import ViewSearch from "./views/view.search.vue";
+import ViewNotFound from "./views/view.not-found.vue";
+
+
 import ProductListView from "./views/view.product-list.vue";
 
 Vue.config.productionTip = false;
@@ -15,9 +26,57 @@ const Application = new Vue({
   created() {
 
     this.fetchAndRouteCategories();
+    this.anotherFetch();
 
   },
   data: {
+    shop: {
+      customer: {
+        isCustomerLoggedIn: false,
+        customerId: null,
+        customerName: null
+      },
+      basket: {
+        Items: [],
+        Total: 0,
+        Subtotal: 0
+      },
+      favourites: [],
+      settings: {
+        VAT: 0.2,
+        Currency: "eur",
+        Logo: "/assets/images/site-logo.svg"
+      },
+      socialMedia: [
+        {
+          icon: 'fab fa-facebook-f',
+          url: 'https://www.facebook.com/my-page',
+          title: 'Facebook'
+        },
+        {
+          icon: 'fab fa-twitter',
+          url: 'https://www.twitter.com/my-page',
+          title: 'Twitter'
+        },
+        {
+          icon: 'fab fa-pinterest',
+          url: 'https://www.instagram.com/my-page',
+          title: 'Instagram'
+        },
+        {
+          icon: 'fab fa-facebook',
+          url: 'https://www.pinterest.com/my-page',
+          title: 'Pinterest'
+        },
+      ],
+      promotions: {
+        footer: {
+          url: '/',
+          title: 'Award winners - Fashion awards 2016',
+          content: '<b>Award winners</b><br/>Fashion awards 2016'
+        }
+      }
+    },
     settings: {
       customer: {
         isCustomerLoggedIn: false,
@@ -58,6 +117,15 @@ const Application = new Vue({
     }
   },
   methods: {
+    anotherFetch() {
+      return axios.get('/data/data.page-structure.json').then(response => {
+
+        let data = response.data['routes'];
+        let routes = [];
+
+
+      });
+    },
     fetchAndRouteCategories() {
       return axios.get("/data/data.product-categories.json").then(response => {
 

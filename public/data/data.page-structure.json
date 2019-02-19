@@ -1,0 +1,298 @@
+{
+    "routes":[
+        {
+            "endpoint": "/",
+            "name": "homepage",
+            "component": "homepage",
+            "navigation": false,
+            "meta": {
+                "title": "AVE - Homepage",
+                "subtitle": "Get a London look!",
+                "og": {
+                    "title": "AVE - Homepage",
+                    "description": "Get a London look with AVE"
+                },
+                "seo": {
+                    "title": "AVE - Homepage",
+                    "description": "Get a London look with AVE"
+                }
+            }
+        },
+        {
+            "endpoint": "/products/men",
+            "name": "men",
+            "component": "product-list",
+            "navigation": true,
+            "directChildren": false,
+            "isProductCategory": true,
+            "meta": {
+                "title": "",
+                "subtitle": "",
+                "og": {
+                    "title": "",
+                    "description": ""
+                },
+                "seo": {
+                    "title": "",
+                    "description": ""
+                }
+            },
+            "children":[
+                {
+                    "slug": "casual",
+                    "title": "Casual",
+                    "children": [
+                        ["jackets", "Jackets"],
+                        ["hoodies-and-sweatshirts", "Hoodies & Sweatshirts"],
+                        ["polo-shirts", "Polo Shirts"],
+                        ["sportswear", "Sportswear"],
+                        ["trousers-and-chinos", "Trousers & Chinos"],
+                        ["tshirts", "T-Shirts"]
+                    ]
+                },
+                {
+                    "slug": "formal",
+                    "title": "Formal",
+                    "children": [
+                        ["jackets", "Jackets"],
+                        ["shirts", "Shirts"],
+                        ["suits", "Suits"],
+                        ["trousers", "Trousers"]
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/products/women",
+            "name": "women",
+            "component": "product-list",
+            "navigation": true,
+            "directChildren": false,
+            "isProductCategory": true,
+            "meta": {
+                "title": "",
+                "subtitle": "",
+                "og": {
+                    "title": "",
+                    "description": ""
+                },
+                "seo": {
+                    "title": "",
+                    "description": ""
+                }
+            },
+            "children": [
+                {
+                    "slug": "casual",
+                    "title": "Casual",
+                    "children": [
+                        ["tshirts", "T-Shirts"],
+                        ["hoodies-and-sweatshirts", "Hoodies & Sweatshirts"],
+                        ["camis", "Camis"],
+                        ["sweatpants", "Sweatpants"],
+                        ["jeans", "Jeans"]
+                    ]
+                },
+                {
+                    "slug": "formal",
+                    "title": "Formal",
+                    "children": [
+                        ["skirts", "Skirts"],
+                        ["blouses", "Blouses"],
+                        ["slacks", "Slacks"],
+                        ["pants", "Pants"],
+                        ["cocktail-dresses", "Cocktail Dresses"],
+                        ["gowns", "Gowns"]
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/brand",
+            "name": "brand",
+            "component": "brand",
+            "navigation": true,
+            "meta": {
+                "title": "",
+                "subtitle": "",
+                "og": {
+                    "title": "",
+                    "description": ""
+                },
+                "seo": {
+                    "title": "",
+                    "description": ""
+                }
+            },
+            "children":[]
+        },
+        {
+            "endpoint": "/local-stores",
+            "name": "localstores",
+            "component": "store-list",
+            "navigation": true,
+            "directChildren": true,
+            "meta": {
+                "title": "",
+                "subtitle": "",
+                "og": {
+                    "title": "",
+                    "description": ""
+                },
+                "seo": {
+                    "title": "",
+                    "description": ""
+                }
+            },
+            "children":[
+                {
+                    "endpoint": "london",
+                    "name": "london",
+                    "component": "store-details",
+                    "meta" : {
+                        "title": "",
+                        "subtitle": "",
+                        "og": {
+                            "title": "",
+                            "description": ""
+                        },
+                        "seo": {
+                            "title": "",
+                            "description": ""
+                        },
+                        "info": {
+                            "address": "",
+                            "phone": "",
+                            "email": "",
+                            "www": "",
+                            "openingHours": ""
+                        },
+                        "socialmedia": {
+                            "facebook": "/my-new-page",
+                            "twitter": "/my-new-page",
+                            "instagram": "/my-new-page",
+                            "pinterest": "/my-new-page"
+                        },
+                        "locationDescription": "Some nice text"
+                    }
+                },
+                {
+                    "endpoint": "new-york",
+                    "name": "new-york",
+                    "component": "store-details",
+                    "meta" : {
+                        "title": "",
+                        "subtitle": "",
+                        "og": {
+                            "title": "",
+                            "description": ""
+                        },
+                        "seo": {
+                            "title": "",
+                            "description": ""
+                        },
+                        "info": {
+                            "address": "",
+                            "phone": "",
+                            "email": "",
+                            "www": "",
+                            "openingHours": ""
+                        },
+                        "socialmedia": {
+                            "facebook": "/my-new-page",
+                            "twitter": "/my-new-page",
+                            "instagram": "/my-new-page",
+                            "pinterest": "/my-new-page"
+                        },
+                        "locationDescription": "Some nice text"
+                    }
+                },
+                {
+                    "endpoint": "paris",
+                    "name": "paris",
+                    "component": "store-details",
+                    "meta" : {
+                        "title": "",
+                        "subtitle": "",
+                        "og": {
+                            "title": "",
+                            "description": ""
+                        },
+                        "seo": {
+                            "title": "",
+                            "description": ""
+                        },
+                        "info": {
+                            "address": "",
+                            "phone": "",
+                            "email": "",
+                            "www": "",
+                            "openingHours": ""
+                        },
+                        "socialmedia": {
+                            "facebook": "/my-new-page",
+                            "twitter": "/my-new-page",
+                            "instagram": "/my-new-page",
+                            "pinterest": "/my-new-page"
+                        },
+                        "locationDescription": "Some nice text"
+                    }
+                }
+            ]
+        },
+        {
+            "endpoint": "/user",
+            "name": "signup",
+            "component": "sign-up",
+            "navigation": true,
+            "meta": {
+                "title": "",
+                "subtitle": "",
+                "og": {
+                    "title": "",
+                    "description": ""
+                },
+                "seo": {
+                    "title": "",
+                    "description": ""
+                }
+            }
+        },
+        {
+            "endpoint": "/search/:query",
+            "name": "search",
+            "component": "search",
+            "navigation": true,
+            "meta": {
+                "title": "",
+                "subtitle": "",
+                "og": {
+                    "title": "",
+                    "description": ""
+                },
+                "seo": {
+                    "title": "",
+                    "description": ""
+                }
+            }
+        },
+        {
+            "endpoint": "/not-found",
+            "name": "notfound",
+            "component": "not-found",
+            "navigation": true,
+            "meta": {
+                "title": "",
+                "subtitle": "",
+                "og": {
+                    "title": "",
+                    "description": ""
+                },
+                "seo": {
+                    "title": "",
+                    "description": ""
+                }
+            }
+        }
+    ]
+}

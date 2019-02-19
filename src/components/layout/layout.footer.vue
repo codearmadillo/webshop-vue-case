@@ -2,7 +2,7 @@
 
     <footer class="site-footer">
         <div class="shop-content">
-            <footer-navigation/>
+            <footer-navigation/>    
             <footer-promotion/>
         </div>
     </footer>

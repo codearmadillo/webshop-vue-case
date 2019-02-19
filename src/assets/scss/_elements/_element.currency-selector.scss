@@ -1,0 +1,54 @@
+.currency-selector {
+    &__instance {
+        height: 45px;
+        line-height: 45px;
+    }
+    &__label {
+        display: block;
+        float: left;
+        color: $c-infobar;
+        font-family: $f-primary;
+        font-size: 13px;
+        font-weight: bold;
+    }
+    &__select-wrapper {
+        position: relative;
+        display: block;
+        float: left;
+        height: 45px;
+        margin-left: 3px;
+
+        &::after {
+            content: '\f107';
+            display: block;
+            position: absolute;
+            width: 13px; height: 45px;
+            top: 0; right: 0;
+
+            font-family: $f-icons;
+            font-size: 13px;
+            color: $c-infobar;
+        }
+
+    }
+    &__output {
+
+        position: relative;
+        height: 45px;
+        padding: 0 18px 0 6px;
+
+        font-family: $f-primary;
+        font-weight: bold;
+        font-size: 13px;
+        color: $c-infobar;
+
+        appearance: none;
+        text-indent: 0.01px;
+        text-overflow: '';
+        border: medium none;
+        border-radius: 0;
+
+        background: transparent;
+        z-index: 250;
+    }
+}

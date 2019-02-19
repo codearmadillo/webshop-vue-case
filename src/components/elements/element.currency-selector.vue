@@ -4,7 +4,8 @@
         elementType="select"
         elementName="currency-selector"
         elementClassname="top-infobar__currency-selector"
-        elementLabel="Currency"
+        elementLabel="Currency :"
+        elementClassPrefix="currency-selector"
         :options="[
             {
                 key: 'gbp',
