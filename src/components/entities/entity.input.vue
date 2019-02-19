@@ -1,18 +1,19 @@
 <template>
     <label
         v-if="Supported && elementType !== 'select' && elementType !== 'checkbox'"
-        :class="'v-input__instance instance--input' + (elementType == 'number' && hasStepper == true ? ' instance--has-stepper ' : '') + (iconBefore == null ? '' : ' instance--icon-before icon-before icon-before--' + iconBeforeStyle) + (iconAfter == null ? '' : ' instance--icon-after icon-after icon-after--' + iconAfterStyle)" 
+        :class="elementClass.instance" 
         >
 
         <!-- Start Label -->
         <template v-if="renderLabel == true">
-            <span class="v-input__label">{{ elementLabel }}</span>
+            <span :class="elementClass.label">{{ elementLabel }}</span>
         </template>
         <!-- End label -->
 
         <!-- Start Icon Before -->
         <template v-if="iconBefore !== null">
-            <span @click="(iconBeforeIsClickable == true ? (isSearch == false ? Submit() : Search()) : null)" :class="(iconBeforeIsClickable == true ? 'icon--clickable ' : '') + 'v-input__icon input__icon icon--before'">
+            <span @click="(iconBeforeIsClickable == true ? (isSearch == false ? Submit() : Search()) : null)"
+            :class="elementClass.iconBefore">
                 <i :class="iconBefore"></i>
             </span>
         </template>
@@ -26,7 +27,7 @@
             :type="elementType"
             :placeholder="elementPlaceholder"
             :value="Value"
-            :class="'v-input__output' + (elementType == 'number' ? ' v-input__output--number ' : ' ' ) + (elementClassname !== null ? elementClassname : '') + (Valid || elementType == 'search' ? '' : ' error')"
+            :class="elementClass.output + (Valid || elementType == 'search' ? '' : ' error')"
 
             @keyup="Keypress"
             @input="Update()"
@@ -36,7 +37,7 @@
 
         <!-- Start Stepper -->
         <template v-if="elementType == 'number' && hasStepper == true">
-            <span class="v-input__stepper input-stepper">
+            <span :class="elementClass.numberStepper">
                 <i @click="valInc()" class="fa fa-angle-up"></i>
                 <i @click="valDec()" class="fa fa-angle-down"></i>
             </span>
@@ -45,7 +46,8 @@
 
         <!-- Start Icon After -->
         <template v-if="iconAfter !== null">
-            <span @click="(iconAfterIsClickable == true ? (isSearch == false ? Submit() : Search()) : null)" :class="(iconAfterIsClickable == true ? 'icon--clickable ' : '') + 'v-input__icon input__icon icon--after'">
+            <span @click="(iconAfterIsClickable == true ? (isSearch == false ? Submit() : Search()) : null)"
+            :class="elementClass.iconAfter">
                 <i :class="iconAfter"></i>
             </span>
         </template>
@@ -54,36 +56,41 @@
     </label>
     <span 
         v-else-if="elementType == 'checkbox' && Supported"
-        :class="'v-input__instance instance--checkbox checkbox' + (elementClassname !== null ? ' ' + elementClassname : '')"
+        :class="elementClass.instance"
         >
         <input
             v-model="Value"
             :value="elementName"
-            ref="output"
-            type="checkbox"
             :name="elementName"
             :id="(elementId == null ? elementName : elementId)"
+            :class="elementClass.output"
+            ref="output"
+            type="checkbox"
+            
             @change="Update()"
-            class="v-input__output"
         />
-        <label :class="'v-input__label ' + (Valid ? '' : ' error')" :for="(elementId == null ? elementName : elementId)">
+        <label
+            :class="elementClass.label + (Valid ? '' : ' error')"
+            :for="(elementId == null ? elementName : elementId)">
             {{ elementLabel }}
         </label>
     </span>
     <span
         v-else-if="elementType == 'select' && Supported"
-        :class="'v-input__instance instance--select' + (elementClassname !== null ? ' ' + elementClassname : '')">
-        <label v-if="renderLabel == true" class="v-input__label">
+        :class="elementClass.instance">
+        <label v-if="renderLabel == true" :class="elementClass.label">
             {{ elementLabel }}
         </label>
-        <span :class="'v-input__select-wrapper' + (Valid ? '' : ' error')">
+        <span :class="elementClass.selectWrapper + (Valid ? '' : ' error')">
             <select 
-                ref="output"
                 v-model="Value"
                 :name="elementName"
                 :id="elementId"
+                :class="elementClass.output"
+                ref="output"
+
                 @change="Update"
-                class="v-input__output">
+                >
                 <option v-for="option in options" :disabled="option.disabled == true" :key="option.key" :value="option.key">
                     {{ option.value }}
                 </option>
@@ -133,6 +140,11 @@
                 type: String,
                 default: null,
                 required: false
+            },
+            elementClassPrefix: {
+                type: String,
+                required: false,
+                default: 'v-input'
             },
             elementPresetValue: {
                 type: String,
@@ -228,6 +240,91 @@
                 default: false
             }
         },
+        computed: {
+            ValidationExpression() {
+                
+                let Exp = Array();
+                if(this.isRequired) {
+                    Exp.push('required');
+                }
+                if(this.elementType == 'email') {
+                    Exp.push('email');
+                }
+
+                return Exp.join('|'); 
+
+            },
+            elementClass() {
+                var Class = {
+                    instance: this.elementClassPrefix + '__instance',
+                    label: this.elementClassPrefix + '__label',
+                    iconBefore: '',
+                    iconAfter: ''
+                };
+
+                /*
+                Instance
+                */
+                switch(this.elementType) {
+                    case 'select':
+                        Class.instance += ' instance--select';
+                        break;
+                    case 'checkbox':    
+                        Class.instance += ' instance--checkbox';
+                        break;
+                    default:
+                        Class.instance += ' instance--input';
+                        /* Number stepper */
+                        if(this.elementType == 'number' && this.hasStepper == true) {
+                            Class.instance += ' instance--has-stepper';
+                        }
+                        /* Icons */
+                        if(this.iconBefore != null) {
+                            Class.instance += ' instance--icon-before icon-before--' + this.iconBeforeStyle;
+                        }
+                        if(this.iconAfter != null) {
+                            Class.instance += ' instance--icon-after icon-after--' + this.iconAfterStyle;
+                        }
+                }
+                if(this.elementClassname != null) {
+                    Class.instance += ' ' + this.elementClassname;
+                }
+
+                /*
+                Icons
+                */
+                if(this.iconBeforeIsClickable == true) {
+                    Class.iconBefore += 'icon--clickable ';
+                }
+                if(this.iconAfterIsClickable == true) {
+                    Class.iconAfter  += 'icon--clickable ';
+                }
+                Class.iconBefore += this.elementClassPrefix + '__icon icon--before';
+                Class.iconAfter += this.elementClassPrefix + '__icon icon--after';
+
+                /*
+                Output
+                */
+                Class['output'] = this.elementClassPrefix + '__output';
+
+                /*
+                Stepper and number
+                */
+                if(this.elementType == 'number') {
+                    Class['numberStepper'] = this.elementClassPrefix + '__stepper input-stepper';
+                    Class['output'] += ' ' + this.elementClassPrefix + '__output--number';
+                }
+
+                /*
+                Select wrapper
+                */
+                if(this.elementType == 'select') {
+                    Class['selectWrapper'] = this.elementClassPrefix + '__select-wrapper';
+                }
+
+                return Class;
+            }
+        },
         methods: {
             valInc() {
 
@@ -310,7 +407,7 @@
                         return false;
                     }
                 }
-                
+
                 return true;
 
             }
