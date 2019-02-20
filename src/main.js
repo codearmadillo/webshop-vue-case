@@ -4,16 +4,6 @@ import router from "./router";
 import store from "./store";
 import axios from "axios";
 
-import ViewHomepage from "./views/view.homepage.vue";
-import ViewProductList from "./views/view.product-list.vue";
-import ViewBrand from "./views/view.brand.vue";
-import ViewStoreList from "./views/view.store-list.vue";
-import ViewStoreDetails from "./views/view.store-details.vue";
-import ViewSignup from "./views/view.sign-up.vue";
-import ViewSearch from "./views/view.search.vue";
-import ViewNotFound from "./views/view.not-found.vue";
-
-
 import ProductListView from "./views/view.product-list.vue";
 
 Vue.config.productionTip = false;

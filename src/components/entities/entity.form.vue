@@ -1,5 +1,6 @@
 <template>
-    <form
+    <section
+        :id="formId"
         :class="'v-form v-form__instance' + (formClass ? ' ' + formClass : '')"
         @submit.prevent="Submit()"
         >
@@ -44,16 +45,16 @@
 
         </section>
         <section v-if="formButton" class="v-form__submit">
-            <button @click="Submit" :class="'v-form__button' + (formButtonClass ? ' ' + formButtonClass : ' btn btn--action')">{{ formButton }}</button>
+            <button @click.prevent="Submit" :class="'v-form__button' + (formButtonClass ? ' ' + formButtonClass : ' btn btn--action')">{{ formButton }}</button>
         </section>
         <section v-if="!isrendered" class="v-form__compilation-error">
             <p v-if="error.form">{{ error.form }}</p>
             <p v-if="error.parsing">{{ error.parsing }}</p>
         </section>
         <footer v-if="formFooter" class="v-form__footer">
-            <p class="v-form__notes">{{ formFooter }}</p>
+            <p class="v-form__notes" v-html="formFooter"></p>
         </footer>
-    </form>
+    </section>
 </template>
 
 <script>
@@ -64,6 +65,7 @@
         data() {
             return {
                 elements: [],
+                errorBag: [],
                 error: {
                     form: null,
                     parsing: null,
@@ -76,6 +78,10 @@
         },
         props: {
 
+            formId: {
+                type: String,
+                required: true
+            },
             formClass: {
                 type: String,
                 required: false,
@@ -169,7 +175,7 @@
                 }
             },
 
-            Submit() {
+            Submit(event) {
 
                 if(this.Validate()) {
                     this.errorMessageOn = false;

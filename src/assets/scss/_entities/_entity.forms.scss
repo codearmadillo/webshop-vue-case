@@ -1,9 +1,21 @@
 .v-form {
-
     &__instance {
+        
         position: relative;
         display: block;
         float: left;
+
+        width: 100%;
+
+        padding: 0;
+
+        @include breakpoint($break-xs) {
+            padding: 0 4px;
+        }
+        @include breakpoint($break-md) {
+            padding: 0 6 px;
+        }
+
     }
     &__header,
     &__footer,
@@ -14,11 +26,39 @@
         float: left;
         width: 100%;
     }
+    &__header {
+        h2 {
+            margin: 0 0 30px;
+            color: $c-headlines;
+            font-family: $f-primary;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+    }
+    &__footer {
+        font-family: $f-body;
+        font-size: 15px;
+        color: #8e8c8c;
+        padding: 8px 0;
+
+        .v-form__notes {
+            margin: 0;
+            line-height: 23px;
+        }
+    }
     &__content {
         .v-input__instance {
             display: block;
             width: 100%;
-            margin-bottom: 6px;
+            margin-bottom: 12px;
+
+            @include breakpoint($break-xs) {
+                margin-bottom: 8px;
+            }
+            @include breakpoint($break-md) {
+                margin-bottom: 6px;
+            }
+
         }
     }
     &__submit {
@@ -28,10 +68,6 @@
         }
         button {
             width: 100%;
-
-            @include breakpoint($break-xs) {
-                max-width: 200px;
-            }
         }
     }
     &__error-message {

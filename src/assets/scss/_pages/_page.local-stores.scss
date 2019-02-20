@@ -1,0 +1,51 @@
+.local-stores {
+    &__list,
+    &__detail-wrapper {
+        .store {
+            &__header{
+                h2 {
+                    color: $c-headlines;
+                    font-family: $f-primary;
+                    font-size: 18px;
+                    text-transform: uppercase;
+                    margin: 0 0 12px;
+                }
+                h4 {
+                    line-height: 35px;
+                    margin: 0;
+                    font-size: 13px;
+                    font-family: $f-primary;
+                    color: $c-body;
+                }
+            }
+            &__description {
+                color: #8e8c8c;
+                font-family: $f-primary;
+                font-size: 15px;
+                line-height: 19px;
+                margin: 0;
+                padding-bottom: 20px;
+            }
+        }
+    }
+    &__list {
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: 1fr;
+
+        grid-row-gap: 42px;
+
+        @include breakpoint($break-xs) {
+            grid-column-gap: 16px;
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @include breakpoint($break-md) {
+            grid-column-gap: 30px;
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    &__detail-wrapper {
+        width: 100%;
+        padding: 62px 0 0;
+    }
+}

@@ -1,0 +1,59 @@
+.signup {
+    &__wrapper {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+
+        @include breakpoint($break-md) {
+            position: relative;
+            grid-gap: 70px;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto;
+
+            &::after {
+                content: '';
+                position: absolute;
+                display: block;
+                width: 1px;
+                top: 0; bottom: 0;
+                left: 50%;
+                background: #eeeeee;
+            }
+        }
+    }
+    &__login,
+    &__register {
+        .v-input__instance {
+            @include breakpoint($break-md) {
+                margin-bottom: 28px;
+            }
+        }
+        .v-form__footer {
+            margin-top: 16px;
+        }
+        @include breakpoint($break-lg) {
+            .v-form__footer,
+            .v-form__submit {
+                width: 50%;
+                margin-top: 0;
+            }
+            .v-form__footer {
+                text-align: right;
+                padding-left: 50px;
+            }
+            .v-form__submit {
+                .v-form__button {
+                    padding: 21px 0 20px;
+                }
+            }
+        }
+    }
+    &__login {
+        margin-bottom: 30px;
+        
+        @include breakpoint($break-md) {
+            margin-bottom: 0;
+        }
+    }
+}

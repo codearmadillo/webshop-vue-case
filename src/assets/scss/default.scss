@@ -13,15 +13,16 @@ Config
 /* 
 Entities
 */
-@import '_entities/buttons';
-@import '_entities/inputs';
+@import '_entities/entity.buttons';
+@import '_entities/entity.inputs';
+@import '_entities/entity.forms';
+@import '_entities/entity.links';
 
 /*
 Elements
 */
 @import '_elements/element.dropdowns';
 @import '_elements/element.offcanvas';
-@import '_elements/element.forms';
 @import '_elements/element.currency-selector';
 
 /*
@@ -39,3 +40,5 @@ Components
 Pages
 */
 @import '_pages/page.product-details';
+@import '_pages/page.signup';
+@import '_pages/page.local-stores';

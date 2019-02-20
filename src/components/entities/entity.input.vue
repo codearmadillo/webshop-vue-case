@@ -377,13 +377,13 @@
                 }
 
             },
-            Update() {
+            Update(event) {
 
                 this.Valid = true;
                 this.$emit('input', {value: this.Value, valid: this.Valid});
                 
             },
-            Submit() {
+            Submit(event) {
 
                 this.Validate();
                 this.$emit('submit', {value: this.Value, valid: this.Valid});

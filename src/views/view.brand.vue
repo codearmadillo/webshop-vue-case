@@ -1,5 +1,5 @@
 <template>
-  <div class="shop-content">
+  <div class="shop-content brand__wrapper">
     Brand
   </div>
 </template>

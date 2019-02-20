@@ -1,5 +1,6 @@
 .btn {
 
+    display: inline-block;
     font-family: $f-primary;
     text-transform: uppercase;
 
@@ -45,4 +46,13 @@
         background-color: #737373;
         color: #adadad;
     }
+
+    &--hover-action {
+        &:hover {
+            background-color: $c-primary;
+            border-color: $c-primary;
+            color: #fff;
+        }
+    }
+
 }

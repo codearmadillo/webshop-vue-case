@@ -1,0 +1,9 @@
+a {
+    color: $c-primary;
+    text-decoration: none;
+    transition: 300ms;
+
+    a:hover {
+        color: darken($c-primary, 5%);
+    }
+}
