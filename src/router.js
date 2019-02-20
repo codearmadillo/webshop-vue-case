@@ -8,6 +8,11 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
+      path: '/demo/product',
+      name: 'Demo product',
+      component: () => import('@/views/view.product-details.vue')
+    },
+    {
       path: '/',
       name: 'homepage',
       component: () => import('@/views/view.homepage.vue'),

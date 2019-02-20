@@ -1,0 +1,67 @@
+{
+    "productId": 61551521,
+    "productName": "AVE Classic Sweatshirt",
+    "productCode": 499577,
+    "productTags": [
+        "Classic", "Casual", "V-Neck", "Loose"
+    ],
+    "productShortDesc": "Short Description",
+    "productLongDesc": "Long description",
+    "productSpecs": [
+        "Elastic cuffs", "Casual fit", "100% Cotton"
+    ],
+    "productHasFreeShipping": true,
+    "productVideos": [],
+    "productHasDeliveryAndReturnTerms": false,
+    "productIsFeaturedOnHomepage": true,
+    "productVariants": [
+        {
+            "variantColor": "red",
+            "variantImages": [
+                "https://mosaic03.ztat.net/vgs/media/pdp-zoom/VE/12/1I/0X/WG/12/VE121I0XW-G12@8.jpg",
+                "https://mosaic04.ztat.net/vgs/media/pdp-zoom/VE/12/1I/0X/WG/12/VE121I0XW-G12@9.jpg",
+                "https://mosaic03.ztat.net/vgs/media/pdp-zoom/VE/12/1I/0X/WG/12/VE121I0XW-G12@7.jpg"
+            ],
+            "variantSizes": [
+                "XXS", "XS", "S", "M"
+            ],
+            "variantStockMatrix": [
+                10, 3, 6, 0
+            ],
+            "variantForceOnHomepage": false
+        },
+        {
+            "variantColor": "black",
+            "variantImages": [
+                "https://mosaic03.ztat.net/vgs/media/pdp-zoom/VE/12/1I/0X/WQ/11/VE121I0XW-Q11@8.jpg",
+                "https://mosaic04.ztat.net/vgs/media/pdp-zoom/VE/12/1I/0X/WQ/11/VE121I0XW-Q11@9.jpg",
+                "https://mosaic03.ztat.net/vgs/media/pdp-zoom/VE/12/1I/0X/WQ/11/VE121I0XW-Q11@7.jpg"
+            ],
+            "variantSizes": [
+                "XS", "S", "M", "L"
+            ],
+            "variantStockMatrix": [
+                2, 13, 0, 0
+            ],
+            "variantForceOnHomepage": true
+        }
+    ],
+    "productSalesPrices": [
+        {
+            "currency": "gbp",
+            "tagPrice": 89.99,
+            "tagPriceFormatted": "89.99",
+            "hasPreviousPrice": true,
+            "previousPrice": 107.00,
+            "previousPriceFormatted": "107,00"
+        },
+        {
+            "currency": "eur",
+            "tagPrice": 79.99,
+            "tagPriceFormatted": "78.99",
+            "hasPreviousPrice": true,
+            "previousPrice": 107.00,
+            "previousPriceFormatted": "107,00"
+        }
+    ]
+}

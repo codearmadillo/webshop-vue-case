@@ -1,0 +1,435 @@
+.product-details {
+    &__wrapper {
+        display: block;
+
+        @include breakpoint($break-md) {
+            display: grid;
+            grid-gap: 30px;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            grid-template-areas: 
+                "images controls"
+                "information information";
+        }
+    }
+    &__images,
+    &__page-controls,
+    &__product-information {
+        display: block;
+        float: left;
+        width: 100%;
+
+        @include breakpoint($break-md) {
+            width: unset;
+            float: unset;
+        }
+
+    }
+    &__images {
+
+        background: rgba(255, 0, 0, 0.253);
+
+        @include breakpoint($break-md) {
+            grid-area: images;
+            padding-top: 63px;
+        }
+    }
+    &__page-controls {
+
+        @include breakpoint($break-md) {
+            grid-area: controls;
+            padding-top: 63px;
+        }
+
+        .product {
+            &__name {
+                display: block;
+                float: left;
+                width: 100%;
+
+                text-transform: uppercase;
+                font-family: $f-primary;
+                font-size: 18px;
+                line-height: 23px;
+                font-weight: lighter;
+                color: $c-headlines;
+                margin: 0 0 26px 0;
+            }
+            &__rating {
+
+                display: block;
+                float: left;
+                width: 100%;
+                line-height: 23px;
+
+                .rating {
+                    &__icon {
+                        font-size: 16px;
+                        color: #dfdfde;
+
+                        &--filled {
+                            color: #ded3aa;
+                        }
+                    }
+                    &__reviews-count,
+                    &__share .share__label,
+                    &__add .add__label {
+                        font-family: $f-primary;
+                        font-size: 14px;
+                        font-weight: bold;
+                        color: $c-body;
+                    }
+                    &__reviews-count {
+
+                        width: 100%;
+
+                        @include breakpoint($break-md) {
+                            width: unset;
+                        }
+
+                        padding-left: 13px;
+                    }
+                    &__add {
+
+                        padding-left: 12px;
+                        width: 50%;
+
+                        @include breakpoint($break-md) {
+                            padding-left: 0;
+                            width: unset;
+                        }
+
+                        .add__label {
+                            cursor: pointer;
+                            color: $c-primary;
+                        }
+                    }
+                    &__share {
+
+                        width: 100%;
+                        @include breakpoint($break-xs) {
+                            width: unset;
+                        }
+
+                        .share {
+                            &__label {
+                                padding-right: 6px;
+                            }
+                            &__link {
+                                display: inline-block;
+                                font-size: 14px;
+                                color: #8c8c8c;
+                                width: 26px;
+                                text-align: center;
+                            }
+                        }
+                    }
+                    &__section {
+
+                        display: block;
+                        float: left;
+
+                        @include breakpoint($break-md) {
+
+                            &:not(:last-of-type)::after {
+                                content: '|';
+                                padding: 0 16px;
+                                font-family: $f-primary;
+                                color: $c-body;
+                                font-size: 14px;
+                                cursor: initial;
+                            }
+                        }
+                    }
+                }
+            }
+            &__prices {
+
+                display: block;
+                float: left;
+                width: 100%;
+                padding: 25px 0 15px;
+
+                .price__current {
+                    font-size: 45px;    
+                    width: 100%;
+
+                    .price__currency {
+                        top: 4px;
+                        font-size: 15px;
+                    }
+
+                }
+                .price__previous {
+                    font-size: 21px;
+
+                    .price__currency {
+                        top: 0;
+                        font-size: 11px;
+
+                        @include breakpoint($break-xs) {
+                            font-size: 15px;
+                            top: 4px; 
+                        }
+                    }
+
+                }
+                .price__current,
+                .price__previous {
+                    position: relative;
+                    display: block;
+                    float: left;
+                    font-family: $f-primary;
+                    color: #9a9a9a;
+                    margin: 0 19px 0 10px;
+                    font-weight: lighter;
+
+                    @include breakpoint($break-xs) {
+                        width: unset;
+                        display: inline-block;
+                        font-size: 30px;
+                    }
+                }
+                .price__currency {
+                    position: absolute;
+                    left: -11px;
+                }
+                .price__previous {
+                    &::after {
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        width: 100%; height: 1px;
+                        left: 0; top: 50%;
+                        background: #9a9a9a;
+                    }
+                }
+            }
+            &__meta {
+
+                display: block;
+                float: left;
+                width: 100%;
+                padding: 12px 0;
+
+                .product-meta__field {
+                    display: block;
+                    line-height: 29px;
+                }
+                .meta {
+                    &__label {
+                        font-family: $f-primary;
+                        font-size: 13px;
+                        color: $c-headlines;
+                        text-transform: uppercase;
+                        padding-right: 4px;
+                    }
+                    &__value,
+                    &__tag {
+                        font-family: $f-body;
+                        font-size: 15px;
+                    }
+                    &__value {
+                        color: #8c8c8c;
+                    }
+                    &__tag {
+                        color: $c-primary;
+                        text-decoration: none;
+                        &:not(:last-of-type)::after {
+                            content: ', '; 
+                        }
+                    }
+                }
+            }
+            &__information {
+
+                display: block;
+                float: left;
+                width: 100%;
+
+                .product {
+                    &__props,
+                    &__short-description {
+                        font-family: $f-body;
+                        font-size: 15px;
+                        color: #8e8c8c;
+                    }
+                    &__short-description {
+                        margin: 8px 0;
+                        line-height: 23px;
+                    }
+                    &__props {
+                        list-style: none;
+                        margin: 0;
+                        padding: 0;
+
+                        li {
+                            position: relative;
+                            padding-left: 15px;
+                            line-height: 24px;
+
+                            &::before {
+                                position: absolute;
+                                content: '\f111';
+                                font-family: $f-icons;
+                                color: #cccccc;
+                                font-size: 3px;
+                                left: 0; top: 0;
+                            }
+                        }
+                    }
+                }
+            }
+            &__configurator {
+
+                display: block;
+                float: left;
+                width: 100%;
+
+                padding: 12px 0 16px 0;
+                display: block;
+
+                @include breakpoint($break-xs) {
+                    padding: 30px 0;
+                    display: grid;
+                    grid-gap: 4px;
+                    grid-template-columns: repeat(6, 1fr);
+                    grid-template-rows: auto;
+                    grid-template-areas: "a a b b c c";
+                }
+                @include breakpoint($break-md) {
+                    grid-gap: 10px;
+                    grid-template-areas: "a a b b c .";
+                }
+
+                .configurator {
+                    &__colour {
+                        display: block;
+                        width: 100%;
+
+                        @include breakpoint($break-xs) {
+                            width: unset;
+                            grid-area: a;
+                        }
+                    }
+                    &__size {
+                        display: block;
+                        width: 100%;
+
+                        @include breakpoint($break-xs) {
+                            width: unset;
+                            grid-area: b;
+                        }
+                    }
+                    &__qty {
+                        display: block;
+                        width: 100%;
+
+                        @include breakpoint($break-xs) {
+                            width: unset;
+                            grid-area: c;
+                        }
+                    }
+                }
+
+                .v-input__instance {
+                    margin-top: 6px;
+                    @include breakpoint($break-xs) {
+                        margin-top: unset;
+                    }
+                }
+
+            }
+            &__submission {
+
+                display: block;
+                float: left;
+                width: 100%;
+
+                padding: 10px 0 0;
+
+                .btn {
+                    width: 100%;
+                    margin-top: 6px;
+
+                    @include breakpoint($break-xs) {
+
+                        margin-right: 26px;
+                    }
+                    
+                }
+            }
+        }
+    }
+    &__product-information {
+
+        padding: 24px 0;
+
+        @include breakpoint($break-md) {
+            grid-area: information;
+            padding: 38px 0 0;
+        }
+
+        .information {
+            &__navigation {
+                
+            }
+            &__tabs {
+
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                grid-template-rows: 40px;
+                list-style: none;
+                background-color: #f8f8f8;
+                margin: 0; padding: 0;
+
+                @include breakpoint($break-md) {
+                    display: block; 
+                    height: 50px;
+                }
+
+            }
+            &__tab {
+
+                display: inline-block;
+                line-height: 40px;
+                text-align: center;
+
+                @include breakpoint($break-md) {
+                    padding: 0 16px;
+                    cursor: pointer;
+                    line-height: 50px;
+                }
+
+                .tab__label {
+
+                    display: none;
+
+                    font-family: $f-primary;
+                    color: #575153;
+                    text-transform: uppercase;
+                    font-size: 16px;
+
+                    @include breakpoint($break-md) {
+                        display: inline;
+                    }
+
+                }
+                .tab__icon {
+                    @include breakpoint($break-md) {
+                        display: none;
+                    }
+                }
+            }
+            &__tab.active {
+
+                background-color: #333;
+
+                .tab__label,
+                .tab__icon {
+                    color: #fff;
+                }
+            }
+        }
+    }
+}

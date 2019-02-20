@@ -1,15 +1,13 @@
 .site-footer  {
 
-    .shop-content {
-
-        padding: 0;
-
-    }
-
     background-color: #f8f8f8;
 
     @include breakpoint($break-md) {
         padding: 65px 0;
+    }
+
+    .shop-content {
+        padding: 0;
     }
 
 }

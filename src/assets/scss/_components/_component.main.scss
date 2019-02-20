@@ -1,0 +1,11 @@
+.site-content {
+    padding-bottom: 45px;
+
+    @include breakpoint($break-xs) {
+        padding-bottom: 80px;
+    }
+    @include breakpoint($break-md) {
+        padding-bottom: 125px;
+    }
+    
+}

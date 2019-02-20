@@ -28,6 +28,7 @@
             :placeholder="elementPlaceholder"
             :value="Value"
             :class="elementClass.output + (Valid || elementType == 'search' ? '' : ' error')"
+            :min="numberMin" :max="numberMax"
 
             @keyup="Keypress"
             @input="Update()"
@@ -88,7 +89,6 @@
                 :id="elementId"
                 :class="elementClass.output"
                 ref="output"
-
                 @change="Update"
                 >
                 <option v-for="option in options" :disabled="option.disabled == true" :key="option.key" :value="option.key">
@@ -183,6 +183,16 @@
             hasStepper: {
                 type: Boolean,
                 default: true,
+                required: false
+            },
+            numberMin: {
+                type: Number,
+                default: 1,
+                required: false
+            },
+            numberMax: {
+                type: Number,
+                default: 99999999,
                 required: false
             },
 
@@ -331,7 +341,10 @@
                 if(isNaN(this.Value)) {
                     this.Value = 1;
                 } else {
-                    this.Value = parseInt(this.Value) + this.numberStepper;
+                    let CalculatedValue = parseInt(this.Value) + this.numberStepper;
+                    if(CalculatedValue <= this.numberMax) {
+                        this.Value = CalculatedValue;
+                    }
                 }
                 
     	        this.Update();
@@ -342,7 +355,10 @@
                 if(isNaN(this.Value)) {
                     this.Value = 1;
                 } else {
-                    this.Value = parseInt(this.Value) - this.numberStepper;
+                    let CalculatedValue = parseInt(this.Value) - this.numberStepper;
+                    if(CalculatedValue >= this.numberMin) {
+                        this.Value = CalculatedValue;
+                    }
                 }
 
                 this.Update();
