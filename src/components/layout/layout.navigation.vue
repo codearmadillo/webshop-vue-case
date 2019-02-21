@@ -67,35 +67,10 @@
                         <router-link tag="a" class="item__link" to="/brand">The Brand</router-link>
                     </li>
                     <li>
-                        <router-link tag="a" class="item__link has-submenu" to="/stores">Local stores</router-link>
-                        <ul class="item__submenu">
-                            <li class="submenu__section section--50">
-                                <span class="section__headline">Europe</span>
-                                <ul class="section__content">
-                                    <li><router-link tag="a" to="/stores/prague">Prague</router-link></li>
-                                    <li><router-link tag="a" to="/stores/budapest">Budepest</router-link></li>
-                                    <li><router-link tag="a" to="/stores/berlin">Berlin</router-link></li>
-                                    <li><router-link tag="a" to="/stores/london">London</router-link></li>
-                                    <li><router-link tag="a" to="/stores/moscow">Moscow</router-link></li>
-                                </ul>
-                            </li>
-                            <li class="submenu__section section--50">
-                                <span class="section__headline">United States</span>
-                                <ul class="section__content">
-                                    <li><router-link tag="a" to="/stores/new-york">New York</router-link></li>
-                                    <li><router-link tag="a" to="/stores/washington">Washington</router-link></li>
-                                    <li><router-link tag="a" to="/stores/san-fransisco">San Francisco</router-link></li>
-                                </ul>
-                            </li>
-                        </ul>
+                        <router-link tag="a" class="item__link" to="/local-stores">Local stores</router-link>
                     </li>
                     <li>
-                        <router-link class="item__link has-submenu" tag="a" to="/look-book">Look Book</router-link>
-                        <ul class="item__submenu">
-                            <li class="submenu__link"><router-link tag="a" to="/look-book/spring-2019">Spring 2019</router-link></li>
-                            <li class="submenu__link"><router-link tag="a" to="/look-book/winder-2018">Winter 2018</router-link></li>
-                            <li class="submenu__link"><router-link tag="a" to="/look-book/autumn-2018">Autumn 2018</router-link></li>
-                        </ul>
+                        <router-link class="item__link" tag="a" to="/look-book">Look Book</router-link>
                     </li>
                 </ul>
             </nav>

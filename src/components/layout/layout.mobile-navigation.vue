@@ -71,6 +71,7 @@
                                 isRequired: true
                             }
                         ]"
+                        formId="mobileform-login"
                         formClass='mobileform__login'
                         formButton='Log In'
                         formButtonClass='btn btn--action'

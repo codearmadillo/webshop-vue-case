@@ -118,9 +118,28 @@ export default new Router({
                     locationDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing esi elit. Vivamus at arcu sem. Vestibulum ornare eleifendit massa, nec tempor odio. Fusce posuere nunc iaculis ligula viverra iaculis. Aliquam erat volutpat.",
                     locationContact: [
                         {
-                            icon: 'fa fa-',
-                            content: 'c',
-                        }
+                            icon: 'fa fa-map-marker-alt',
+                            content: '180-182 Regent Street, London, W1B 5BT',
+                            isLink: false
+                        },
+                        {
+                            icon: 'fa fa-phone',
+                            content: '0123-456-789',
+                            isLink: true,
+                            linkTo: 'tel:0123-456-789',
+                        },
+                        {
+                            icon: 'fa fa-link',
+                            content: 'www.yourwebsite.com',
+                            isLink: true,
+                            linkTo: 'https://www.yourwebsite.com',
+                        },
+                        {
+                            icon: 'fa fa-envelope',
+                            content: 'support@yourwebsite.com',
+                            isLink: true,
+                            linkTo: 'mailto:support-london@yourwebsite.com',
+                        }   
                     ],
                     locationOpeningHours: "Monday-Friday: 9am to 6pm  Saturday: 10am to 6pm  Sunday: 10am to 2pm",
                     locationSocialMedia: [
@@ -157,30 +176,52 @@ export default new Router({
                     locationTitle: "New York",
                     locationAddress: "109 Columbus Circle, New York, NY 10023",
                     locationDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing esi elit. Vivamus at arcu sem. Vestibulum ornare eleifendit massa, nec tempor odio. Fusce posuere nunc iaculis ligula viverra iaculis. Aliquam erat volutpat.",
-                    locationContact: {
-
-                    },
                     locationOpeningHours: "Monday-Friday: 9am to 6pm  Saturday: 10am to 6pm  Sunday: 10am to 2pm",
+                    locationContact: [
+                        {
+                            icon: 'fa fa-map-marker-alt',
+                            content: '109 Columbus Circle, New York, NY 10023',
+                            isLink: false
+                        },
+                        {
+                            icon: 'fa fa-phone',
+                            content: '0123-456-789',
+                            isLink: true,
+                            linkTo: 'tel:0123-456-789',
+                        },
+                        {
+                            icon: 'fa fa-link',
+                            content: 'www.yourwebsite.com',
+                            isLink: true,
+                            linkTo: 'https://www.yourwebsite.com',
+                        },
+                        {
+                            icon: 'fa fa-envelope',
+                            content: 'support@yourwebsite.com',
+                            isLink: true,
+                            linkTo: 'mailto:support-newyork@yourwebsite.com',
+                        }   
+                    ],
                     locationSocialMedia: [
                         {
                             icon: 'fab fa-facebook-f',
                             title: 'Facebook',
-                            url: 'https://www.facebook.com/ave-page-new-yowkr'
+                            url: 'https://www.facebook.com/ave-page-newyork'
                         },
                         {
                             icon: 'fab fa-twitter',
                             title: 'Twitter',
-                            url: 'https://www.twitter.com/ave-page-new-york'
+                            url: 'https://www.twitter.com/ave-page-newyork'
                         },
                         {
                             icon: 'fab fa-instagram',
                             title: 'Instagram',
-                            url: 'https://www.instagram.com/ave-page-new-york'
+                            url: 'https://www.instagram.com/ave-page-newyork'
                         },
                         {
                             icon: 'fab fa-pinterest',
                             title: 'Pinterest',
-                            url: 'https://www.pinterest.com/ave-page-new-york'
+                            url: 'https://www.pinterest.com/ave-page-newyork'
                         },
                     ]
                 }
@@ -195,9 +236,31 @@ export default new Router({
                     locationTitle: "Paris",
                     locationAddress: "2133 Rue Saint-Honoré, 75001 Paris",
                     locationDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing esi elit. Vivamus at arcu sem. Vestibulum ornare eleifendit massa, nec tempor odio. Fusce posuere nunc iaculis ligula viverra iaculis. Aliquam erat volutpat.",
-                    locationContact: {
-
-                    },
+                    locationContact: [
+                        {
+                            icon: 'fa fa-map-marker-alt',
+                            content: '2133 Rue Saint-Honoré, 75001 Paris',
+                            isLink: false
+                        },
+                        {
+                            icon: 'fa fa-phone',
+                            content: '0123-456-789',
+                            isLink: true,
+                            linkTo: 'tel:0123-456-789',
+                        },
+                        {
+                            icon: 'fa fa-link',
+                            content: 'www.yourwebsite.com',
+                            isLink: true,
+                            linkTo: 'https://www.yourwebsite.com',
+                        },
+                        {
+                            icon: 'fa fa-envelope',
+                            content: 'support@yourwebsite.com',
+                            isLink: true,
+                            linkTo: 'mailto:support-paris@yourwebsite.com',
+                        }   
+                    ],
                     locationOpeningHours: "Monday-Friday: 9am to 6pm  Saturday: 10am to 6pm  Sunday: 10am to 2pm",
                     locationSocialMedia: [
                         {
@@ -222,6 +285,28 @@ export default new Router({
                         },
                     ]
                 }
+            }
+        ]
+    },
+    {
+        path: "/products/:category",
+        name: "list-top",
+        components: {
+            default: () => import("@/views/view.product-list.vue")
+        },
+        props: {
+            default: true
+        },
+        children: [
+            {
+                path: ":subcategory",
+                name: "list-sub",
+                children: [
+                    {
+                        path: ":type",
+                        name: "list-type"
+                    }
+                ]
             }
         ]
     }

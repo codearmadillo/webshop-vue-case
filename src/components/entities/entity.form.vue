@@ -1,5 +1,5 @@
 <template>
-    <section
+    <form
         :id="formId"
         :class="'v-form v-form__instance' + (formClass ? ' ' + formClass : '')"
         @submit.prevent="Submit()"
@@ -54,7 +54,7 @@
         <footer v-if="formFooter" class="v-form__footer">
             <p class="v-form__notes" v-html="formFooter"></p>
         </footer>
-    </section>
+    </form>
 </template>
 
 <script>

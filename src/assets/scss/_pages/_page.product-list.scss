@@ -1,0 +1,12 @@
+.product-list__wrapper  {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+
+    @include breakpoint($break-xs) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @include breakpoint($break-md) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

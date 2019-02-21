@@ -24,6 +24,7 @@ Elements
 @import '_elements/element.dropdowns';
 @import '_elements/element.offcanvas';
 @import '_elements/element.currency-selector';
+@import '_elements/element.product.scss';
 
 /*
 Components
@@ -42,3 +43,4 @@ Pages
 @import '_pages/page.product-details';
 @import '_pages/page.signup';
 @import '_pages/page.local-stores';
+@import '_pages/page.product-list';
