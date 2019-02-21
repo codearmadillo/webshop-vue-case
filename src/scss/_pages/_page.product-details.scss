@@ -31,14 +31,12 @@
 
         @include breakpoint($break-md) {
             grid-area: images;
-            padding-top: 63px;
         }
     }
     &__page-controls {
 
         @include breakpoint($break-md) {
             grid-area: controls;
-            padding-top: 63px;
         }
 
         .product {

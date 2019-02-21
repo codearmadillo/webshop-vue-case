@@ -1,13 +1,11 @@
 <template>
-    <div class="shop-content product-details__wrapper">
+    <div v-if="fetched" class="shop-content product-details__wrapper">
         <section class="product-details__images">
             <img style="display: none" src="https://www.na-kd.com/globalassets/nakd_basic_sweater_1044-000019-0115_01a_r1.jpg?maxheight=3200&mode=max&ref=B7506A992D&width=2560" />
         </section>
         <section class="product-details__page-controls">
             <header>
-                <h2 class="product__name">
-                    AVE Classic Sweatshirt
-                </h2>
+                <h2 class="product__name">{{ product.productName }}</h2>
             </header>
             <section class="product__rating">
                 <span class="rating__section rating__current">
@@ -32,43 +30,55 @@
                     <a class="share__link" :href="'https://plus.google.com/share?url=' + shareurl" title="Google+">
                         <i class="fab fa-google-plus-g"></i>
                     </a>
-                    <a class="share__link" :href="'https://pinterest.com/pin/create/button/?url=' + shareurl + '&media=Image' + currentimage" title="Pinterest">
+                    <a class="share__link" :href="'https://pinterest.com/pin/create/button/?url=' + shareurl + '&media=Image' + ''" title="Pinterest">
                         <i class="fab fa-pinterest-p"></i>
                     </a>
                 </span>
             </section>
-            <section class="product__prices">
-                <span class="price__previous price--gbp"><span class="price__currency">£</span>107</span>
-                <span class="price__current price--gbp"><span class="price__currency">£</span>89,99</span>
+            <section class="product__prices" v-if="currentSalesPrice">
+                <template v-if="currentSalesPrice.hasPreviousPrice">
+                    <span class="price__previous price--gbp"><span class="price__currency">{{ currentSalesPriceSymbol }}</span>{{ currentSalesPrice.previousPrice }}</span>
+                </template>
+                <span class="price__current price--gbp"><span class="price__currency">{{ currentSalesPriceSymbol }}</span>{{ currentSalesPrice.tagPriceFormatted }}</span>
             </section>
             <section class="product__meta">
                 <span class="product-meta__field meta--availability">
                     <span class="meta__label">Availability:</span>
-                    <span class="meta__value">In stock</span>
+                    <span class="meta__value">
+                        <template v-if="configuratorAvailability !== null">
+                            <template v-if="configuratorAvailability == false">
+                                Out of stock
+                            </template>
+                            <template v-else>
+                                In stock
+                            </template>
+                        </template>
+                        <template v-else>
+                            Select colour variant and size
+                        </template> 
+                    </span>
                 </span>
                 <span class="product-meta__field meta--product-code">
                     <span class="meta__label">Product code:</span>
-                    <span class="meta__value">499577</span>
+                    <span class="meta__value">{{ product.productCode }}</span>
                 </span>
-                <span class="product-meta__field meta--tags">
+                <span class="product-meta__field meta--tags" v-if="product.productTags.length > 0">
                     <span class="meta__label">Tags:</span>
                     <span class="meta__value">
-                        <a class="meta__tag" href="#" title="#">Classic</a>
-                        <a class="meta__tag" href="#" title="#">Casual</a>
-                        <a class="meta__tag" href="#" title="#">V-Neck</a>
-                        <a class="meta__tag" href="#" title="#">Loose</a>
+                        <router-link
+                            v-for="tag in product.productTags"
+                            :title="tag"
+                            :to="`/products/tag/${encodeURIComponent(tag)}`"
+                            tag="a"
+                            class="meta__tag">{{ tag }}</router-link>
                     </span>
                 </span>
             </section>
             <section class="product__information">
-                <p class="product__short-description">
-                    Donec sem lorem laoreet tempor un risus vitae, rutrum sodales nibh suspendisse est congue metus nunc, id viverra elit loreti rhoncus quis consecteur es. Donec pulvinar tempor lorem a pretium justo interdum.
-                </p>
-                <ul class="product__props">
-                    <li>Elasticated cuffs</li>
-                    <li>Casual fit</li>
-                    <li>100% Cotton</li>
-                    <li>Free shipping with 4 days delivery</li>
+                <p class="product__short-description">{{ product.productShortDesc }}</p>
+                <ul v-if="product.productSpecs.length > 0" class="product__props">
+                    <li v-for="spec in product.productSpecs">{{ spec }}</li>
+                    <li v-if="product.productHasFreeShipping">Free shipping with 4 days delivery</li>
                 </ul>
             </section>
             <section class="product__configurator">
@@ -78,24 +88,9 @@
                     elementType="select"
                     elementLabel="Colour"
                     elementClassname="configurator__colour"
-                    :options="[
-                        {
-                            key: null,
-                            value: 'Select Colour',
-                            disabled: true,
-                            selected: true,
-                            required: true
-                        },
-                        {
-                            key: 0,
-                            value: 'Red',
-                        },
-                        {
-                            key: 1,
-                            value: 'Black',
-                        }
-                    ]"
+                    :options="configuratorColourOptions"
                     :isRequired="true"
+                    @input="configuratorSelectColour"
                 />
                 <v-input
                     v-model="userinput.size"
@@ -103,31 +98,9 @@
                     elementType="select"
                     elementLabel="Size"
                     elementClassname="configurator__size"
-                    :options="[
-                        {
-                            key: null,
-                            value: 'Select Size',
-                            selected: true,
-                            disabled: true
-                        },
-                        {
-                            key: 0,
-                            value: 'XS',
-                        },
-                        {
-                            key: 1,
-                            value: 'S',
-                        },
-                        {
-                            key: 2,
-                            value: 'M',
-                        },
-                        {
-                            key: 3,
-                            value: 'L',
-                        }
-                    ]"
+                    :options="configuratorAvailableSizes"
                     :isRequired="true"
+                    ref="sizeselector"
                 />
                 <v-input
                     v-model="userinput.qty"
@@ -179,9 +152,14 @@
             </section>
         </section>
     </div>
+    <div v-else class="shop-content product-details__loader">
+        Loading product
+    </div>
 </template>
 
 <script>
+
+    import { EventBus } from "@/event-bus";
     import axios from "axios";
 
     export default {
@@ -191,24 +169,37 @@
         },
         data() {
             return {
-                data: null,
+                fetched: false,
+                product: null,
                 userinput: {
                     size: null,
                     colour: null,
                     qty: null
                 },
-                selectedTab: null,
-                selectedVariant: 0,
-                shareurl: window.location.href,
-                currentimage: ''
+                currentSalesPrice: null,
+                currentSalesPriceSymbol: null,
+                
+                configuratorSelectedVariant: null,
+                configuratorAvailableSizes: null,
+
+                shareurl: window.location.href
             }
         },
-        beforeMount() {
-            axios.get('/data/data.demo-product.json').then(response => {
-                this.data = response.data;
-            });
-        },
         methods: {
+            /*
+            Get / Set
+            */
+            get(id) {
+                return axios.get('/data/data.demo-product.json');   
+            },
+            set(d) {
+                this.product = d;
+            },
+            
+
+            /*
+            Postbacks
+            */
             addToBasket() {
                 console.log('Adding to basket');
             },
@@ -220,7 +211,97 @@
             },
             selectTab(sectionId) {
                 this.selectedTab = sectionId;
+            },
+            
+
+            changeCurrentSalesPrice(currency) {
+                let salesPrices = this.product.productSalesPrices;
+                if(salesPrices.length === 0) {
+                    this.currentSalesPrice = null;
+                } else {
+                    let sorted = salesPrices.filter(x => x.currency == currency);
+                    if(sorted.length === 0) {
+                        this.currentSalesPrice = salesPrices[0];
+                    } else {
+                        this.currentSalesPrice = sorted[0];
+                    }
+                }
+                this.currentSalesPriceSymbol = this.$root.$data.currencies[currency].symbol;
+            },
+            configuratorSelectColour(event) {
+                this.configuratorSelectedVariant = this.product.productVariants[this.userinput.colour.value];
+
+                /* Sizes */
+                this.$refs.sizeselector.Reset();
+                this.configuratorAvailableSizes = this.configuratorLoadSizes(this.configuratorSelectedVariant);
+            },
+            configuratorLoadSizes(variant) {
+
+                let Placeholder = [{
+                    key: null,
+                    value: 'Select Size',
+                    selected: true,
+                    disabled: true
+                }];
+                if(variant) {
+                    let sizes = variant.variantSizes.map((v, i) => {
+                        return {
+                            key: i,
+                            value: v
+                        }
+                    }); 
+                    Placeholder = Placeholder.concat(sizes);
+                }
+
+                return Placeholder;
             }
+        },
+        computed: {
+            configuratorColourOptions() {
+                let options = this.product.productVariants.map((variant, index) => {
+                    return {
+                        key: index,
+                        value: variant.variantColor.charAt(0).toUpperCase() + variant.variantColor.slice(1)
+                    }
+                });
+                options.unshift({
+                    key: null,
+                    value: 'Select colour',
+                    disabled: true,
+                    selected: true
+                });
+                return options;
+            },
+            configuratorAvailability() {
+
+                if(!this.configuratorSelectedVariant || this.userinput.size.value == null) {
+                    return null;
+                }
+
+                return this.configuratorSelectedVariant.variantStockMatrix[this.userinput.size.value] > 0;
+            }
+        },
+        mounted() {
+
+            let self = this;
+            EventBus.$on('currency-change', currency => {
+                self.changeCurrentSalesPrice(currency);
+            });
+
+            this.configuratorAvailableSizes = this.configuratorLoadSizes(false);
+
+        },  
+        async created() {
+
+            const data = this.get(0).then(response => {
+                if(response.status !== 200) {
+                    this.$router.push({path: '/not-found'});
+                } else {
+                    this.fetched = true;
+                    this.product = response.data;
+                }
+            });
+
         }
     }
 </script>

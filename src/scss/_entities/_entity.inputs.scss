@@ -140,12 +140,8 @@
                     right: 0;
                     z-index: 500;
 
-                    @include breakpoint($break-xs) {
-                        right: 4px;
-                    }
                     @include breakpoint($break-md) {
                         width: 34px;
-                        right: 6px;
                     }
 
                     i.fa {

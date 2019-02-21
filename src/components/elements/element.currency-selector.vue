@@ -6,20 +6,7 @@
         elementClassname="top-infobar__currency-selector"
         elementLabel="Currency :"
         elementClassPrefix="currency-selector"
-        :options="[
-            {
-                key: 'gbp',
-                value: 'GBP'
-            },
-            {
-                key: 'eur',
-                value: 'EUR'
-            },
-            {
-                key: 'usd',
-                value: 'USD'
-            }
-        ]"
+        :options="options"
         v-model="currency"
         @input="changeGlobalCurrency"
     />
@@ -28,18 +15,37 @@
 
 <script>
 
+    import { EventBus } from "@/event-bus";
+
     export default {
         data() {
             return {
-                'currency': null
+                'currency': null,
+                'options' : []
             }
         },
         components: {
             'v-input' : () => import('@/components/entities/entity.input.vue')
         },
+        beforeMount() {
+            
+            this.get();
+            
+        },
         methods: {
+            get() {
+                let self = this;
+                for(let key in this.$root.$data.currencies) {
+                    let ctx = this.$root.$data.currencies[key];
+                    self.options.push({
+                        key: ctx.id,
+                        value: ctx.tag
+                    });
+                }
+            },
             changeGlobalCurrency(response) {
                 this.$root.settings.shop.currency = response.value;
+                EventBus.$emit('currency-change', response.value);
             }
         }
     }

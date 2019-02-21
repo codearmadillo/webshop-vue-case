@@ -426,6 +426,14 @@
 
                 return true;
 
+            },
+            Reset(event) {
+
+                this.Value = null;
+                this.Valid = false;
+
+                this.$emit('input', {value: this.Value, valid: this.Valid});
+
             }
         },
         beforeMount() {

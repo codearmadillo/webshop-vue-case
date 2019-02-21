@@ -11,7 +11,7 @@
         </div>
         <div class="shop-content infobar--mobile">
             <router-link to="/" tag="a" class="infobar__site-logo">
-                <img :src="this.$root.$data.settings.shop.logo" />
+                <img :src="sitelogo" />
             </router-link>
         </div>
     </section>
@@ -24,6 +24,11 @@
             'currency-selector' : () => import('@/components/elements/element.currency-selector.vue'),
             'user-section' : () => import('@/components/elements/element.user-section.vue'),
             'mini-basket' : () => import('@/components/elements/element.mini-basket.vue')
+        },
+        computed: {
+            sitelogo() {
+                return this.$root.$data.shop.settings.logo;
+            }
         }
     }
 

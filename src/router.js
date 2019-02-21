@@ -290,7 +290,7 @@ export default new Router({
     },
     {
         path: "/products/:category",
-        name: "list-top",
+        name: "top-product-list",
         components: {
             default: () => import("@/views/view.product-list.vue")
         },
@@ -300,15 +300,25 @@ export default new Router({
         children: [
             {
                 path: ":subcategory",
-                name: "list-sub",
+                name: "sub-product-list",
                 children: [
                     {
                         path: ":type",
-                        name: "list-type"
+                        name: "type-product-list"
                     }
                 ]
             }
         ]
+    },
+    {
+        path: "/product/(.*-)?:product(\\d+)",
+        name: "product-details",
+        components: {
+            default: () => import("@/views/view.product-details.vue")
+        },
+        meta: {
+            waitForBus: true
+        }
     }
   ]
 });

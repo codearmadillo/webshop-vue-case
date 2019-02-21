@@ -1,9 +1,5 @@
-<template>
-    <span>Tabs</span>
-</template>
-
 <script>
     export default {
-        
+        template: `<span>Tabs</span>` 
     }
 </script>

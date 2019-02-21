@@ -4,6 +4,9 @@ import router from "./router";
 import store from "./store";
 import axios from "axios";
 
+import { EventBus } from './event-bus';
+import buffer from './buffer';
+
 import ProductListView from "./views/view.product-list.vue";
 
 Vue.config.productionTip = false;
@@ -14,7 +17,7 @@ const Application = new Vue({
   store,
   render: h => h(App),
   created() {
-
+      
     this.fetchAndRouteCategories();
     this.anotherFetch();
 
@@ -33,9 +36,9 @@ const Application = new Vue({
       },
       favourites: [],
       settings: {
-        VAT: 0.2,
-        Currency: "eur",
-        Logo: "/assets/images/site-logo.svg"
+        vat: 0.2,
+        currency: "eur",
+        logo: "/assets/images/site-logo.svg"
       },
       socialMedia: [
         {
