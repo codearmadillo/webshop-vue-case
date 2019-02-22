@@ -38,10 +38,29 @@
             <section class="offcanvas__content">
                 <span class="offcanvas__close" @click="close('offcanvasright')"></span>
                 <header class="offcanvas__header">Shopping cart</header>
-                <section class="offcanvas__body">
-                    
-                    Offcanvas Content   
+                <section class="offcanvas__body offcanvas__basket">
 
+                    <template v-if="basketitems.length > 0">
+                        <article v-for="line in basketitems" class="offcanvas-basket__line">
+                            <span class="line__image">
+                                <img :src="line.productVariantImage" :alt="line.productName" />
+                            </span>
+                            <span class="line__description">
+                                {{ line.size + ' ' + line.productName }}
+                            </span>
+                            <span class="line__quantity">
+                                {{ line.quantity }}
+                            </span>
+                            <span class="line__price">
+                                {{ line.lineprice }}
+                            </span>
+                        </article>  
+                    </template>
+                    
+
+                </section>
+                <section class="offcanvas__footer offcanvas__basket-footer">
+                    <router-link to="/not-found" tag="a" class="btn btn--action" title="Basket">View basket</router-link>
                 </section>
             </section>
             <section @click="close('offcanvasright')" class="offcanvas__blank"></section>
@@ -51,7 +70,7 @@
         <!-- START USER DROPDOWN -->
         <section v-if="elements.dropdownuser" class="dropdown" ref="dropdown-user">
         
-            <template v-if="this.$root.$data.settings.customer.isCustomerLoggedIn == false">
+            <template v-if="this.$root.shop.customer.isCustomerLoggedIn == false">
                 <section class="mobile-login">
                     <h3 class="dropdown__subheadline">Log in</h3>
                     <v-form
@@ -84,7 +103,7 @@
                 </section>
             </template>
             <template v-else>
-                <h3 class="dropdown__subheadline">Welcome, {{ this.$root.$data.settings.customer.customerName }} ! </h3>
+                <h3 class="dropdown__subheadline">Welcome, {{ this.$root.shop.customer.customerName }} ! </h3>
             </template>
 
         </section>
@@ -113,6 +132,8 @@
 
 <script>
 
+    import { EventBus } from "@/event-bus";
+
     export default {
         components: {
             'v-input' : () => import('@/components/entities/entity.input.vue'),
@@ -125,23 +146,42 @@
                     offcanvasleft   : false,
                     dropdownsearch  : false,
                     dropdownuser    : false
-                }
+                },
+                basketitems: []
             }
         },
         mounted() {
 
-            this.$nextTick(function(){
-                
-                let self = this;
+            this.update();
 
+            EventBus.$on('currency-change', () => {
+                this.update();
+            });
+            EventBus.$on('add-to-basket', () => {
+                this.update();
+            });
+
+            this.$nextTick(function(){
+                let self = this;
                 window.addEventListener('orientationchange', function(){
                     self.reset();
                 });
-
             }); 
             
         },
         methods: {
+            update() {
+                let currency = this.$root.shop.settings.currency;
+                let symbol = this.$root.currencies[currency].symbol;
+                let items = this.$root.shop.basket.items;
+                    items.map(line => {
+                        let currentprice = line.productSalesPrices.find(x => x.currency == currency);
+                        line['lineprice'] = symbol + (currentprice.tagPrice * line.quantity).toFixed(2);
+                        return line;
+                    });
+
+                this.basketitems = items;
+            },  
             reset(ex) {
                 for(let key in this.elements) {
                     if(key !== ex) {

@@ -1,8 +1,8 @@
 <template>  
     <section class="top-infobar__user-section">
-        <template v-if="this.$root.settings.customer.isCustomerLoggedIn">
+        <template v-if="this.$root.shop.customer.isCustomerLoggedIn">
             <div class="user-section__profile">
-                <router-link class="user-section__link" tag="a" to="/">{{ this.$root.settings.customer.customerName }}</router-link>
+                <router-link class="user-section__link" tag="a" to="/">{{ this.$root.shop.customer.customerName }}</router-link>
             </div>
         </template>
         <template v-else>

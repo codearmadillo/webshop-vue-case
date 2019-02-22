@@ -24,7 +24,7 @@ Elements
 @import '_elements/element.dropdowns';
 @import '_elements/element.offcanvas';
 @import '_elements/element.currency-selector';
-@import '_elements/element.product.scss';
+@import '_elements/element.list-product.scss';
 
 /*
 Components
@@ -36,6 +36,7 @@ Components
 @import '_components/component.header';
 @import '_components/component.footer';
 @import '_components/component.main';
+@import '_components/component.offcanvas-basket';
 
 /*
 Pages
@@ -44,3 +45,4 @@ Pages
 @import '_pages/page.signup';
 @import '_pages/page.local-stores';
 @import '_pages/page.product-list';
+@import '_pages/page.homepage';

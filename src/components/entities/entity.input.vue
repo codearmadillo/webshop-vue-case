@@ -391,9 +391,11 @@
             },
             Search() {
 
-                this.$router.push({
-                    path: `/search/${encodeURIComponent(this.Value)}`
-                });
+                if(this.Value && this.Value !== null) {
+                    this.$router.push({
+                        path: `/search/${encodeURIComponent(this.Value)}`
+                    });
+                }
 
             },
             Validate() {

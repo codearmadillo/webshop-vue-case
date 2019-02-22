@@ -5,7 +5,7 @@
     "productTags": [
         "Classic", "Casual", "V-Neck", "Loose"
     ],
-    "productShortDesc": "Short Description",
+    "productShortDesc": "Classic casual t-shirt for women on the move.  100% cotton.",
     "productLongDesc": "Long description",
     "productSpecs": [
         "Elastic cuffs", "Casual fit", "100% Cotton"
@@ -49,19 +49,25 @@
     "productSalesPrices": [
         {
             "currency": "gbp",
-            "tagPrice": 89.99,
-            "tagPriceFormatted": "89.99",
+            "tagPrice": 69.99,
+            "tagPriceFormatted": "69.99",
+            "hasPreviousPrice": true,
+            "previousPrice": 89.99,
+            "previousPriceFormatted": "89,00"
+        },
+        {
+            "currency": "eur",
+            "tagPrice": 79.99,
+            "tagPriceFormatted": "79.99",
             "hasPreviousPrice": true,
             "previousPrice": 107.00,
             "previousPriceFormatted": "107,00"
         },
         {
-            "currency": "eur",
-            "tagPrice": 79.99,
-            "tagPriceFormatted": "78.99",
-            "hasPreviousPrice": true,
-            "previousPrice": 107.00,
-            "previousPriceFormatted": "107,00"
+            "currency": "usd",
+            "tagPrice": 99.99,
+            "tagPriceFormatted": "99.99",
+            "hasPreviousPrice": false
         }
     ]
 }

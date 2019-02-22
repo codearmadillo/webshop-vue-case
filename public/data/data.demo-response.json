@@ -1,0 +1,185 @@
+{
+    "service":"Product Service",
+    "provider":"AVENUE Fashion",
+    "generated":"F 22/02/2019 12:55:00",
+    "data" : [
+        {
+            "productId": 61551521,
+            "productName": "AVE Classic Sweatshirt",
+            "productCode": 499577,
+            "productTags": [
+                "Classic", "Casual", "V-Neck", "Loose"
+            ],
+            "productShortDesc": "Classic casual t-shirt for women on the move.  100% cotton.",
+            "productLongDesc": "Long description",
+            "productSpecs": [
+                "Elastic cuffs", "Casual fit", "100% Cotton"
+            ],
+            "productHasFreeShipping": true,
+            "productVideos": [],
+            "productHasDeliveryAndReturnTerms": false,
+            "productIsFeaturedOnHomepage": true,
+            "productVariants": [
+                {
+                    "variantColor": "red",
+                    "variantImages": [
+                        "https://mosaic03.ztat.net/vgs/media/pdp-zoom/VE/12/1I/0X/WG/12/VE121I0XW-G12@8.jpg",
+                        "https://mosaic04.ztat.net/vgs/media/pdp-zoom/VE/12/1I/0X/WG/12/VE121I0XW-G12@9.jpg",
+                        "https://mosaic03.ztat.net/vgs/media/pdp-zoom/VE/12/1I/0X/WG/12/VE121I0XW-G12@7.jpg"
+                    ],
+                    "variantSizes": [
+                        "XXS", "XS", "S", "M"
+                    ],
+                    "variantStockMatrix": [
+                        10, 3, 6, 0
+                    ],
+                    "variantForceOnHomepage": false
+                },
+                {
+                    "variantColor": "black",
+                    "variantImages": [
+                        "https://mosaic03.ztat.net/vgs/media/pdp-zoom/VE/12/1I/0X/WQ/11/VE121I0XW-Q11@8.jpg",
+                        "https://mosaic04.ztat.net/vgs/media/pdp-zoom/VE/12/1I/0X/WQ/11/VE121I0XW-Q11@9.jpg",
+                        "https://mosaic03.ztat.net/vgs/media/pdp-zoom/VE/12/1I/0X/WQ/11/VE121I0XW-Q11@7.jpg"
+                    ],
+                    "variantSizes": [
+                        "XS", "S", "M", "L"
+                    ],
+                    "variantStockMatrix": [
+                        2, 13, 0, 0
+                    ],
+                    "variantForceOnHomepage": true
+                }
+            ],
+            "productSalesPrices": [
+                {
+                    "currency": "gbp",
+                    "tagPrice": 69.99,
+                    "tagPriceFormatted": "69.99",
+                    "hasPreviousPrice": true,
+                    "previousPrice": 89.99,
+                    "previousPriceFormatted": "89,00"
+                },
+                {
+                    "currency": "eur",
+                    "tagPrice": 79.99,
+                    "tagPriceFormatted": "79.99",
+                    "hasPreviousPrice": true,
+                    "previousPrice": 107.00,
+                    "previousPriceFormatted": "107,00"
+                },
+                {
+                    "currency": "usd",
+                    "tagPrice": 99.99,
+                    "tagPriceFormatted": "99.99",
+                    "hasPreviousPrice": false
+                }
+            ]
+        },
+        {
+            "productId": 654313,
+            "productName": "Cozy Ribbed Cardigan",
+            "productCode": 133555,
+            "productTags": [
+                "Cozy", "Sweater", "Cardigan"
+            ],
+            "productShortDesc": "Classic casual t-shirt for women on the move.  100% cotton.",
+            "productLongDesc": "Gibson creates supersoft, updated basics for every day. The brand takes sweet, comfortable styles—a printed peplum blouse, a cozy fleece pullover—and adds interest with of-the-moment details like tiered ruffles on the sleeves or a twist detail at the hem. The result is a line of flattering, versatile pieces to wear effortlessly from work to weekend.",
+            "productSpecs": [
+                "30\" regular length (size Medium); 31\" petite length (size Medium P)",
+                "No closure",
+                "Long sleeves",
+                "Side pockets",
+                "74% rayon, 21% polyester, 5% spandex",
+                "Hand wash, dry flat",
+                "Imported",
+                "Point of View and Petite Focus"
+            ],
+            "productHasFreeShipping": false,
+            "productVideos": [],
+            "productHasDeliveryAndReturnTerms": false,
+            "productIsFeaturedOnHomepage": true,
+            "productVariants":[
+                {
+                    "variantColor": "black",
+                    "variantImages": [
+                        "https://n.nordstrommedia.com/id/9e4f7ea0-2159-4ab1-bad7-0c9f905549c5.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70",
+                        "https://n.nordstrommedia.com/id/15ad2a63-74fb-481f-aebe-58a09b0bd4e4.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70",
+                        "https://n.nordstrommedia.com/id/ed025915-8e6c-4847-9ba7-1a9248486109.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70"
+                    ],
+                    "variantSizes": [
+                        "XS", "S", "M", "L", "XL"
+                    ],
+                    "variantStockMatrix": [
+                        6, 8, 0, 11, 12
+                    ],
+                    "variantForceOnHomepage": false
+                },
+                {
+                    "variantColor": "bordeaux",
+                    "variantImages": [
+                        "https://n.nordstrommedia.com/id/bb9d377b-8fed-4902-947c-db402716d411.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70",
+                        "https://n.nordstrommedia.com/id/1a70262b-d768-4da1-8a07-8c4b04e0a71c.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70"
+                    ],
+                    "variantSizes": [
+                        "XS", "S", "XL"
+                    ],
+                    "variantStockMatrix": [
+                        0, 0, 6
+                    ],
+                    "variantForceOnHomepage": true
+                },
+                {
+                    "variantColor": "pink",
+                    "variantImages": [
+                        "https://n.nordstrommedia.com/id/f0f0f251-ab74-4675-b2d9-93dc80fa9350.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70",
+                        "https://n.nordstrommedia.com/id/f66a4650-112c-4522-99c5-3666fb655011.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70",
+                        "https://n.nordstrommedia.com/id/65352154-f576-49c3-a705-1ca8c3e567b3.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70"
+                    ],
+                    "variantSizes": [
+                        "S", "M", "L"
+                    ],
+                    "variantStockMatrix": [
+                        8, 1, 6
+                    ],
+                    "variantForceOnHomepage": false
+                },
+                {
+                    "variantColor": "white",
+                    "variantImages": [
+                        "https://n.nordstrommedia.com/id/1f7a1f10-a699-4a70-ac4d-344895051ea6.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70",
+                        "https://n.nordstrommedia.com/id/785b4083-0d96-4e0d-91bc-9f8f62d80b59.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70",
+                        "https://n.nordstrommedia.com/id/9a086aa2-3636-4983-b9d2-bba6171b90e5.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70"
+                    ],
+                    "variantSizes": [
+                        "XS", "S", "M", "L", "XL"
+                    ],
+                    "variantStockMatrix": [
+                        2, 6, 1, 0, 8
+                    ],
+                    "variantForceOnHomepage": false
+                }
+            ],
+            "productSalesPrices": [
+                {
+                    "currency": "gbp",
+                    "tagPrice": 20.99,
+                    "tagPriceFormatted": "20.99",
+                    "hasPreviousPrice": false
+                },
+                {
+                    "currency": "eur",
+                    "tagPrice": 34.99,
+                    "tagPriceFormatted": "34.99",
+                    "hasPreviousPrice": false
+                },
+                {
+                    "currency": "usd",
+                    "tagPrice": 39.99,
+                    "tagPriceFormatted": "39.99",
+                    "hasPreviousPrice": false
+                }
+            ]
+        }
+    ]
+}

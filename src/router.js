@@ -8,11 +8,6 @@ export default new Router({
     base: process.env.BASE_URL,
     routes: [
         {
-            path: "/demo/product",
-            name: "Demo product",
-            component: () => import("@/views/view.product-details.vue")
-        },
-        {
             path: "/",
             name: "homepage",
             component: () => import("@/views/view.homepage.vue"),
@@ -285,28 +280,6 @@ export default new Router({
                         },
                     ]
                 }
-            }
-        ]
-    },
-    {
-        path: "/products/:category",
-        name: "top-product-list",
-        components: {
-            default: () => import("@/views/view.product-list.vue")
-        },
-        props: {
-            default: true
-        },
-        children: [
-            {
-                path: ":subcategory",
-                name: "sub-product-list",
-                children: [
-                    {
-                        path: ":type",
-                        name: "type-product-list"
-                    }
-                ]
             }
         ]
     },

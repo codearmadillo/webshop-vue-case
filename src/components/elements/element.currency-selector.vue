@@ -44,7 +44,6 @@
                 }
             },
             changeGlobalCurrency(response) {
-                this.$root.settings.shop.currency = response.value;
                 EventBus.$emit('currency-change', response.value);
             }
         }

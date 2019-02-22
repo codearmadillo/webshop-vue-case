@@ -1,0 +1,137 @@
+.product-list {
+    .product {
+        &__instance {
+            position: relative;
+            transition: 300ms;
+
+            @include breakpoint($break-md) {
+                &:hover {
+                    & > .product__meta {
+                        display: block;
+                    }
+                }
+            }
+
+            &:hover {
+
+                box-shadow: 0px 0px 29px -4px rgba(0,0,0,0.5);
+                z-index: 1000;
+
+            }
+        }
+        &__image {    
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+            img {
+                display: none;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        &__price {
+            position: absolute;
+            width: 100%;
+            padding: 15px;
+            font-family: $f-primary;
+            font-weight: lighter;
+            color: #9a9a9a;
+            padding-left: 16px;
+            font-size: 21px;
+
+            .price {
+                &--current {
+                    position: relative;
+                    padding-left: 13px;
+                }
+                &__currency {
+                    position: absolute;
+                    top: 0; left: 0;
+                    font-size: 13px;
+                }
+            }
+
+        }
+        &__meta {
+            display: block;
+            position: relative;
+            width: 100%;
+            padding: 22px 12px;
+            border-top: 1px solid #eeeeee;
+            background: #fff;
+
+            @include breakpoint($break-md) {
+                display: none;
+                position: absolute;
+                height: 155px;  
+            }
+        }
+        &__name {
+            margin: 0; padding: 0;
+
+            height: 16px; line-height: 16px;
+
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+
+            font-size: 13px;
+            font-family: $f-primary;
+            font-weight: bold;
+            color: $c-body;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        &__description {
+            margin: 12px 0 0; padding: 0;
+            font-family: $f-body;
+            color: #8e8c8c;
+            font-size: 15px;
+            text-align: center;
+
+            @include breakpoint($break-md) {
+                height: 36px;
+                overflow: hidden;
+            }
+        }
+        &__controls {
+            width: 100%;
+            height: 42px;
+            margin-top: 16px;
+            text-align: center;
+
+            @include breakpoint($break-md) {
+                height: 30px;
+            }
+
+            &::after  {
+                content: ''
+            }
+        }
+        &__btn {
+            display: inline-block;
+            margin: 0 7px;
+            background-color: $c-body; color: #fff;
+            width: 42px; height: 42px; border-radius: 50%;
+            font-size: 15px;
+            line-height: 42px; text-align: center;
+
+            @include breakpoint($break-md) {
+                width: 30px; height: 30px;
+                line-height: 30px;
+                font-size: 13px;
+            }
+
+            i {
+                margin-left: -1px;
+            }
+
+            &:hover {
+                background-color: $c-primary;
+                cursor: pointer;
+            }
+        }
+    }
+}   

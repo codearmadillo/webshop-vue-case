@@ -3,169 +3,206 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import axios from "axios";
-
+import VueCookie from 'vue-cookie';
 import { EventBus } from './event-bus';
-import buffer from './buffer';
-
 import ProductListView from "./views/view.product-list.vue";
 
+Vue.use(VueCookie);    
 Vue.config.productionTip = false;
 
 const Application = new Vue({
-  el: "#app",
-  router,
-  store,
-  render: h => h(App),
-  created() {
+    el: "#app",
+    router,
+    store,
+    render: h => h(App),
+    created() {
       
-    this.fetchAndRouteCategories();
-    this.anotherFetch();
+        this.fetchAndRouteCategories();
+        this.anotherFetch();
 
-  },
-  data: {
-    shop: {
-      customer: {
-        isCustomerLoggedIn: false,
-        customerId: null,
-        customerName: null
-      },
-      basket: {
-        Items: [],
-        Total: 0,
-        Subtotal: 0
-      },
-      favourites: [],
-      settings: {
-        vat: 0.2,
-        currency: "eur",
-        logo: "/assets/images/site-logo.svg"
-      },
-      socialMedia: [
-        {
-          icon: 'fab fa-facebook-f',
-          url: 'https://www.facebook.com/my-page',
-          title: 'Facebook'
-        },
-        {
-          icon: 'fab fa-twitter',
-          url: 'https://www.twitter.com/my-page',
-          title: 'Twitter'
-        },
-        {
-          icon: 'fab fa-pinterest',
-          url: 'https://www.instagram.com/my-page',
-          title: 'Instagram'
-        },
-        {
-          icon: 'fab fa-facebook',
-          url: 'https://www.pinterest.com/my-page',
-          title: 'Pinterest'
-        },
-      ],
-      promotions: {
-        footer: {
-          url: '/',
-          title: 'Award winners - Fashion awards 2016',
-          content: '<b>Award winners</b><br/>Fashion awards 2016'
+    },
+    beforeMount() {
+        /* Cookies */
+        let cookieBasket = this.$cookie.get('ave-activebasket');
+        if(cookieBasket !== null) {
+            this.shop.basket = JSON.parse(cookieBasket);
         }
-      }
     },
-    settings: {
-      customer: {
-        isCustomerLoggedIn: false,
-        customerName: null
-      },
-      basket: {
-        items: [],
-        total: 0,
-        subtotal: 0
-      },
-      favourites: [],
-      shop: {
-        vat: 0.2,
-        currency: "eur",
-        logo: "/assets/images/site-logo.svg"
-      }
-    },
-    currencies: {
-      eur: {
-        id: "eur",
-        tag: "EUR",
-        symbol: "€",
-        value: 1,
-        default: true
-      },
-      usd: {
-        id: "usd",
-        tag: "USD",
-        symbol: "$",
-        value: 1.1298
-      },
-      gbp: {
-        id: "gbp",
-        tag: "GBP",
-        symbol: "£",
-        value: 0.8764
-      }
-    }
-  },
-  methods: {
-    anotherFetch() {
-      return axios.get('/data/data.page-structure.json').then(response => {
-
-        let data = response.data['routes'];
-        let routes = [];
-
-
-      });
-    },
-    fetchAndRouteCategories() {
-      return axios.get("/data/data.product-categories.json").then(response => {
-
-        let Routes = [];
-
-        function ParseTree(tree, path, breadcrumb) {
-          tree.forEach(element => {
-
-            let Bread = [
-              {
-                path: path + element.slug,
-                title: element.title
-              }
-            ];
+    mounted() {
+        /* Events */
+        EventBus.$on('add-to-basket', data => {
             
-            let Breadcrumbs = breadcrumb.concat(Bread);
+            let hit = null;
+            let ctx = this.shop.basket.items;
 
-            Routes.push({
-              path: path + element.slug,
-              meta: {
-                title: element.title,
-                breadcrumbs: Breadcrumbs,
-                catId: element.id,
-                hasLink: element.hasLink,
-                hasChildren:
-                  element.hasOwnProperty("children") &&
-                  element.children.length > 0
-              },
-              component: ProductListView
-            });
-
-            if(element.hasOwnProperty("children")) {
-              ParseTree(
-                element.children,
-                path + element.slug + "/",
-                Breadcrumbs
-              );
+            if(ctx.length > 0) {
+                ctx.forEach((el, i) => {
+                    if(el.basketMatrix === data.basketMatrix) {
+                        hit = i;
+                    }
+                });
+            }
+            if(hit === null) {
+                this.shop.basket.items.push(data);
+            } else {
+                this.shop.basket.items[hit].quantity += data.quantity;
             }
 
-          });
+            EventBus.$emit('update-basket');
+
+        });
+        EventBus.$on('update-basket', () => {
+            
+            let self = this;
+            let total = 0;
+            let ctx = this.shop.basket;
+
+            ctx.items.forEach(item => {
+                let lineprice = parseFloat(item.productSalesPrices.find(x => x.currency == self.shop.settings.currency).tagPrice * item.quantity).toFixed(2);
+                total += Number(lineprice);
+            });
+
+            let subtotal = parseFloat(total - parseFloat(total * this.shop.settings.vat)).toFixed(2);
+            this.shop.basket.subtotal = Number(subtotal);
+            this.shop.basket.total = total;
+
+            this.$cookie.set('ave-activebasket', JSON.stringify(this.shop.basket), 1);
+
+        });
+        EventBus.$on('currency-change', value => {
+
+            this.shop.settings.currency = value;
+            EventBus.$emit('update-basket');
+
+        });
+    },
+    data: {
+        shop: {
+            customer: {
+                isCustomerLoggedIn: false,
+                customerId: null,
+                customerName: null
+            },
+            basket: {
+                items: [],
+                total: 0,
+                subtotal: 0
+            },
+            favourites: [],
+            settings: {
+                vat: 0.2,
+                currency: "eur",
+                logo: "/assets/images/site-logo.svg"
+            },
+            socialMedia: [
+                {
+                    icon: 'fab fa-facebook-f',
+                    url: 'https://www.facebook.com/my-page',
+                    title: 'Facebook'
+                },
+                {
+                    icon: 'fab fa-twitter',
+                    url: 'https://www.twitter.com/my-page',
+                    title: 'Twitter'
+                },
+                {
+                    icon: 'fab fa-pinterest',
+                    url: 'https://www.instagram.com/my-page',
+                    title: 'Instagram'
+                },
+                {
+                    icon: 'fab fa-facebook',
+                    url: 'https://www.pinterest.com/my-page',
+                    title: 'Pinterest'
+                },
+            ],
+            promotions: {
+                footer: {
+                url: '/',
+                title: 'Award winners - Fashion awards 2016',
+                content: '<b>Award winners</b><br/>Fashion awards 2016'
+                }
+            }
+        },
+        currencies: {
+        eur: {
+            id: "eur",
+            tag: "EUR",
+            symbol: "€",
+            value: 1,
+            default: true
+        },
+        usd: {
+            id: "usd",
+            tag: "USD",
+            symbol: "$",
+            value: 1.1298
+        },
+        gbp: {
+            id: "gbp",
+            tag: "GBP",
+            symbol: "£",
+            value: 0.8764
         }
+        }
+    },
+    methods: {
+        updateBasketTotals() {
 
-        ParseTree(response.data.children, response.data.root, []);
+        },
+        anotherFetch() {
+            return axios.get('/data/data.page-structure.json').then(response => {
 
-        this.$router.addRoutes(Routes);
+            let data = response.data['routes'];
+            let routes = [];
 
-      });
+            });
+        },
+        fetchAndRouteCategories() {
+            return axios.get("/data/data.product-categories.json").then(response => {
+
+                let Routes = [];
+
+                function ParseTree(tree, path, breadcrumb) {
+                    tree.forEach(element => {
+                        let Bread = [
+                            {
+                                path: path + element.slug,
+                                title: element.title
+                            }
+                        ];
+            
+                        let Breadcrumbs = breadcrumb.concat(Bread);
+
+                        Routes.push({
+                            path: path + element.slug,
+                            meta: {
+                                title: element.title,
+                                breadcrumbs: Breadcrumbs,
+                                catId: element.id,
+                                hasLink: element.hasLink,
+                                hasChildren:
+                                    element.hasOwnProperty("children") &&
+                                    element.children.length > 0
+                            },
+                            component: ProductListView
+                        });
+
+                        if(element.hasOwnProperty("children")) {
+                            ParseTree(
+                                element.children,
+                                path + element.slug + "/",
+                                Breadcrumbs
+                            );
+                        }
+                    });
+                }
+
+                ParseTree(response.data.children, response.data.root, []);
+
+                this.$router.addRoutes(Routes);
+
+            });
+        }
     }
-  }
 });

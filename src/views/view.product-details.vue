@@ -109,6 +109,7 @@
                     elementLabel="Qty"
                     elementClassname="configurator__qty"
                     elementPlaceholder="1"
+                    elementPresetValue="1"
                     :isRequired="true"
                     @submit="addToBasket()" 
                 />  
@@ -152,8 +153,8 @@
             </section>
         </section>
     </div>
-    <div v-else class="shop-content product-details__loader">
-        Loading product
+    <div v-else class="product__loader">
+        <i class="fa fa-spinner fa-spin"></i>
     </div>
 </template>
 
@@ -182,6 +183,8 @@
                 configuratorSelectedVariant: null,
                 configuratorAvailableSizes: null,
 
+                selectedVariantImages: null,
+
                 shareurl: window.location.href
             }
         },
@@ -201,13 +204,27 @@
             Postbacks
             */
             addToBasket() {
-                console.log('Adding to basket');
+                if(this.configuratorAvailability) {
+                    if(this.userinput.qty.value > 0) {
+                        EventBus.$emit('add-to-basket', {
+                            basketMatrix: this.product.productId + '-' + this.configuratorSelectedVariant.variantColor + '-' + this.configuratorAvailableSizes[this.userinput.size.value + 1].value,
+                            productId: this.product.productId,
+                            productName: this.product.productName,
+                            productVariant: this.configuratorSelectedVariant.variantColor,
+                            productVariantImage: this.configuratorSelectedVariant.variantImages[0],
+                            productSalesPrices: this.product.productSalesPrices,
+                            quantity: this.userinput.qty.value,
+                            size: this.configuratorAvailableSizes[this.userinput.size.value + 1].value
+                        });
+                    } else {
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
             },
             addToLookbook() {
                 console.log('Adding to lookbook');
-            },
-            addToCompare() {
-                console.log('Adding to compare');
             },
             selectTab(sectionId) {
                 this.selectedTab = sectionId;
@@ -229,11 +246,13 @@
                 this.currentSalesPriceSymbol = this.$root.$data.currencies[currency].symbol;
             },
             configuratorSelectColour(event) {
+
                 this.configuratorSelectedVariant = this.product.productVariants[this.userinput.colour.value];
 
                 /* Sizes */
                 this.$refs.sizeselector.Reset();
                 this.configuratorAvailableSizes = this.configuratorLoadSizes(this.configuratorSelectedVariant);
+                
             },
             configuratorLoadSizes(variant) {
 
@@ -287,7 +306,6 @@
             EventBus.$on('currency-change', currency => {
                 self.changeCurrentSalesPrice(currency);
             });
-
             this.configuratorAvailableSizes = this.configuratorLoadSizes(false);
 
         },  
@@ -299,6 +317,7 @@
                 } else {
                     this.fetched = true;
                     this.product = response.data;
+                    this.selectedVariantImages = this.product.productVariants[0].variantImages;
                 }
             });
 

@@ -2,7 +2,7 @@
     <section class="top-infobar__mini-basket">
         <span class="mini-basket__link" @click="open = !open">
             <i class="link__icon fa fa-shopping-cart"></i>
-            <span class="link__label" v-if="basketSize > 0">{{ currencySymbol }} {{ this.$root.settings.basket.total }} {{ '(' + basketSize + ')' }}</span>
+            <span class="link__label" v-if="basket.items.length > 0">{{ currencySymbol }} {{ basket.total }} {{ '(' + basket.items.length + ')' }}</span>
             <span class="link__label" v-else>empty</span>
         </span>
     </section>
@@ -10,19 +10,26 @@
 
 <script>
 
+    import { EventBus } from '@/event-bus';
+
     export default {
         data() {
             return {
-                open: false
+                open: false,
+                currencySymbol: '',
+                basket: null
             }
         },
-        computed: {
-            currencySymbol() {
-                return this.$root.currencies[this.$root.settings.shop.currency].symbol;
-            },
-            basketSize() {
-                return this.$root.settings.basket.items.length;
-            }
+        created() {
+            this.basket = this.$root.shop.basket;
+            this.currencySymbol = this.$root.currencies[this.$root.shop.settings.currency].symbol;   
+
+            EventBus.$on('currency-change', () => {
+                this.currencySymbol = this.$root.currencies[this.$root.shop.settings.currency].symbol;
+            });
+            EventBus.$on('update-basket', () => {
+                this.basket = this.$root.shop.basket;
+            });
         }
     }
 
