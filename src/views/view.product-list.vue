@@ -3,15 +3,6 @@
         <product v-for="product in products"
             :data="product"
         ></product>
-        <product v-for="product in products"
-            :data="product"
-        ></product>
-        <product v-for="product in products"
-            :data="product"
-        ></product>
-        <product v-for="product in products"
-            :data="product"
-        ></product>
     </div>
     <div v-else class="product__loader">
         <i class="fa fa-spinner fa-spin"></i>

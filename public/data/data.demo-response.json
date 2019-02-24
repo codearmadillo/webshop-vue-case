@@ -4,180 +4,724 @@
     "generated":"F 22/02/2019 12:55:00",
     "data" : [
         {
-            "productId": 61551521,
-            "productName": "AVE Classic Sweatshirt",
-            "productCode": 499577,
+            "productId": 578645,
+            "productName": "Basic Sweater Red",
+            "productCode": 578645,
             "productTags": [
-                "Classic", "Casual", "V-Neck", "Loose"
+                "Women", "Sweater", "Loose Fit"
             ],
-            "productShortDesc": "Classic casual t-shirt for women on the move.  100% cotton.",
-            "productLongDesc": "Long description",
-            "productSpecs": [
-                "Elastic cuffs", "Casual fit", "100% Cotton"
-            ],
+            "productShortDesc": "Ribbed collar, a bottom hem, a loose fit and tight ribbed cuffs.",
+            "productLongDesc": "This sweater by NA-KD Basic features a ribbed collar, a bottom hem, a loose fit and tight ribbed cuffs.",
+            "productSpecs": ["100% Cotton", "Loose fit", "Tight ribbed cuffs"],
             "productHasFreeShipping": true,
             "productVideos": [],
-            "productHasDeliveryAndReturnTerms": false,
+            "productHasDeliveryAndRetrunTerms": false,
             "productIsFeaturedOnHomepage": true,
             "productVariants": [
                 {
                     "variantColor": "red",
                     "variantImages": [
-                        "https://mosaic03.ztat.net/vgs/media/pdp-zoom/VE/12/1I/0X/WG/12/VE121I0XW-G12@8.jpg",
-                        "https://mosaic04.ztat.net/vgs/media/pdp-zoom/VE/12/1I/0X/WG/12/VE121I0XW-G12@9.jpg",
-                        "https://mosaic03.ztat.net/vgs/media/pdp-zoom/VE/12/1I/0X/WG/12/VE121I0XW-G12@7.jpg"
+                        "https://www.na-kd.com/globalassets/nakd_basic_sweater_1044-000019-0004_01a_r1.jpg?ref=BEDBB9D177&width=640",
+                        "https://www.na-kd.com/globalassets/nakd_basic_sweater_1044-000019-0004_02b_r1.jpg?ref=B1C07D2026&width=640"
                     ],
-                    "variantSizes": [
-                        "XXS", "XS", "S", "M"
-                    ],
-                    "variantStockMatrix": [
-                        10, 3, 6, 0
-                    ],
+                    "variantSizes": ["XXS", "XS", "S", "M", "L"],
+                    "variantStockMatrix": [2, 4, 0, 6, 12],
                     "variantForceOnHomepage": false
                 },
                 {
                     "variantColor": "black",
                     "variantImages": [
-                        "https://mosaic03.ztat.net/vgs/media/pdp-zoom/VE/12/1I/0X/WQ/11/VE121I0XW-Q11@8.jpg",
-                        "https://mosaic04.ztat.net/vgs/media/pdp-zoom/VE/12/1I/0X/WQ/11/VE121I0XW-Q11@9.jpg",
-                        "https://mosaic03.ztat.net/vgs/media/pdp-zoom/VE/12/1I/0X/WQ/11/VE121I0XW-Q11@7.jpg"
+                        "https://www.na-kd.com/globalassets/nakd_basic_sweater_1044-000019-0002_r1.jpg?ref=D5A2D50BC9&width=640",
+                        "https://www.na-kd.com/globalassets/nakd_basic_sweater_1044-000019-0002_r2.jpg?ref=B3A0ACD24A&width=640"
                     ],
-                    "variantSizes": [
-                        "XS", "S", "M", "L"
+                    "variantSizes": ["XXS", "XS", "S", "M", "L"],
+                    "variantStockMatrix": [10, 3, 6, 0, 0],
+                    "variantForceOnHomepage": false
+                },
+                {
+                    "variantColor": "yellow",
+                    "variantImages": [
+                        "https://www.na-kd.com/globalassets/nakd_basic_sweater_1044-000019-2270_01a_r1.jpg?ref=76B7EEC478&width=640",
+                        "https://www.na-kd.com/globalassets/nakd_basic_sweater_1044-000019-2270_02b_r1.jpg?ref=E5A70C4731&width=640"
                     ],
-                    "variantStockMatrix": [
-                        2, 13, 0, 0
+                    "variantSizes": ["XXS", "XS", "S", "M", "L", "XL"],
+                    "variantStockMatrix": [0, 0, 6, 2, 10, 32],
+                    "variantForceOnHomepage": false
+                },
+                {
+                    "variantColor": "pink",
+                    "variantImages": [
+                        "https://www.na-kd.com/globalassets/nakd_basic_sweater_1044-000019-8670_01a_r1.jpg?ref=F257CBA9EC&width=640",
+                        "https://www.na-kd.com/globalassets/nakd_basic_sweater_1044-000019-8670_02b_r1.jpg?ref=0049905098&width=640",
+                        "https://www.na-kd.com/globalassets/nakd_basic_sweater_1044-000019-8670_03c_r1.jpg?ref=26E53F5219&width=640",
+                        "https://www.na-kd.com/globalassets/nakd_basic_sweater_1044-000019-8670_04g_r1.jpg?ref=ECC03B59CF&width=640"
                     ],
-                    "variantForceOnHomepage": true
+                    "variantSizes": ["XXS", "XS", "S", "M", "L"],
+                    "variantStockMatrix": [2, 3, 4, 8, 6],
+                    "variantForceOnHomepage": false
                 }
             ],
             "productSalesPrices": [
                 {
                     "currency": "gbp",
-                    "tagPrice": 69.99,
-                    "tagPriceFormatted": "69.99",
+                    "tagPrice": 14.99,
+                    "tagPriceFormatted": "14.99",
                     "hasPreviousPrice": true,
-                    "previousPrice": 89.99,
-                    "previousPriceFormatted": "89,00"
+                    "previousPrice": 19.99,
+                    "previousPriceFormatted": "19.99"
+                },
+                {
+                    "currency": "eur",
+                    "tagPrice": 19.99,
+                    "tagPriceFormatted": "19.99",
+                    "hasPreviousPrice": true,
+                    "previousPrice": 24.99,
+                    "previousPriceFormatted": "24.99"
+                },
+                {
+                    "currency": "usd",
+                    "tagPrice": 24.99,
+                    "tagPriceFormatted": "24.99",
+                    "hasPreviousPrice": true,
+                    "previousPrice": 29.99,
+                    "previousPriceFormatted": "29.99"
+                }
+            ]
+        },
+        {
+            "productId": 687462,
+            "productName": "Asymmetric Raw Hem Denim Skirt Blue",
+            "productCode": 687462,
+            "productTags": ["Denim", "Skirt", "Linn Ahlborg"],
+            "productShortDesc": "Asymmetric design, a raw hem, a four pocket design, and has a mini length.",
+            "productLongDesc": "The Asymmetric Raw Hem Denim Skirt by Linn Ahlborg x NA-KD features an asymmetric design, a raw hem, a four pocket design, and has a mini length.",
+            "productSpecs": ["100% Cotton", "Four pocket design"],
+            "productHasFreeShipping": true,
+            "productVideos": [],
+            "productHasDeliveryAndRetrunTerms": false,
+            "productIsFeaturedOnHomepage": true,
+            "productVariants": [
+                {
+                    "variantColor": "blue",
+                    "variantImages": [
+                        "https://www.na-kd.com/globalassets/linn_ahlborg_asymetric_raw_hem_denim_skirt_1561-000056-0417_01j.jpg?ref=3193D8BC74&width=640",
+                        "https://www.na-kd.com/globalassets/linn_ahlborg_asymetric_raw_hem_denim_skirt_1561-000056-0417_02h.jpg?ref=1090D4E476&width=640",
+                        "https://www.na-kd.com/globalassets/linn_ahlborg_asymetric_raw_hem_denim_skirt_1561-000056-0417_03i.jpg?ref=16ECDF03D7&width=640"
+                    ],
+                    "variantSizes": ["EU34", "EU36", "EU38", "EU40", "EU42"],
+                    "variantStockMatrix": [6, 10, 7, 0, 0],
+                    "variantForceOnHomepage": false
+                }
+            ],
+            "productSalesPrices": [
+                {
+                    "currency": "gbp",
+                    "tagPrice": 29.99,
+                    "tagPriceFormatted": "29.99",
+                    "hasPreviousPrice": true,
+                    "previousPrice": 35.00,
+                    "previousPriceFormatted": "35.00"
+                },
+                {
+                    "currency": "eur",
+                    "tagPrice": 34.99,
+                    "tagPriceFormatted": "34.99",
+                    "hasPreviousPrice": true,
+                    "previousPrice": 38.50,
+                    "previousPriceFormatted": "38.50"
+                },
+                {
+                    "currency": "usd",
+                    "tagPrice": 39.99,
+                    "tagPriceFormatted": "39.99",
+                    "hasPreviousPrice": true,
+                    "previousPrice": 44.50,
+                    "previousPriceFormatted": "44.50"
+                }
+            ]
+        },
+        {
+            "productId": 987962,
+            "productName": "Off Shoulder Frill Short Dress Blue",
+            "productCode": 987962,
+            "productTags": ["Off Shoulder", "Dress", "Frill"],
+            "productShortDesc": "Features an off shoulder design, a mini length, and frill details.",
+            "productLongDesc": "The Off Shoulder Frill Short Dress by Debiflue x NA-KD features an off shoulder design, a mini length, and frill details.",
+            "productSpecs": ["100% Cotton", "Shoulder design", "Mini length"],
+            "productHasFreeShipping": true,
+            "productVideos": [],
+            "productHasDeliveryAndRetrunTerms": false,
+            "productIsFeaturedOnHomepage": true,
+            "productVariants": [
+                {
+                    "variantColor": "white",
+                    "variantImages": [
+                        "https://www.na-kd.com/globalassets/debi_flue_off_shoulder_frill_short_dress_1552-000061-0001_01j.jpg?ref=481CD5C62D&width=640",
+                        "https://www.na-kd.com/globalassets/debi_flue_off_shoulder_frill_short_dress_1552-000061-0001_02k.jpg?ref=E3B6310FFE&width=640",
+                        "https://www.na-kd.com/globalassets/debi_flue_off_shoulder_frill_short_dress_1552-000061-0001_03c.jpg?ref=EA466C5E56&width=640",
+                        "https://www.na-kd.com/globalassets/debi_flue_off_shoulder_frill_short_dress_1552-000061-0001_01j.jpg?ref=481CD5C62D&width=640"
+                    ],
+                    "variantSizes": ["EU32", "EU34", "EU36", "EU38", "EU40", "EU42"],
+                    "variantStockMatrix": [0, 0, 0, 0, 10, 6],
+                    "variantForceOnHomepage": false
+                },
+                {
+                    "variantColor": "blue",
+                    "variantImages": [
+                        "https://www.na-kd.com/globalassets/debi_flue_off_shoulder_frill_short_dress_1552-000061-0003_01j.jpg?ref=CAEC192A8D&width=640",
+                        "https://www.na-kd.com/globalassets/debi_flue_off_shoulder_frill_short_dress_1552-000061-0003_02k.jpg?ref=9EB250A71D&width=640",
+                        "https://www.na-kd.com/globalassets/debi_flue_off_shoulder_frill_short_dress_1552-000061-0003_03c.jpg?ref=8045F0141C&width=640"
+                    ],
+                    "variantSizes": ["EU32", "EU34", "EU36", "EU38", "EU40"],
+                    "variantStockMatrix": [0, 6, 0, 3, 10],
+                    "variantForceOnHomepage": false
+                },
+                {
+                    "variantColor": "yellow",
+                    "variantImages": [
+                        "https://www.na-kd.com/globalassets/debi_flue_off_shoulder_frill_short_dress_1552-000061-2305_01c.jpg?ref=B34BEB116E&width=640",
+                        "https://www.na-kd.com/globalassets/debi_flue_off_shoulder_frill_short_dress_1552-000061-2305_02k.jpg?ref=6BD24747B9&width=640",
+                        "https://www.na-kd.com/globalassets/debi_flue_off_shoulder_frill_short_dress_1552-000061-2305_03c.jpg?ref=96B0F08F4C&width=640",
+                        "https://www.na-kd.com/globalassets/debi_flue_off_shoulder_frill_short_dress_1552-000061-2305_04g.jpg?ref=A6B86A186B&width=640"
+                    ],
+                    "variantSizes": ["EU36", "EU38", "EU40", "EU42"],
+                    "variantStockMatrix": [0, 8, 0, 6],
+                    "variantForceOnHomepage": false
+                }
+            ],
+            "productSalesPrices": [
+                {
+                    "currency": "gbp",
+                    "tagPrice": 18.50,
+                    "tagPriceFormatted": "18.50",
+                    "hasPreviousPrice": false
+                },
+                {
+                    "currency": "eur",
+                    "tagPrice": 19.99,
+                    "tagPriceFormatted": "19.99",
+                    "hasPreviousPrice": false
+                },
+                {
+                    "currency": "usd",
+                    "tagPrice": 24.99,
+                    "tagPriceFormatted": "24.99",
+                    "hasPreviousPrice": false
+                }
+            ]
+        },
+        {
+            "productId": 6875623,
+            "productName": "Printed Face Oversize Tee Black",
+            "productCode": 6875623,
+            "productTags": ["Oversize fit", "Astrid Olsen x NA-KD"],
+            "productShortDesc": "A print detail on the chest and a rounded neckline. This tee comes in black.",
+            "productLongDesc": "This tee by Astrid Olsen x NA-KD features an oversized fit, a print detail on the chest and a rounded neckline. This tee comes in black.",
+            "productSpecs": ["100% Cotton", "Oversized fit", "Print detail", "Rounded neckline"],
+            "productHasFreeShipping": true,
+            "productVideos": [],
+            "productHasDeliveryAndRetrunTerms": false,
+            "productIsFeaturedOnHomepage": true,
+            "productVariants": [
+                {
+                    "variantColor": "black",
+                    "variantImages": [
+                        "https://www.na-kd.com/globalassets/astrid_olsen_printed_face_oversize_tee_black_1592-000040-0002_03a.jpg?ref=CA038D4F2A&width=640",
+                        "https://www.na-kd.com/globalassets/astrid_olsen_printed_face_oversize_tee_black_1592-000040-0002_01a.jpg?ref=7CB6D01695&width=640",
+                        "https://www.na-kd.com/globalassets/debi_flue_off_shoulder_frill_short_dress_1552-000061-0001_01j.jpg?ref=481CD5C62D&width=640",
+                        "https://www.na-kd.com/globalassets/astrid_olsen_printed_face_oversize_tee_black_1592-000040-0002_03c.jpg?ref=DBBC299163&width=640"
+
+                    ],
+                    "variantSizes": ["XXS", "XS", "S", "M", "L", "XL", "XXL"],
+                    "variantStockMatrix": [0, 1, 0, 6, 8, 12, 65],
+                    "variantForceOnHomepage": false
+                }
+            ],
+            "productSalesPrices": [
+                {
+                    "currency": "gbp",
+                    "tagPrice": 9.99,
+                    "tagPriceFormatted": "9.99",
+                    "hasPreviousPrice": true,
+                    "previousPrice": 12.50,
+                    "previousPriceFormatted": "12.50"
+                },
+                {
+                    "currency": "eur",
+                    "tagPrice": 12.49,
+                    "tagPriceFormatted": "12.49",
+                    "hasPreviousPrice": true,
+                    "previousPrice": 15.50,
+                    "previousPriceFormatted": "15.50"
+                },
+                {
+                    "currency": "usd",
+                    "tagPrice": 19.99,
+                    "tagPriceFormatted": "19.99",
+                    "hasPreviousPrice": true,
+                    "previousPrice": 24.99,
+                    "previousPriceFormatted": "24.99"
+                }
+            ]
+        },
+        {
+            "productId": 9867545,
+            "productName": "Adidas ESSENTIALS 3-STRIPES SWEATSHIRT",
+            "productCode": 9867545,
+            "productTags": ["Sweatshirt", "Adidas", "Regular fit"],
+            "productShortDesc": "A cozy pullover for all-day comfort",
+            "productLongDesc": "Warm up before the game. Reset after it. On the sidelines or off the field, this sweatshirt keeps you comfortable in soft fleece. Contrast 3-Stripes extend from the shoulders down the sleeves.",
+            "productSpecs": [
+                "Regular fit strikes a comfortable balance between loose and snug",
+                "Ribbed crewneck",
+                "Regular length",
+                "Long sleeves with ribbed cuffs",
+                "70% cotton / 30% recycled polyester fleece"
+            ],
+            "productHasFreeShipping": true,
+            "productVideos": [],
+            "productHasDeliveryAndRetrunTerms": false,
+            "productIsFeaturedOnHomepage": true,
+            "productVariants": [
+                {
+                    "variantColor": "black",
+                    "variantImages": [
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/a9a0af41a475457d8b39a99e01122980_9366/Essentials_3-Stripes_Sweatshirt_Black_DT5072_21_model.jpg",
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/1b710fb71c384c1abe76a99e01123703_9366/Essentials_3-Stripes_Sweatshirt_Black_DT5072_22_model.jpg",
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/e6da7fca2b35497db9a6a99e0112449e_9366/Essentials_3-Stripes_Sweatshirt_Black_DT5072_23_hover_model.jpg"
+                    ],
+                    "variantSizes": ["XS", "S", "M", "L"],
+                    "variantStockMatrix": [5, 0, 6, 8],
+                    "variantForceOnHomepage": false
+                },
+                {
+                    "variantColor": "grey",
+                    "variantImages": [
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/25c6ee3fa73d41f1a5e2a993012f3cba_9366/Essentials_3-Stripes_Sweatshirt_Grey_DU0709_21_model.jpg",
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/f79f26e2505f4b03b266a993012fc8e2_9366/Essentials_3-Stripes_Sweatshirt_Grey_DU0709_01_laydown.jpg",
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/758b765b337048e18748a993012f5a4b_9366/Essentials_3-Stripes_Sweatshirt_Grey_DU0709_23_hover_model.jpg"
+                    ],
+                    "variantSizes": ["XS", "S", "M", "L", "XL"],
+                    "variantStockMatrix": [6, 0, 0, 6, 8],
+                    "variantForceOnHomepage": false
+                },
+                {
+                    "variantColor": "ink",
+                    "variantImages": [
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/3d0664fe79f044989b8ca99e011b6282_9366/Essentials_3-Stripes_Sweatshirt_Blue_DU0710_21_model.jpg",
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/51bf7cc4f88a4ca98f32a99e011bedda_9366/Essentials_3-Stripes_Sweatshirt_Blue_DU0710_02_laydown.jpg",
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/ba8534a804bb427db530a99e011b995b_9366/Essentials_3-Stripes_Sweatshirt_Blue_DU0710_41_detail.jpg"
+                    ],
+                    "variantSizes": ["XS", "S", "M", "L", "XL"],
+                    "variantStockMatrix": [0, 0, 6, 3, 6],
+                    "variantForceOnHomepage": false
+                }
+            ],
+            "productSalesPrices": [
+                {
+                    "currency": "gbp",
+                    "tagPrice": 34.99,
+                    "tagPriceFormatted": "34.99",
+                    "hasPreviousPrice": true,
+                    "previousPrice": 40.50,
+                    "previousPriceFormatted": "40.50"
+                },
+                {
+                    "currency": "eur",
+                    "tagPrice": 39.99,
+                    "tagPriceFormatted": "39.99",
+                    "hasPreviousPrice": true,
+                    "previousPrice": 45.00,
+                    "previousPriceFormatted": "45.50"
+                },
+                {
+                    "currency": "usd",
+                    "tagPrice": 45.00,
+                    "tagPriceFormatted": "45.00",
+                    "hasPreviousPrice": true,
+                    "previousPrice": 50.00,
+                    "previousPriceFormatted": "50.00"
+                }
+            ]
+        },
+        {
+            "productId": 684296,
+            "productName": "BB TRACK PANTS",
+            "productCode": 684296,
+            "productTags": ["Track", "Casual", "Sweats"],
+            "productShortDesc": "Slim-fitting track pants with pintuck details",
+            "productLongDesc": "The first adidas track suit debuted in 1967 and revolutionized a shoe company. Today's version remasters the archival legend. These men's track pants have a slim fit and modern, tapered leg. Retro pintuck details feature on the waist. Finished with an embroidered contrast Trefoil logo on the hip and iconic 3-Stripes down the legs.",
+            "productSpecs": [
+                "Front zip pockets",
+                "Drawcord-adjustable waist",
+                "Front pintuck details; Tapered leg",
+                "Embroidered Trefoil logo on leg; Contrast 3-Stripes down legs",
+                "We partner with the Better Cotton Initiative to improve cotton farming globally"
+            ],
+            "productHasFreeShipping": true,
+            "productVideos": [],
+            "productHasDeliveryAndRetrunTerms": false,
+            "productIsFeaturedOnHomepage": true,
+            "productVariants": [
+                {
+                    "variantColor": "marine",
+                    "variantImages": [
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/68018f6943544174b496a921015bbfa3_9366/BB_Track_Pants_Blue_DV1517_21_model.jpg",
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/fb53368d0f344a928db6a921015bc9a4_9366/BB_Track_Pants_Blue_DV1517_22_model.jpg",
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/fc8c8c87d8ef447f9d2da921015beff5_9366/BB_Track_Pants_Blue_DV1517_25_outfit.jpg"
+                    ],
+                    "variantSizes": ["S", "M", "L", "XL", "XXL"],
+                    "variantStockMatrix": [6, 2, 6, 0, 8],
+                    "variantForceOnHomepage": false
+                },
+                {
+                    "variantColor": "yellow",
+                    "variantImages": [
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/f40eb6dd5d8a42f1b5e1a8ac00d8639d_9366/BB_Track_Pants_Orange_DH5819_21_model.jpg",
+                        "https://assets.adidas.com/images/w_320,h_320,f_auto,q_auto:sensitive,fl_lossy/1bcfffe073904438b562a8ac00d86cbe_9366/BB_Track_Pants_Orange_DH5819_22_model.jpg"
+                    ],
+                    "variantSizes": ["S", "M", "L", "XL", "XXL"],
+                    "variantStockMatrix": [6, 1, 0, 0, 0],
+                    "variantForceOnHomepage": false
+                },
+                {
+                    "variantColor": "white",
+                    "variantImages": [
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/c6183b950f0e48de94e4a921015c71c5_9366/BB_Track_Pants_White_DV1518_21_model.jpg",
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/d820242e2d074441b33aa921015c8e4a_9366/BB_Track_Pants_White_DV1518_23_hover_model.jpg",
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/a16751fd8e8f4865a61fa921015c98ff_9366/BB_Track_Pants_White_DV1518_25_model.jpg"
+                    ],
+                    "variantSizes": ["S", "M", "L", "XL", "XXL"],
+                    "variantStockMatrix": [8, 10, 36, 13, 2],
+                    "variantForceOnHomepage": false
+                },
+                {
+                    "variantColor": "grey",
+                    "variantImages": [
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/10343b07f61f4580adf9a9de0116dc4f_9366/BB_Track_Pants_Green_DV1519_03_standard.jpg",
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/794988cde400478c99a1a92200cda664_9366/BB_Track_Pants_Green_DV1519_21_model.jpg",
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/2b5bd5fb15f440cf8962a92200cdd51b_9366/BB_Track_Pants_Green_DV1519_25_model.jpg"
+                    ],
+                    "variantSizes": ["S", "M", "L", "XL", "XXL"],
+                    "variantStockMatrix": [11, 2, 65, 4, 32],
+                    "variantForceOnHomepage": false
+                }
+            ],
+            "productSalesPrices": [
+                {
+                    "currency": "gbp",
+                    "tagPrice": 15.99,
+                    "tagPriceFormatted": "15.99",
+                    "hasPreviousPrice": false
+                },
+                {
+                    "currency": "eur",
+                    "tagPrice": 19.99,
+                    "tagPriceFormatted": "19.99",
+                    "hasPreviousPrice": false
+                },
+                {
+                    "currency": "usd",
+                    "tagPrice": 24.99,
+                    "tagPriceFormatted": "24.99",
+                    "hasPreviousPrice": false
+                }
+            ]
+        },
+        {
+            "productId": 58767865,
+            "productName": "ID WND JACKET",
+            "productCode": 58767865,
+            "productTags": ["Wind jacket", "Athletes"],
+            "productShortDesc": "A quick-drying windbreaker to keep you covered fromt he elements.",
+            "productLongDesc": "When the weather's unpredictable, this jacket keeps you prepared. Made with a water-repellent coating, it adds protection from wind and light rain. The windbreaker has a lightweight build, so you can pack it away easily when the temperature rises.",
+            "productSpecs": [
+                "Water-repellent",
+                "Zip slits by the shoulders allow airflow to your arms",
+                "Regular fit strikes a comfortable balance between loose and snug",
+                "High neck",
+                "Long sleeves with elastic cuffs",
+                "100% polyester ripstop",
+                "Lightweight quick-dry fabric"
+            ],
+            "productHasFreeShipping": true,
+            "productVideos": [],
+            "productHasDeliveryAndRetrunTerms": false,
+            "productIsFeaturedOnHomepage": true,
+            "productVariants": [
+                {
+                    "variantColor": "black",
+                    "variantImages": [
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/10343b07f61f4580adf9a9de0116dc4f_9366/BB_Track_Pants_Green_DV1519_03_standard.jpg",
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/a9c3d05d65c74e2da7c9a95b00ee1aa3_9366/ID_WND_Jacket_Black_DZ0047_23_hover_model.jpg",
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/65163a56083e4df1bc77a95b00ee2608_9366/ID_WND_Jacket_Black_DZ0047_25_model.jpg"
+                    ],
+                    "variantSizes": ["S", "M", "L", "XL"],
+                    "variantStockMatrix": [6, 0, 1, 6],
+                    "variantForceOnHomepage": false
+                },
+                {
+                    "variantColor": "white",
+                    "variantImages": [
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/3c64370902204cee892ca9a60155cc86_9366/ID_WND_Jacket_White_DZ0048_21_model.jpg",
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/b6a614d579484abda438a9a60155fe08_9366/ID_WND_Jacket_White_DZ0048_25_model.jpg"
+                    ],
+                    "variantSizes": ["S", "M", "L", "XL"],
+                    "variantStockMatrix": [4, 6, 7, 1],
+                    "variantForceOnHomepage": false
+                },
+                {
+                    "variantColor": "blue",
+                    "variantImages": [
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/305dcd462be74dab9a20a9a601566861_9366/ID_WND_Jacket_Blue_DZ0050_21_model.jpg",
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/cffeacee21844f66a06ea9a60156b36a_9366/ID_WND_Jacket_Blue_DZ0050_41_detail.jpg",
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/c0ac7cd6da3543d19187a9a60156788d_9366/ID_WND_Jacket_Blue_DZ0050_22_model.jpg"
+                    ],
+                    "variantSizes": ["S", "M", "L", "XL"],
+                    "variantStockMatrix": [9, 6, 4, 3],
+                    "variantForceOnHomepage": false
+                }
+            ],
+            "productSalesPrices": [
+                {
+                    "currency": "gbp",
+                    "tagPrice": 64.99,
+                    "tagPriceFormatted": "64.99",
+                    "hasPreviousPrice": true,
+                    "previousPrice": 70.00,
+                    "previousPriceFormatted": "70.00"
                 },
                 {
                     "currency": "eur",
                     "tagPrice": 79.99,
                     "tagPriceFormatted": "79.99",
                     "hasPreviousPrice": true,
-                    "previousPrice": 107.00,
-                    "previousPriceFormatted": "107,00"
+                    "previousPrice": 90.00,
+                    "previousPriceFormatted": "90.00"
                 },
                 {
                     "currency": "usd",
-                    "tagPrice": 99.99,
-                    "tagPriceFormatted": "99.99",
-                    "hasPreviousPrice": false
+                    "tagPrice": 85.00,
+                    "tagPriceFormatted": "85.00",
+                    "hasPreviousPrice": true,
+                    "previousPrice": 90.00,
+                    "previousPriceFormatted": "90.00"
                 }
             ]
         },
         {
-            "productId": 654313,
-            "productName": "Cozy Ribbed Cardigan",
-            "productCode": 133555,
-            "productTags": [
-                "Cozy", "Sweater", "Cardigan"
-            ],
-            "productShortDesc": "Classic casual t-shirt for women on the move.  100% cotton.",
-            "productLongDesc": "Gibson creates supersoft, updated basics for every day. The brand takes sweet, comfortable styles—a printed peplum blouse, a cozy fleece pullover—and adds interest with of-the-moment details like tiered ruffles on the sleeves or a twist detail at the hem. The result is a line of flattering, versatile pieces to wear effortlessly from work to weekend.",
+            "productId": 9859265,
+            "productName": "PRO MADNESS TANK TOP",
+            "productCode": 9859265,
+            "productTags": ["Basketball", "Tank top", "Sport"],
+            "productShortDesc": "A ventilated b-ball tank top built for playmakers",
+            "productLongDesc": "Work on your game with no distractions. This basketball tank top is made of durable moisture-wicking fabric to keep you dry as you run it back for hours. The side-split hem allows you to move with ease as you shake defenders at will.",
             "productSpecs": [
-                "30\" regular length (size Medium); 31\" petite length (size Medium P)",
-                "No closure",
-                "Long sleeves",
-                "Side pockets",
-                "74% rayon, 21% polyester, 5% spandex",
-                "Hand wash, dry flat",
-                "Imported",
-                "Point of View and Petite Focus"
+                "Crewneck",
+                "Sleeveless",
+                "100% polyester doubleknit",
+                "Sweat-wicking Climalite fabric"
             ],
-            "productHasFreeShipping": false,
+            "productHasFreeShipping": true,
             "productVideos": [],
-            "productHasDeliveryAndReturnTerms": false,
+            "productHasDeliveryAndRetrunTerms": false,
             "productIsFeaturedOnHomepage": true,
-            "productVariants":[
+            "productVariants": [
                 {
                     "variantColor": "black",
                     "variantImages": [
-                        "https://n.nordstrommedia.com/id/9e4f7ea0-2159-4ab1-bad7-0c9f905549c5.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70",
-                        "https://n.nordstrommedia.com/id/15ad2a63-74fb-481f-aebe-58a09b0bd4e4.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70",
-                        "https://n.nordstrommedia.com/id/ed025915-8e6c-4847-9ba7-1a9248486109.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70"
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/b22f7b99c30749a4a147a97401887831_9366/Pro_Madness_Tank_Top_Black_DT2921_21_model.jpg",
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/cd6dd6c9bd1c4c8ca116a97401890858_9366/Pro_Madness_Tank_Top_Black_DT2921_22_model.jpg",
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/feb8183fdf35400dbf7ba9740189325e_9366/Pro_Madness_Tank_Top_Black_DT2921_25_model.jpg"
                     ],
-                    "variantSizes": [
-                        "XS", "S", "M", "L", "XL"
-                    ],
-                    "variantStockMatrix": [
-                        6, 8, 0, 11, 12
-                    ],
-                    "variantForceOnHomepage": false
-                },
-                {
-                    "variantColor": "bordeaux",
-                    "variantImages": [
-                        "https://n.nordstrommedia.com/id/bb9d377b-8fed-4902-947c-db402716d411.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70",
-                        "https://n.nordstrommedia.com/id/1a70262b-d768-4da1-8a07-8c4b04e0a71c.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70"
-                    ],
-                    "variantSizes": [
-                        "XS", "S", "XL"
-                    ],
-                    "variantStockMatrix": [
-                        0, 0, 6
-                    ],
-                    "variantForceOnHomepage": true
-                },
-                {
-                    "variantColor": "pink",
-                    "variantImages": [
-                        "https://n.nordstrommedia.com/id/f0f0f251-ab74-4675-b2d9-93dc80fa9350.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70",
-                        "https://n.nordstrommedia.com/id/f66a4650-112c-4522-99c5-3666fb655011.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70",
-                        "https://n.nordstrommedia.com/id/65352154-f576-49c3-a705-1ca8c3e567b3.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70"
-                    ],
-                    "variantSizes": [
-                        "S", "M", "L"
-                    ],
-                    "variantStockMatrix": [
-                        8, 1, 6
-                    ],
+                    "variantSizes": ["S", "M", "L", "XL", "XXL"],
+                    "variantStockMatrix": [0, 6, 4, 8, 9],
                     "variantForceOnHomepage": false
                 },
                 {
                     "variantColor": "white",
                     "variantImages": [
-                        "https://n.nordstrommedia.com/id/1f7a1f10-a699-4a70-ac4d-344895051ea6.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70",
-                        "https://n.nordstrommedia.com/id/785b4083-0d96-4e0d-91bc-9f8f62d80b59.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70",
-                        "https://n.nordstrommedia.com/id/9a086aa2-3636-4983-b9d2-bba6171b90e5.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70"
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/929cbcecb3de46a69f60a95c000a7372_9366/Pro_Madness_Tank_Top_White_DU1698_21_model.jpg",
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/6cd73dc63dcd4c4f8433a95c000af6f7_9366/Pro_Madness_Tank_Top_White_DU1698_25_model.jpg",
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/8c3d8dd37e0140fb8831a95c000a956d_9366/Pro_Madness_Tank_Top_White_DU1698_25_outfit.jpg",
+                        "https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/589ac9796cc447dba61ea92f018114bf_9366/Pro_Madness_Tank_Top_White_DU1698_01_laydown.jpg"
                     ],
-                    "variantSizes": [
-                        "XS", "S", "M", "L", "XL"
-                    ],
-                    "variantStockMatrix": [
-                        2, 6, 1, 0, 8
-                    ],
+                    "variantSizes": ["S", "M", "L", "XL"],
+                    "variantStockMatrix": [1, 6, 7, 2],
                     "variantForceOnHomepage": false
                 }
             ],
             "productSalesPrices": [
                 {
                     "currency": "gbp",
-                    "tagPrice": 20.99,
-                    "tagPriceFormatted": "20.99",
+                    "tagPrice": 12.50,
+                    "tagPriceFormatted": "12.50",
+                    "hasPreviousPrice": true,
+                    "previousPrice": 15.00,
+                    "previousPriceFormatted": "15.00"
+                },
+                {
+                    "currency": "eur",
+                    "tagPrice": 14.99,
+                    "tagPriceFormatted": "14.99",
+                    "hasPreviousPrice": true,
+                    "previousPrice": 20.00,
+                    "previousPriceFormatted": "20.00"
+                },
+                {
+                    "currency": "usd",
+                    "tagPrice": 19.99,
+                    "tagPriceFormatted": "19.99",
+                    "hasPreviousPrice": true,
+                    "previousPrice": 25.00,
+                    "previousPriceFormatted": "25.00"
+                }
+            ]
+        },
+        {
+            "productId": 313865,
+            "productName": "ASOS DESIGN skinny blazer in green wool mix",
+            "productCode": 313865,
+            "productTags": ["Skinny fit", "Smart look", "Formal"],
+            "productShortDesc": "Smart-looking skinny fit blazer",
+            "productLongDesc": "Giving you the confidence to express your individuality, ASOS DESIGN takes major trends, adding the freshest ASOS spin. All the gear you need – including in our fit ranges Plus and Tall and our ASOS DESIGN Makeup collection – to create your coolest look, then switch it up again tomorrow. Make every day, night and everything in-between as extraordinary as you are.",
+            "productSpecs": [
+                "Wool-mix fabric",
+                "Brushed for added softness",
+                "Suit up, look sharp",
+                "Notch lapel",
+                "Two-button fastening",
+                "Centre vent to reverse",
+                "Skinny fit ",
+                "Cut very closely to the body"
+            ],
+            "productHasFreeShipping": true,
+            "productVideos": [],
+            "productHasDeliveryAndRetrunTerms": false,
+            "productIsFeaturedOnHomepage": true,
+            "productVariants": [
+                {
+                    "variantColor": "green",
+                    "variantImages": [
+                        "https://images.asos-media.com/products/asos-design-skinny-blazer-in-green-wool-mix/10441103-1-green?$XXL$&wid=513&fit=constrain",
+                        "https://images.asos-media.com/products/asos-design-skinny-blazer-in-green-wool-mix/10441103-3?$XXL$&wid=513&fit=constrain",
+                        "https://images.asos-media.com/products/asos-design-skinny-blazer-in-green-wool-mix/10441103-2?$XXL$&wid=513&fit=constrain  "
+                    ],
+                    "variantSizes": ["EU46", "EU48", "EU50", "EU54", "EU56"],
+                    "variantStockMatrix": [3, 4, 8, 0, 0],
+                    "variantForceOnHomepage": false
+                }
+            ],
+            "productSalesPrices": [
+                {
+                    "currency": "gbp",
+                    "tagPrice": 74.99,
+                    "tagPriceFormatted": "74.99",
                     "hasPreviousPrice": false
                 },
                 {
                     "currency": "eur",
-                    "tagPrice": 34.99,
-                    "tagPriceFormatted": "34.99",
+                    "tagPrice": 89.99,
+                    "tagPriceFormatted": "89.99",
                     "hasPreviousPrice": false
                 },
                 {
                     "currency": "usd",
-                    "tagPrice": 39.99,
-                    "tagPriceFormatted": "39.99",
+                    "tagPrice": 105.00,
+                    "tagPriceFormatted": "105.00",
                     "hasPreviousPrice": false
+                }
+            ]
+        },
+        {
+            "productId": 9874652,
+            "productName": "Stockholm Waterproof Hooded Raincoat",
+            "productCode": 9874652,
+            "productTags": ["Inlined", "Sportswear", "Slant pockets"],
+            "productShortDesc": "Cut with a little extra room through the chest and body for comfort.",
+            "productLongDesc": "Stutterheim's new-classic Stockholm raincoat is modeled after styles traditionally worn by Scandinavian fishermen but designed with a more streamlined profile and aesthetic. The coated PVC surface of the midweight shell wicks all moisture for optimal interior dryness and comfort when you're caught in the nastiest, blustering wet-weather conditions. Plus it's packable, so you can always be ready for anything.",
+            "productSpecs": [
+                "Front snap-button closure",
+                "Front slant pockets",
+                "Unlined",
+                "52% cotton, 48% polyester with 100% PVC coating",
+                "Machine wash cold, line dry",
+                "Imported",
+                "Men's Sportswear"
+            ],
+            "productHasFreeShipping": true,
+            "productVideos": [],
+            "productHasDeliveryAndRetrunTerms": false,
+            "productIsFeaturedOnHomepage": true,
+            "productVariants": [
+                {
+                    "variantColor": "black",
+                    "variantImages": [
+                        "https://n.nordstrommedia.com/id/1d463907-6d22-4a94-bcb9-7e047cd8e6ae.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70",
+                        "https://n.nordstrommedia.com/id/59e460d5-633c-4c5d-9223-8dbdd03de382.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70",
+                        "https://n.nordstrommedia.com/id/2e9a6f8b-2876-4b2a-9c40-e8695b158410.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70"
+                    ],
+                    "variantSizes": ["XXXS", "XXS", "XS", "S", "M", "L", "XL", "XXL"],
+                    "variantStockMatrix": [1, 16, 24, 0, 13, 10, 6, 4],
+                    "variantForceOnHomepage": false
+                },
+                {
+                    "variantColor": "burgundy",
+                    "variantImages": [
+                        "https://n.nordstrommedia.com/id/2abd6788-5c14-403c-b067-f026482d1137.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70",
+                        "https://n.nordstrommedia.com/id/2abd6788-5c14-403c-b067-f026482d1137.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70",
+                        "https://n.nordstrommedia.com/id/c8139021-0bd2-484e-973b-b7e2efb96574.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70",
+                        "https://n.nordstrommedia.com/id/c8139021-0bd2-484e-973b-b7e2efb96574.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70"
+                    ],
+                    "variantSizes": ["XXXS", "XXS", "XS", "S", "M", "L", "XL", "XXL"],
+                    "variantStockMatrix": [0, 3, 0, 15, 10, 6, 4, 10],
+                    "variantForceOnHomepage": false
+                },
+                {
+                    "variantColor": "charcoal",
+                    "variantImages": [
+                        "https://n.nordstrommedia.com/id/27b9db06-bb7c-4bf4-ad66-b37865861266.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70",
+                        "https://n.nordstrommedia.com/id/59cb2e56-d425-424d-9328-d495b35b2086.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70"
+                    ],
+                    "variantSizes": ["XXXS", "XXS", "XS", "S", "M", "L"],
+                    "variantStockMatrix": [12, 3, 4, 6, 8, 1],
+                    "variantForceOnHomepage": false
+                },
+                {
+                    "variantColor": "yellow",
+                    "variantImages": [
+                        "https://n.nordstrommedia.com/id/9a90cebb-9498-4597-a924-9895a11b2bb2.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70",
+                        "https://n.nordstrommedia.com/id/81269fd7-35e9-4bde-85fd-032a7584cd84.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196&quality=70"
+                    ],
+                    "variantSizes": ["S", "M", "L", "XL", "XXL"],
+                    "variantStockMatrix": [6, 8, 0, 11, 6],
+                    "variantForceOnHomepage": false
+                }
+            ],
+            "productSalesPrices": [
+                {
+                    "currency": "gbp",
+                    "tagPrice": 209.99,
+                    "tagPriceFormatted": "209.99",
+                    "hasPreviousPrice": true,
+                    "previousPrice": 250.00,
+                    "previousPriceFormatted": "250.00"
+                },
+                {
+                    "currency": "eur",
+                    "tagPrice": 249.99,
+                    "tagPriceFormatted": "249.99",
+                    "hasPreviousPrice": true,
+                    "previousPrice": 275.00,
+                    "previousPriceFormatted": "275.00"
+                },
+                {
+                    "currency": "usd",
+                    "tagPrice": 299.99,
+                    "tagPriceFormatted": "299.99",
+                    "hasPreviousPrice": true,
+                    "previousPrice": 330.00,
+                    "previousPriceFormatted": "330.00"
                 }
             ]
         }

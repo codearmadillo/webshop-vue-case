@@ -37,7 +37,7 @@
             </section>
             <section class="product__prices" v-if="currentSalesPrice">
                 <template v-if="currentSalesPrice.hasPreviousPrice">
-                    <span class="price__previous price--gbp"><span class="price__currency">{{ currentSalesPriceSymbol }}</span>{{ currentSalesPrice.previousPrice }}</span>
+                    <span class="price__previous price--gbp"><span class="price__currency">{{ currentSalesPriceSymbol }}</span>{{ previousPriceFormatted }}</span>
                 </template>
                 <span class="price__current price--gbp"><span class="price__currency">{{ currentSalesPriceSymbol }}</span>{{ currentSalesPrice.tagPriceFormatted }}</span>
             </section>
@@ -126,30 +126,70 @@
         <section class="product-details__product-information">
             <header class="information__navigation">
                 <ul class="information__tabs">
-                    <li class="information__tab active" @click="changeSection('description')">
+                    <li :class="(selectedTab == 'description' ? 'active ' : '') + 'information__tab'" @click="selectTab('description')">
                         <i class="fa fa-info tab__icon"></i>
                         <span class="tab__label">Description</span>
                     </li>
-                    <li class="information__tab" @click="changeSection('video')">
+                    <li :class="(selectedTab == 'video' ? 'active ' : '') + 'information__tab'" @click="selectTab('video')">
                         <i class="fa fa-video tab__icon"></i>
                         <span class="tab__label">Video</span>
                     </li>
-                    <li class="information__tab" @click="changeSection('size-and-specs')">
+                    <li :class="(selectedTab == 'size-and-specs' ? 'active ' : '') + 'information__tab'" @click="selectTab('size-and-specs')">
                         <i class="fa fa-clipboard-list tab__icon"></i>
                         <span class="tab__label">Size &amp; Specs</span>
                     </li>
-                    <li class="information__tab" @click="changeSection('delivery-and-returns')">
+                    <li :class="(selectedTab == 'delivery-and-returns' ? 'active ' : '') + 'information__tab'" @click="selectTab('delivery-and-returns')">
                         <i class="fa fa-gift tab__icon"></i>
                         <span class="tab__label">Delivery &amp; Returns</span>
                     </li>
-                    <li class="information__tab" @click="changeSection('reviews')">
+                    <li :class="(selectedTab == 'reviews' ? 'active ' : '') + 'information__tab'" @click="selectTab('reviews')">
                         <i class="fa fa-pencil-alt tab__icon"></i>
                         <span class="tab__label">Reviews</span>
                     </li> 
                 </ul>
             </header>
             <section class="information__content">
+                <article class="information__tab-content" v-if="selectedTab == 'description'">
+                    <p>{{ product.productLongDesc }}</p>
+                </article>
+                <article class="information__tab-content" v-if="selectedTab == 'video'">
+                    <template v-if="product.productVideos.length > 0">
+                        <iframe
+                            v-for="video in productVideosParsed"
+                            :src="'https://www.youtube.com/embed/' + video"
+                            width="560" height="315"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                        </iframe>
+                    </template>
+                    <template v-else>
+                        <p>This product has no videos</p>
+                    </template>
+                </article>
+                <article class="information__tab-content" v-if="selectedTab == 'size-and-specs'">
+                    <template v-if="">
 
+                    </template>
+                    <template v-if="product.productSpecs.length > 0">
+                        <h3>Product specifications</h3>
+                        <ul v-for="spec in product.productSpecs">
+                            <li>{{ spec }}</li>
+                        </ul>
+                    </template>
+                    
+                </article>
+                <article class="information__tab-content" v-if="selectedTab == 'delivery-and-returns'" v-html="this.$root.shop.settings.deliveryandreturns"></article>
+                <article class="information__tab-content product__reviews" v-if="selectedTab == 'reviews'">
+                    <article class="review__instance">
+                        <header class="review__header">
+                            <h2 class="review__overall">This product is amazing!</h2>
+                            <h3>By Joshua</h3>
+                        </header>
+                        <section class="review__body">
+                            
+                        </section>
+                    </article>
+                </article>
             </section>
         </section>
     </div>
@@ -179,6 +219,7 @@
                 },
                 currentSalesPrice: null,
                 currentSalesPriceSymbol: null,
+                selectedTab: 'description',
                 
                 configuratorSelectedVariant: null,
                 configuratorAvailableSizes: null,
@@ -193,7 +234,7 @@
             Get / Set
             */
             get(id) {
-                return axios.get('/data/data.demo-product.json');   
+                return axios.get('/data/data.demo-response.json');   
             },
             set(d) {
                 this.product = d;
@@ -214,7 +255,8 @@
                             productVariantImage: this.configuratorSelectedVariant.variantImages[0],
                             productSalesPrices: this.product.productSalesPrices,
                             quantity: this.userinput.qty.value,
-                            size: this.configuratorAvailableSizes[this.userinput.size.value + 1].value
+                            size: this.configuratorAvailableSizes[this.userinput.size.value + 1].value,
+                            url: "/product/" + this.product.productName.split(' ').join('-').toLowerCase() + '-' + this.product.productId
                         });
                     } else {
                         return false;
@@ -276,6 +318,30 @@
             }
         },
         computed: {
+            availabledSizes() {
+                return ['s', 'xs'];
+            },
+            productVideosParsed() {
+
+                if(this.product.productVideos.length > 0) {
+                    let output = [];
+                    let regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+                    this.product.productVideos.forEach(link => {
+                        var match = link.match(regExp);
+                        if(match && match[2].length == 11) {
+                            output.push(match[2]);
+                        }
+                    });
+                    if(output.length > 0) {
+                        return output;
+                    } else {
+                        return null;
+                    }
+                } else {
+                    return null;
+                }
+
+            },
             configuratorColourOptions() {
                 let options = this.product.productVariants.map((variant, index) => {
                     return {
@@ -298,6 +364,11 @@
                 }
 
                 return this.configuratorSelectedVariant.variantStockMatrix[this.userinput.size.value] > 0;
+            },
+            previousPriceFormatted() {
+
+                return this.currentSalesPrice.previousPrice.toString().split('.')[0];
+
             }
         },
         mounted() {
@@ -311,13 +382,21 @@
         },  
         async created() {
 
+            let id = this.$route.params.product;
+
             const data = this.get(0).then(response => {
                 if(response.status !== 200) {
                     this.$router.push({path: '/not-found'});
                 } else {
-                    this.fetched = true;
-                    this.product = response.data;
-                    this.selectedVariantImages = this.product.productVariants[0].variantImages;
+                    let product = response.data.data.filter(x => x.productId == id);
+                    if(product.length > 0) {
+                        this.product = product[0];
+                        this.selectedVariantImages = this.product.productVariants[0].variantImages;
+                        this.changeCurrentSalesPrice(this.$root.shop.settings.currency);
+                        this.fetched = true;
+                    } else {
+                        this.$router.push({path: '/not-found'});
+                    }
                 }
             });
 

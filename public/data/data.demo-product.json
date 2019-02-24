@@ -11,7 +11,10 @@
         "Elastic cuffs", "Casual fit", "100% Cotton"
     ],
     "productHasFreeShipping": true,
-    "productVideos": [],
+    "productVideos": [
+        "https://www.youtube.com/watch?v=U1p0ne6zyEI",
+        "https://www.youtube.com/watch?v=HQvoWcH37O4"
+    ],
     "productHasDeliveryAndReturnTerms": false,
     "productIsFeaturedOnHomepage": true,
     "productVariants": [

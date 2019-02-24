@@ -92,7 +92,8 @@ const Application = new Vue({
             settings: {
                 vat: 0.2,
                 currency: "eur",
-                logo: "/assets/images/site-logo.svg"
+                logo: "/assets/images/site-logo.svg",
+                deliveryandreturns: "<h3>Delivery</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sollicitudin erat eleifend, iaculis ipsum quis, dignissim enim. Nullam in cursus sapien, quis rutrum ipsum. Phasellus pharetra semper odio, vitae varius justo condimentum vitae. Nam quis dolor bibendum, auctor purus et, sagittis odio. Mauris turpis dui, condimentum a massa vitae, consequat pellentesque risus.</p><h3>Returns</h3><p>Vivamus non porttitor risus, non luctus lacus. Maecenas vel congue odio. Maecenas quis suscipit mi, fringilla accumsan dolor. Vestibulum porttitor ullamcorper ultricies. Praesent felis leo, posuere a pulvinar et, consectetur molestie odio.</p>"
             },
             socialMedia: [
                 {
