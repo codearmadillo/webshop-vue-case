@@ -5,10 +5,10 @@
             <nav>
                 <ul class="navigation__menu">
                     <li>
-                        <router-link tag="a" to="/products/men" class="item__link has-submenu">Men</router-link>
+                        <span class="item__link has-submenu">Men</span>
                         <ul class="item__submenu">
                             <li class="submenu__section section--50">
-                                <router-link tag="a" to="/products/men/casual" class="section__headline">Casual</router-link>
+                                <span class="section__headline">Casual</span>
                                 <ul class="section__content">
                                     <li><router-link tag="a" to="/products/men/casual/jackets">Jackets</router-link></li>
                                     <li><router-link tag="a" to="/products/men/casual/hoodies-and-sweatshirts">Hoodies &amp; Sweatshirts</router-link></li>
@@ -19,7 +19,7 @@
                                 </ul>
                             </li>
                             <li class="submenu__section section--50">
-                                <router-link tag="a" to="/products/men/formal" class="section__headline">Formal</router-link>
+                                <span class="section__headline">Formal</span>
                                 <ul class="section__content">
                                     <li><router-link tag="a" to="/products/men/formal/jackets">Jackets</router-link></li>
                                     <li><router-link btag="a" to="/products/men/formal/shirts">Shirts</router-link></li>
@@ -34,10 +34,10 @@
                         </ul>
                     </li>
                     <li>
-                        <router-link tag="a" to="/products/women" class="item__link has-submenu">Women</router-link>
+                        <span class="item__link has-submenu">Women</span>
                         <ul class="item__submenu">
                             <li class="submenu__section section--50">
-                                <router-link tag="a" to="/products/women/casual" class="section__headline">Casual</router-link>
+                                <span class="section__headline">Casual</span>
                                 <ul class="section__content">
                                     <li><router-link tag="a" to="/products/women/casual/tshirts">T-Shirts</router-link></li>
                                     <li><router-link tag="a" to="/products/women/casual/hoodies-and-sweatshirts">Hoodies &amp; Sweatshirts</router-link></li>
@@ -47,7 +47,7 @@
                                 </ul>
                             </li>
                             <li class="submenu__section section--50">
-                                <router-link tag="a" to="/products/women/formal" class="section__headline">Formal</router-link>
+                                <span class="section__headline">Formal</span>
                                 <ul class="section__content">
                                     <li><router-link tag="a" to="/products/women/formal/skirts">Skirts</router-link></li>
                                     <li><router-link tag="a" to="/products/women/formal/blouses">Blouses</router-link></li>

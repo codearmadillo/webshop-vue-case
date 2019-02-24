@@ -349,12 +349,52 @@
                 .btn {
                     width: 100%;
                     margin-top: 6px;
+                }
 
-                    @include breakpoint($break-xs) {
+                @include breakpoint($break-lg) {
+                    display: grid;
+                    grid-column-gap: 20px;
+                    grid-template-columns: 0.85fr auto;
 
-                        margin-right: 26px;
+                    .btn {
+                        width: unset;
+                        padding-left: unset;
+                        padding-right: unset;
                     }
+                }
+            }
+            &__compare {
+                display: block;
+                width: 100%;
+                float: left;
+                margin-top: 20px;
+
+                .compare__btn {
+                    line-height: 30px;
+                    color: #454647;
+                    text-transform: uppercase;
+
+                    font-weight: bold;
+                    font-family: $f-primary;
+                    font-size: 14px;
+                    padding: 0;
                     
+                    border-radius: 0;
+                    background: none;
+                    border: medium none;
+                    outline: none;
+
+                    &::before {
+                        content: '\f362';
+                        font-family: $f-icons;
+                        display: inline-block;
+                        position: relative;
+                        width: 30px; height: 30px;
+                        color: #fff; background-color: #727272;
+                        border-radius: 15px;
+                        margin-right: 12px;
+                        font-size: 14px;
+                    }
                 }
             }
         }

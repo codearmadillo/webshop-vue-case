@@ -5,7 +5,10 @@ import store from "./store";
 import axios from "axios";
 import VueCookie from 'vue-cookie';
 import { EventBus } from './event-bus';
+
 import ProductListView from "./views/view.product-list.vue";
+import ProductInfoView from "./views/view.product-details.vue";
+import NotFoundView from "./views/view.not-found.vue";
 
 Vue.use(VueCookie);    
 Vue.config.productionTip = false;
@@ -18,7 +21,6 @@ const Application = new Vue({
     created() {
       
         this.fetchAndRouteCategories();
-        this.anotherFetch();
 
     },
     beforeMount() {
@@ -74,9 +76,14 @@ const Application = new Vue({
             this.shop.settings.currency = value;
             EventBus.$emit('update-basket');
 
-        });
+        }); 
     },
     data: {
+        viewbag: {
+            title: null,
+            subtitle: null,
+            breadcrumbs: null
+        },
         shop: {
             customer: {
                 isCustomerLoggedIn: false,
@@ -148,17 +155,6 @@ const Application = new Vue({
         }
     },
     methods: {
-        updateBasketTotals() {
-
-        },
-        anotherFetch() {
-            return axios.get('/data/data.page-structure.json').then(response => {
-
-            let data = response.data['routes'];
-            let routes = [];
-
-            });
-        },
         fetchAndRouteCategories() {
             return axios.get("/data/data.product-categories.json").then(response => {
 
@@ -175,21 +171,28 @@ const Application = new Vue({
             
                         let Breadcrumbs = breadcrumb.concat(Bread);
 
-                        Routes.push({
-                            path: path + element.slug,
-                            meta: {
-                                title: element.title,
-                                breadcrumbs: Breadcrumbs,
-                                catId: element.id,
-                                hasLink: element.hasLink,
-                                hasChildren:
-                                    element.hasOwnProperty("children") &&
-                                    element.children.length > 0
-                            },
-                            component: ProductListView
-                        });
-
-                        if(element.hasOwnProperty("children")) {
+                        if(element.hasOwnProperty("children") === false) {
+                            Routes.push({
+                                path: path + element.slug,
+                                meta: {
+                                    title: element.title,
+                                    breadcrumbs: Breadcrumbs,
+                                    catId: element.id,
+                                    hasLink: element.hasLink,
+                                    hasChildren:
+                                        element.hasOwnProperty("children") &&
+                                        element.children.length > 0
+                                },
+                                component: ProductListView,
+                            });
+                            Routes.push({
+                                path: path + element.slug + "/(.*-)?:product(\\d+)",
+                                component: ProductInfoView,
+                                meta: {
+                                    breadcrumbs: Breadcrumbs
+                                }
+                            });
+                        } else {
                             ParseTree(
                                 element.children,
                                 path + element.slug + "/",
@@ -200,10 +203,33 @@ const Application = new Vue({
                 }
 
                 ParseTree(response.data.children, response.data.root, []);
+                Routes.push({
+                    name: 'Not found',
+                    path: '*',
+                    meta: {
+                        'title': 'Oops.. something went wrong',
+                        'subtitle': 'Page not found'
+                    },
+                    component: NotFoundView
+                });
 
                 this.$router.addRoutes(Routes);
 
             });
         }
     }
+});
+
+router.beforeEach((to, from, next) => {
+
+    router.app._data.viewbag = {
+        title: to.meta.title,
+        subtitle: to.meta.subtitle,
+        breadcrumbs: to.meta.breadcrumbs
+    }
+
+    next();
+
+    EventBus.$emit('viewbag-change');
+
 });

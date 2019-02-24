@@ -122,6 +122,11 @@
                     <i class="fa fa-heart"></i> Add to lookbook
                 </button>
             </section>
+            <section class="product__compare">
+                <button class="compare__btn" @click.prevent="addToCompare()">
+                    Add to compare
+                </button>
+            </section>
         </section>
         <section class="product-details__product-information">
             <header class="information__navigation">
@@ -473,6 +478,9 @@
             addToLookbook() {
                 console.log('Adding to lookbook');
             },
+            addToCompare() {
+
+            },
             addReview() {
 
                 this.isAddReviewActive = true;
@@ -603,15 +611,21 @@
                 } else {
                     let product = response.data.data.filter(x => x.productId == id);
                     if(product.length > 0) {
+
                         this.product = product[0];
+
                         this.selectedVariantImages = this.product.productVariants[0].variantImages;
                         this.changeCurrentSalesPrice(this.$root.shop.settings.currency);
                         this.fetched = true;
+
+                        EventBus.$emit('viewbag-resolve', this.product.productName);
+
                     } else {
                         this.$router.push({path: '/not-found'});
                     }
                 }
             });
+            EventBus.$emit('viewbag-change'); 
 
         }
     }

@@ -1,0 +1,17 @@
+.site-content {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: $f-primary;
+    }
+
+    p,
+    span,
+    ul,
+    li {
+        font-family: $f-body;
+    }
+}

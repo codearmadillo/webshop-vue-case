@@ -41,9 +41,9 @@
             }
         },
         computed: {
-            productUrl() {
+            productUrl() {      
                 let url = this.data.productName.split(' ').join('-').toLowerCase() + '-' + this.data.productId;
-                return '/product/' + url;
+                return this.$route.fullPath + '/' + url;
             },
             productImage() {
                 let variantImage = this.data.productVariants[0].variantImages[0];
