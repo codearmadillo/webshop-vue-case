@@ -17,7 +17,7 @@
                     <span class="rating__reviews-count">3 Review(s)</span>
                 </span>
                 <span class="rating__section rating__add">
-                    <span class="add__label">Add a Review</span>   
+                    <span @click="addReview()" class="add__label">Add a Review</span>   
                 </span>
                 <span class="rating__section rating__share">
                     <span class="share__label">Share:</span>
@@ -148,11 +148,11 @@
                     </li> 
                 </ul>
             </header>
-            <section class="information__content">
-                <article class="information__tab-content" v-if="selectedTab == 'description'">
+            <section class="information__content" id="information">
+                <article class="information__content--content" v-if="selectedTab == 'description'">
                     <p>{{ product.productLongDesc }}</p>
                 </article>
-                <article class="information__tab-content" v-if="selectedTab == 'video'">
+                <article class="information__content--content" v-if="selectedTab == 'video'">
                     <template v-if="product.productVideos.length > 0">
                         <iframe
                             v-for="video in productVideosParsed"
@@ -166,7 +166,7 @@
                         <p>This product has no videos</p>
                     </template>
                 </article>
-                <article class="information__tab-content" v-if="selectedTab == 'size-and-specs'">
+                <article class="information__content--content" v-if="selectedTab == 'size-and-specs'">
                     <template v-if="">
 
                     </template>
@@ -178,17 +178,212 @@
                     </template>
                     
                 </article>
-                <article class="information__tab-content" v-if="selectedTab == 'delivery-and-returns'" v-html="this.$root.shop.settings.deliveryandreturns"></article>
-                <article class="information__tab-content product__reviews" v-if="selectedTab == 'reviews'">
-                    <article class="review__instance">
-                        <header class="review__header">
-                            <h2 class="review__overall">This product is amazing!</h2>
-                            <h3>By Joshua</h3>
-                        </header>
-                        <section class="review__body">
-                            
-                        </section>
-                    </article>
+                <article class="information__content--content" v-if="selectedTab == 'delivery-and-returns'" v-html="this.$root.shop.settings.deliveryandreturns"></article>
+                <article class="information__content--reviews" v-if="selectedTab == 'reviews'">
+                    <section v-if="isAddReviewActive" class="reviews__add">
+                        <v-form
+                            formId="product-addreview"
+                            formHeader="Add review"
+                            :formElements="[
+                                {
+                                    elementType: 'email',
+                                    elementName: 'addreview-email',
+                                    elementLabel: 'Your email',
+                                    elementPlaceholder: 'Your Email..',
+                                    renderLabel: true,
+                                    isRequired: true
+                                },
+                                {
+                                    elementType: 'text',
+                                    elementName: 'addreview-name',
+                                    elementLabel: 'Your name',
+                                    elementPlaceholder: 'Your name..',
+                                    renderLabel: true,
+                                    isRequired: true
+                                },
+                                {
+                                    elementType: 'textarea',
+                                    elementName: 'addreview-content',
+                                    elementLabel: 'Your review',
+                                    elementPlaceholder: 'Your review..',
+                                    renderLabel: true,
+                                    isRequired: true
+                                },
+                                {
+                                    elementType: 'select',
+                                    elementName: 'addreview-rating',
+                                    elementLabel: 'Your rating',
+                                    options: [
+                                        {
+                                            key: 1,
+                                            value: '1 Star'
+                                        },
+                                        {
+                                            key: 2,
+                                            value: '2 Stars'
+                                        },
+                                        {
+                                            key: 3,
+                                            value: '3 Stars'
+                                        },
+                                        {
+                                            key: 4,
+                                            value: '4 Stars'
+                                        },
+                                        {
+                                            key: 5,
+                                            value: '5 Stars'
+                                        }
+                                    ],
+                                    isRequired: true,
+                                    renderLabel: true
+                                }
+                            ]"
+                            formButton="Submit"
+                            formButtonClass="btn btn--action"
+                            @failure="reviewFailure"
+                            @success="reviewSuccess"
+                        />
+                    </section>
+                    <section class="reviews__list">
+                        <article class="review__instance">
+                            <header class="review__header">
+                                <h2 class="review__title">This product is amazing!</h2>
+                                <span class="review__aggregate aggregate--3">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </span>
+                                <h3 class="review__author">By Joshua</h3>
+                            </header>
+                            <section class="review__body">
+                                <p>Lorem ipsum dolor sit amet, <a href="#">consectetur <b>adipiscing elit.</b></a> Nullam maximus nisl sapien, <b>elementum gravida dui</b> consequat non.</p>
+                                <p>Fusce mollis facilisis maximus. Nullam a velit sem. Nunc magna nisi, dapibus vitae dui ac, ullamcorper iaculis libero. Mauris in dui ut dui vulputate bibendum. Sed leo nunc, lobortis a rutrum ut, pulvinar ac erat.</p>
+                            </section>
+                        </article>
+                        <article class="review__instance">
+                            <header class="review__header">
+                                <h2 class="review__title">This product is amazing!</h2>
+                                <span class="review__aggregate aggregate--3">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </span>
+                                <h3 class="review__author">By Joshua</h3>
+                            </header>
+                            <section class="review__body">
+                                <p>Lorem ipsum dolor sit amet, <a href="#">consectetur <b>adipiscing elit.</b></a> Nullam maximus nisl sapien, <b>elementum gravida dui</b> consequat non.</p>
+                                <p>Fusce mollis facilisis maximus. Nullam a velit sem. Nunc magna nisi, dapibus vitae dui ac, ullamcorper iaculis libero. Mauris in dui ut dui vulputate bibendum. Sed leo nunc, lobortis a rutrum ut, pulvinar ac erat.</p>
+                            </section>
+                        </article>
+                        <article class="review__instance">
+                            <header class="review__header">
+                                <h2 class="review__title">This product is amazing!</h2>
+                                <span class="review__aggregate aggregate--4">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </span>
+                                <h3 class="review__author">By Joshua</h3>
+                            </header>
+                            <section class="review__body">
+                                <p>Lorem ipsum dolor sit amet, <a href="#">consectetur <b>adipiscing elit.</b></a> Nullam maximus nisl sapien, <b>elementum gravida dui</b> consequat non.</p>
+                                <p>Fusce mollis facilisis maximus. Nullam a velit sem. Nunc magna nisi, dapibus vitae dui ac, ullamcorper iaculis libero. Mauris in dui ut dui vulputate bibendum. Sed leo nunc, lobortis a rutrum ut, pulvinar ac erat.</p>
+                            </section>
+                        </article>
+                        <article class="review__instance">
+                            <header class="review__header">
+                                <h2 class="review__title">This product is amazing!</h2>
+                                <span class="review__aggregate aggregate--2">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </span>
+                                <h3 class="review__author">By Joshua</h3>
+                            </header>
+                            <section class="review__body">
+                                <p>Lorem ipsum dolor sit amet, <a href="#">consectetur <b>adipiscing elit.</b></a> Nullam maximus nisl sapien, <b>elementum gravida dui</b> consequat non.</p>
+                                <p>Fusce mollis facilisis maximus. Nullam a velit sem. Nunc magna nisi, dapibus vitae dui ac, ullamcorper iaculis libero. Mauris in dui ut dui vulputate bibendum. Sed leo nunc, lobortis a rutrum ut, pulvinar ac erat.</p>
+                            </section>
+                        </article>
+                        <article class="review__instance">
+                            <header class="review__header">
+                                <h2 class="review__title">This product is amazing!</h2>
+                                <span class="review__aggregate aggregate--4">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </span>
+                                <h3 class="review__author">By Joshua</h3>
+                            </header>
+                            <section class="review__body">
+                                <p>Lorem ipsum dolor sit amet, <a href="#">consectetur <b>adipiscing elit.</b></a> Nullam maximus nisl sapien, <b>elementum gravida dui</b> consequat non.</p>
+                                <p>Fusce mollis facilisis maximus. Nullam a velit sem. Nunc magna nisi, dapibus vitae dui ac, ullamcorper iaculis libero. Mauris in dui ut dui vulputate bibendum. Sed leo nunc, lobortis a rutrum ut, pulvinar ac erat.</p>
+                            </section>
+                        </article>
+                        <article class="review__instance">
+                            <header class="review__header">
+                                <h2 class="review__title">This product is amazing!</h2>
+                                <span class="review__aggregate aggregate--3">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </span>
+                                <h3 class="review__author">By Joshua</h3>
+                            </header>
+                            <section class="review__body">
+                                <p>Lorem ipsum dolor sit amet, <a href="#">consectetur <b>adipiscing elit.</b></a> Nullam maximus nisl sapien, <b>elementum gravida dui</b> consequat non.</p>
+                                <p>Fusce mollis facilisis maximus. Nullam a velit sem. Nunc magna nisi, dapibus vitae dui ac, ullamcorper iaculis libero. Mauris in dui ut dui vulputate bibendum. Sed leo nunc, lobortis a rutrum ut, pulvinar ac erat.</p>
+                            </section>
+                        </article>
+                        <article class="review__instance">
+                            <header class="review__header">
+                                <h2 class="review__title">This product is amazing!</h2>
+                                <span class="review__aggregate aggregate--1">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </span>
+                                <h3 class="review__author">By Joshua</h3>
+                            </header>
+                            <section class="review__body">
+                                <p>Lorem ipsum dolor sit amet, <a href="#">consectetur <b>adipiscing elit.</b></a> Nullam maximus nisl sapien, <b>elementum gravida dui</b> consequat non.</p>
+                                <p>Fusce mollis facilisis maximus. Nullam a velit sem. Nunc magna nisi, dapibus vitae dui ac, ullamcorper iaculis libero. Mauris in dui ut dui vulputate bibendum. Sed leo nunc, lobortis a rutrum ut, pulvinar ac erat.</p>
+                            </section>
+                        </article>
+                        <article class="review__instance">
+                            <header class="review__header">
+                                <h2 class="review__title">This product is amazing!</h2>
+                                <span class="review__aggregate aggregate--5">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </span>
+                                <h3 class="review__author">By Joshua</h3>
+                            </header>
+                            <section class="review__body">
+                                <p>Lorem ipsum dolor sit amet, <a href="#">consectetur <b>adipiscing elit.</b></a> Nullam maximus nisl sapien, <b>elementum gravida dui</b> consequat non.</p>
+                                <p>Fusce mollis facilisis maximus. Nullam a velit sem. Nunc magna nisi, dapibus vitae dui ac, ullamcorper iaculis libero. Mauris in dui ut dui vulputate bibendum. Sed leo nunc, lobortis a rutrum ut, pulvinar ac erat.</p>
+                            </section>
+                        </article>
+                        
+                    </section>
                 </article>
             </section>
         </section>
@@ -220,6 +415,7 @@
                 currentSalesPrice: null,
                 currentSalesPriceSymbol: null,
                 selectedTab: 'description',
+                isAddReviewActive: false,
                 
                 configuratorSelectedVariant: null,
                 configuratorAvailableSizes: null,
@@ -240,6 +436,15 @@
                 this.product = d;
             },
             
+            /*
+            Review postbacks
+            */
+            reviewFailure() {
+
+            },
+            reviewSuccess() {
+                this.isAddReviewActive = false;
+            },
 
             /*
             Postbacks
@@ -267,6 +472,14 @@
             },
             addToLookbook() {
                 console.log('Adding to lookbook');
+            },
+            addReview() {
+
+                this.isAddReviewActive = true;
+                this.selectedTab = 'reviews';
+
+                window.scroll(0, document.getElementById('information').offsetTop);
+
             },
             selectTab(sectionId) {
                 this.selectedTab = sectionId;

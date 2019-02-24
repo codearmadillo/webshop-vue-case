@@ -20,20 +20,34 @@
         <!-- End Icon Before -->
 
         <!-- Start Input -->
-        <input ref="output"
-            v-model="Value"
-            :name="elementName"
-            :id="elementId"
-            :type="elementType"
-            :placeholder="elementPlaceholder"
-            :value="Value"
-            :class="elementClass.output + (Valid || elementType == 'search' ? '' : ' error')"
-            :min="numberMin" :max="numberMax"
+        <template v-if="elementType !== 'textarea'">
+            <input ref="output"
+                v-model="Value"
+                :name="elementName"
+                :id="elementId"
+                :type="elementType"
+                :placeholder="elementPlaceholder"
+                :value="Value"
+                :class="elementClass.output + (Valid || elementType == 'search' ? '' : ' error')"
+                :min="numberMin" :max="numberMax"
 
-            @keyup="Keypress"
-            @input="Update()"
-            @change="Update()"
-        >
+                @keyup="Keypress"
+                @input="Update()"
+                @change="Update()"
+            />
+        </template>
+        <template v-else>
+            <textarea ref="output"
+                v-model="Value"
+                :name="elementName"
+                :id="elementId"
+                :placeholder="elementPlaceholder"
+                :class="elementClass.output + (Valid || elementType == 'search' ? '' : ' error')"
+                @keyup="Keypress"
+                @input="Update()"
+                @change="Update()"
+            >{{ Value }}</textarea>
+        </template>
         <!-- End Input -->
 
         <!-- Start Stepper -->
@@ -441,7 +455,7 @@
         beforeMount() {
 
             var SupportedElements = Array(
-                'button', 'checkbox', 'file', 'hidden', 'image', 'password', 'radio', 'reset', 'submit', 'text', 'select', 'email', 'number'
+                'textarea', 'button', 'checkbox', 'file', 'hidden', 'image', 'password', 'radio', 'reset', 'submit', 'text', 'select', 'email', 'number'
             );
 
             if(SupportedElements.indexOf(this.elementType) == -1) {

@@ -32,6 +32,11 @@
             }
             &--input {
 
+                textarea {
+                    resize: none;
+                    min-height: 200px;
+                }
+
                 .v-input__output {
                     width: 100%;
                     display: block;

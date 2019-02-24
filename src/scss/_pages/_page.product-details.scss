@@ -397,6 +397,7 @@
                     padding: 0 16px;
                     cursor: pointer;
                     line-height: 50px;
+                    min-width: 170px;
                 }
 
                 .tab__label {
@@ -407,6 +408,7 @@
                     color: #575153;
                     text-transform: uppercase;
                     font-size: 16px;
+                    font-weight: bold;  
 
                     @include breakpoint($break-md) {
                         display: inline;
@@ -427,6 +429,160 @@
                 .tab__icon {
                     color: #fff;
                 }
+            }
+            &__content {
+
+                &--reviews {
+                    .reviews {
+                        &__add,
+                        &__list {
+                            width: 100%;
+                            float: left;
+                        }
+                        &__add {
+                            .v-form__header {
+                                h2 {
+                                    margin: 18px 0 12px;
+                                }
+                            }
+                            .v-form__content {
+                                @include breakpoint($break-md) {
+                                    display: grid;
+                                    grid-column-gap: 16px;
+                                    grid-template-columns: repeat(2, 1fr);
+                                    grid-template-areas: 
+                                        "a b"
+                                        "c b"
+                                        "d b";
+
+                                    .v-input__instance {
+                                        &:nth-child(1) {
+                                            grid-area: a;
+                                        }
+                                        &:nth-child(2) {
+                                            grid-area: c;
+                                        }
+                                        &:nth-child(3) {
+                                            grid-area: b;
+                                        }
+                                        &:nth-child(4) {
+                                            grid-area: d;
+                                        }
+                                    }
+                                }
+                            }
+                            .v-form__submit {
+                                margin: 8px 0 0;
+                                text-align: center;
+
+                                .v-form__button {
+                                    @include breakpoint($break-md) {
+                                        width: auto;
+                                    }
+                                }
+
+                            }
+                        }
+                        &__list {
+                            margin-top: 28px;
+                            display: grid;
+                            grid-gap: 16px;
+                            grid-template-columns: 1fr;
+                            @include breakpoint($break-md) {
+                                grid-template-columns: 1fr 1fr;
+                            }
+                            @include breakpoint($break-lg) {
+                                grid-template-columns: repeat(3, 1fr);
+                            }
+
+                            .review {
+                                &__instance {
+                                    padding: 19px 8px;
+                                    border-radius: 5px;
+                                    background-color: #fafafa;
+                                }
+                                &__header,
+                                &__body {
+                                    display: block;
+                                    float: left;
+                                    width: 100%;
+                                }
+                                &__title {
+                                    margin: 0;
+                                    font-family: $f-primary;
+                                    font-size: 15px;
+                                    font-weight: bold;
+                                }
+                                &__author {
+                                    font-family: $f-primary;
+                                    font-size: 14px;
+                                    margin: 4px 0 4px 12px;
+                                    display: inline-block;
+                                    color: #6b6b6b;
+                                }
+                                &__aggregate {
+                                    font-size: 12px;
+                                    display: inline-block;
+
+                                    i {
+                                        color: #d8d8d8;  
+                                    }
+
+                                    &.aggregate {
+                                        &--1 {
+                                            i:nth-child(-n+1) {
+                                                color: #ded3aa;
+                                            }
+                                        }
+                                        &--2 {
+                                            i:nth-child(-n+2) {
+                                                color: #ded3aa;
+                                            }
+                                        }
+                                        &--3 {
+                                            i:nth-child(-n+1) {
+                                                color: #ded3aa;
+                                            }
+                                        }
+                                        &--4 {
+                                            i:nth-child(-n+4) {
+                                                color: #ded3aa;
+                                            }
+                                        }
+                                        &--5 {
+                                            i {
+                                                color: #ded3aa;
+                                            }
+                                        }
+                                    }
+                                }
+                                &__body {
+                                    font-family: $f-body;
+                                    font-size: 13px;
+                                    line-height: 16px;
+                                    color: $c-body;
+                                }
+                            }
+
+                        }
+                    }
+                }
+                &--content {
+                    color: $c-body;
+
+                    h1, h2, h3, h4, h5, h6 {
+                        font-family: $f-primary;
+                    }
+                    h3 {
+                        font-size: 16px;
+                    }
+                    p, ul, li {
+                        font-family: $f-body;
+                        font-size: 15px;
+                        line-height: 23px;
+                    }
+                }
+
             }
         }
     }
