@@ -11,18 +11,90 @@
 
     }
     &--homepage {
+
+        position: relative;
+
         @include breakpoint($break-md){
-            
-            position: relative;
+
             margin-top: -111px;
             padding-top: 111px;
             padding-bottom: 122px;
             
             height: 808px;
 
-            background-color: red; // #f8f8f8
+            background-color: #f8f8f8;
 
         }
+
+        .shop-content {
+
+            @include breakpoint($break-md) {
+                position: static;
+                height: 100%;
+                display: flex;
+                align-items: flex-end;
+                justify-content: flex-end;
+                // background: yellow;
+            }
+
+        }
+
+        .header {
+            &__splash-art,
+            &__background-art {
+                position: absolute;
+                display: block;
+                top: 0; bottom: 0;
+                left: 0; right: 0;
+            }
+            &__splash-art {
+                z-index: 25;
+                background-image: url('/assets/images/homepage.ave-splash.svg');
+                background-position: center center;
+                background-size: contain;
+                background-repeat: no-repeat;
+
+                margin: 0 auto;
+                max-width: 1400px;
+                padding: 0 60px;
+
+            }
+            &__background-art {
+                
+                display: none;
+
+                z-index: 15;
+                background-position: left center;
+                background-size: auto 100%;
+                background-repeat: no-repeat;
+
+                max-width: 1200px;
+                margin: 0 auto;
+
+                @include breakpoint($break-md) {
+                    display: block;
+                }
+            }
+            &__interactive {
+                position: relative;
+                z-index: 50;
+                text-align: right;
+
+                padding: 134px 0 0 0;
+                margin: 30px 0;
+
+                @include breakpoint($break-xs) {
+                    margin: 0;
+                    padding: 190px 0 25px 0;
+                }
+                @include breakpoint($break-md) {
+                    text-align: initial;
+                    padding: 0;
+                }
+
+            }
+        }
+
     }
     &--default {
 

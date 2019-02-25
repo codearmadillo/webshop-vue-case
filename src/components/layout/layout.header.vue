@@ -3,7 +3,13 @@
     <header :class="homepage()">
         <div class="shop-content">
             <template v-if="this.$route.name == 'homepage'">
-                Homepage
+                
+                <div class="header__interactive">
+                    <router-link tag="button" class="btn btn--default" :to="siteHeader.linkurl" :title="siteHeader.link">{{ siteHeader.link }}</router-link>
+                </div>
+                <div class="header__splash-art"></div>
+                <div class="header__background-art" :style="'background-image: url(' + siteHeader.splash + ')'"></div>
+
             </template>
             <template v-else>
 
@@ -38,7 +44,7 @@
             return {
                 viewbag: null
             }
-        },
+        },  
         methods: {
             homepage() {
                 let prefix = 'site-header';
@@ -80,6 +86,13 @@
             },
             isSearch() {
                 return this.$route.name == 'search' && this.$route.params.query;
+            },
+            siteHeader() {
+                return {
+                    splash: this.$root.shop.promotions.homepage.headerbg,
+                    link: this.$root.shop.promotions.homepage.promotionLinkTitle,
+                    linkurl: this.$root.shop.promotions.homepage.promotionLinkUrl,
+                }
             }
         }
     }

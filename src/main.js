@@ -126,9 +126,14 @@ const Application = new Vue({
             ],
             promotions: {
                 footer: {
-                url: '/',
-                title: 'Award winners - Fashion awards 2016',
-                content: '<b>Award winners</b><br/>Fashion awards 2016'
+                    url: '/',
+                    title: 'Award winners - Fashion awards 2016',
+                    content: '<b>Award winners</b><br/>Fashion awards 2016'
+                },
+                homepage: {
+                    headerbg: '/assets/images/background.homepage.jpg',
+                    promotionLinkTitle: 'Shop men\'s collection',
+                    promotionLinkUrl: '/products/men/casual/jackets'
                 }
             }
         },

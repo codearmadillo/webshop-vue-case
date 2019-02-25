@@ -1,7 +1,7 @@
 <template>
     <div class="shop">
         <section class="frontpage__product-list">
-            <div class="shop-content product-list__sorting">
+            <div class="shop-content product-list__sorting sorting--homepage">
                 <ul class="sorting__options">
                     <li @click="sortlist('001')" :class="(activefilter === 0) ? 'option--active' : ''">Popular</li>
                     <li @click="sortlist('002')" :class="(activefilter === 1) ? 'option--active' : ''">New arrivals</li>

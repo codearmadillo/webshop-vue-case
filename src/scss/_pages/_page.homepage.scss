@@ -55,6 +55,12 @@
         max-width: 1800px;
     }
 }
+.product-list__sorting.sorting--homepage {
+    display: none;
+    @include breakpoint($break-md) {
+        display: block;
+    }
+}
 
 .frontpage__lookbook {
     
