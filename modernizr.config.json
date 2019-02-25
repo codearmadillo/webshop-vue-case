@@ -1,0 +1,13 @@
+{
+    "crawl": false,
+    "minify": true,
+    "customTests": [],
+    "dest": "/public/production/",
+    "tests": [
+        "objectfit"
+    ],
+    "options": [
+      "setClasses"
+    ],
+    "uglify": true
+  }

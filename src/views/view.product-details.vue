@@ -1,7 +1,16 @@
 <template>
     <div v-if="fetched" class="shop-content product-details__wrapper">
         <section class="product-details__images">
-            <img style="display: none" src="https://www.na-kd.com/globalassets/nakd_basic_sweater_1044-000019-0115_01a_r1.jpg?maxheight=3200&mode=max&ref=B7506A992D&width=2560" />
+            <div class="product-details__image-controls">
+                <span class="fa fa-angle-left image-controls__handle" @click="imageHandler(false)"></span>   
+                <span class="fa fa-angle-right image-controls__handle" @click="imageHandler(true)"></span>
+            </div>
+            <template v-if="requiresFallback">
+                <span :style="'background-image: url(' + selectedVariantImages[imageShowIndex] + ')'" class="product-details__imageshow--fallback"></span>
+            </template>
+            <template v-else>
+                <img class="product-details__imageshow--native" :src="selectedVariantImages[imageShowIndex]" />
+            </template>
         </section>
         <section class="product-details__page-controls">
             <header>
@@ -426,6 +435,7 @@
                 configuratorAvailableSizes: null,
 
                 selectedVariantImages: null,
+                imageShowIndex: 0,
 
                 shareurl: window.location.href
             }
@@ -439,6 +449,31 @@
             },
             set(d) {
                 this.product = d;
+            },
+
+            /* 
+            Handlers
+            */
+            imageHandler(forward) {
+
+                let current = this.imageShowIndex;
+
+                if(forward) {
+                    if(current + 1 > this.selectedVariantImages.length - 1) {
+                        current = 0;
+                    } else {
+                        current++;
+                    }
+                } else {
+                    if(current - 1 < 0) {
+                        current = this.selectedVariantImages.length - 1;
+                    } else {
+                        current--;
+                    }
+                }
+
+                this.imageShowIndex = current;
+                
             },
             
             /*
@@ -512,6 +547,11 @@
 
                 this.configuratorSelectedVariant = this.product.productVariants[this.userinput.colour.value];
 
+                if(this.configuratorSelectedVariant) {
+                    this.selectedVariantImages = this.configuratorSelectedVariant.variantImages;
+                    this.imageShowIndex = 0;
+                }
+
                 /* Sizes */
                 this.$refs.sizeselector.Reset();
                 this.configuratorAvailableSizes = this.configuratorLoadSizes(this.configuratorSelectedVariant);
@@ -539,6 +579,11 @@
             }
         },
         computed: {
+            requiresFallback() {
+
+                return Modernizr.objectfit == false;
+                
+            },
             availabledSizes() {
                 return ['s', 'xs'];
             },

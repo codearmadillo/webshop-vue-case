@@ -221,7 +221,7 @@ const Application = new Vue({
 });
 
 router.beforeEach((to, from, next) => {
-
+    
     router.app._data.viewbag = {
         title: to.meta.title,
         subtitle: to.meta.subtitle,
@@ -230,6 +230,8 @@ router.beforeEach((to, from, next) => {
 
     next();
 
+    window.scrollTo(0, 0);
+    
     EventBus.$emit('viewbag-change');
 
 });
