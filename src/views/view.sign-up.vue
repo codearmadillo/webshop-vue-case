@@ -10,6 +10,7 @@
                     elementType: 'email',
                     elementName: 'login-email',
                     elementPlaceholder: 'Your Email..',
+                    elementLabel: 'Email',
                     renderLabel: false,
                     isRequired: true
                 },
@@ -17,12 +18,15 @@
                     elementType: 'password',
                     elementName: 'login-password',
                     elementPlaceholder: 'Your password..',
+                    elementLabel: 'Password',
                     renderLabel: false,
                     isRequired: true
                 }
             ]"
             formButton="Sign in"
             formButtonClass="btn btn--action"
+            :formShowErrorMessage="true"
+            formErrorMessage="Incorrect username or password"
             @failure="failureLogin"
             @success="successLogin"
         />
@@ -37,6 +41,7 @@
                     elementType: 'email',
                     elementName: 'signup-email',
                     elementPlaceholder: 'Your Email..',
+                    elementLabel: 'Email',
                     renderLabel: false,
                     isRequired: true
                 },
@@ -44,6 +49,7 @@
                     elementType: 'password',
                     elementName: 'signup-password',
                     elementPlaceholder: 'Your password..',
+                    elementLabel: 'Password',
                     renderLabel: false,
                     isRequired: true
                 },
@@ -51,9 +57,10 @@
                     elementType: 'password',
                     elementName: 'signup-confirm',
                     elementPlaceholder: 'Confirm password..',
+                    elementLabel: 'Repeat password',
                     renderLabel: false,
                     isRequired: true,
-                    matchWith: 'signup-password'
+                    matchWith: 1
                 },
                 {
                     elementType: 'checkbox',
@@ -64,6 +71,8 @@
             ]"
             formButton="Create account"
             formButtonClass="btn btn--default"
+            :formShowErrorMessage="true"
+            formErrorMessage="It seems that the required fields are not filled properly."
             @failure="failureRegister"
             @success="successRegister"
         />

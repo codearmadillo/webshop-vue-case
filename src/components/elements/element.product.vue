@@ -42,8 +42,15 @@
         },
         computed: {
             productUrl() {      
+
                 let url = this.data.productName.split(' ').join('-').toLowerCase() + '-' + this.data.productId;
-                return this.$route.fullPath + '/' + url;
+
+                if(this.$route.name === 'homepage') {
+                    return '/products/women/casual/tshirts/' + url;
+                } else {
+                    return this.$route.fullPath + '/' + url;
+                }
+    
             },
             productImage() {
                 let variantImage = this.data.productVariants[0].variantImages[0];

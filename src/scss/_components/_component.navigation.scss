@@ -149,9 +149,17 @@
                     }
                 }
 
-                &:hover {
-                    & > .item__submenu {
+                &:hover, &:focus, &:active {
+                    .item__submenu {
                         display: block;
+                    }
+                }
+
+                .item__link.has-submenu {
+                    &:hover, &:focus, &:active {
+                        & + .item__submenu {
+                            display: block;
+                        }
                     }
                 }
             }

@@ -5,7 +5,7 @@
             <nav>
                 <ul class="navigation__menu">
                     <li>
-                        <span class="item__link has-submenu">Men</span>
+                        <a href="javascript:null" class="item__link has-submenu">Men</a>
                         <ul class="item__submenu">
                             <li class="submenu__section section--50">
                                 <span class="section__headline">Casual</span>
@@ -34,7 +34,7 @@
                         </ul>
                     </li>
                     <li>
-                        <span class="item__link has-submenu">Women</span>
+                        <a href="javascript:null" class="item__link has-submenu">Women</a>
                         <ul class="item__submenu">
                             <li class="submenu__section section--50">
                                 <span class="section__headline">Casual</span>

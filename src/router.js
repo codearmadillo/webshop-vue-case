@@ -8,6 +8,25 @@ export default new Router({
     base: process.env.BASE_URL,
     routes: [
         {
+            path: "/not-found",
+            name: "not-found",
+            component: () => import("@/views/view.not-found.vue"),
+            meta: {
+                title: "OOPS.. SOMETHING WENT WRONG",
+                subtitle: "Page not found",
+                metaTags: [
+                    {
+                        name: "description",
+                        content: ""
+                    },
+                    {
+                        name: "og:description",
+                        content: ""
+                    }
+                ]
+            }
+        },
+        {
             path: "/",
             name: "homepage",
             component: () => import("@/views/view.homepage.vue"),

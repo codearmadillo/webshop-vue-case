@@ -24,6 +24,9 @@
     }
     &__login,
     &__register {
+        .v-form__error-message {
+            margin-bottom: 30px;
+        }
         .v-input__instance {
             @include breakpoint($break-md) {
                 margin-bottom: 28px;

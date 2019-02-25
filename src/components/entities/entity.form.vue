@@ -8,7 +8,9 @@
             <h2 class="v-form__title">{{ formHeader }}</h2>
         </header>
         <section v-if="errorMessageOn && formErrorMessage !== null" class="v-form__error-message">
-            <p>{{ formErrorMessage }}</p>
+            <ul>
+                <li v-for="error in errorBag">{{ error }}</li>
+            </ul>
         </section>
         <section v-if="isrendered" class="v-form__content">
             
@@ -193,10 +195,36 @@
             
                 let self = this;
                 self.error.validation = false;
+                self.errorBag = [];
             
                 this.elements.forEach(function(f, index){
                     if(self.$refs['ref' + index][0].Validate() == false) {
                         self.error.validation = true;
+                        self.errorBag.push('The field \'' + self.formElements[index].elementLabel + '\' is not in correct format');
+
+                        return;
+                    }
+                    if(self.formElements[index].hasOwnProperty('matchWith')) {
+                        
+                        let thisValue = self.data[index].value;
+                        let expectedValue = self.data[self.formElements[index].matchWith];
+
+                        if(expectedValue.value) {
+                            expectedValue = expectedValue.value;    
+                            
+                            if(expectedValue !== thisValue) {
+
+                                self.error.validation = true;
+
+                                if(self.formElements[index].elementType === 'password') {
+                                    self.errorBag.push('The password does not match');
+                                } else {
+                                    self.errorBag.push('The fields \'' + self.formElements[self.formElements[index].matchWith].elementLabel + '\' and \'' + self.formElements[index].elementLabel + '\' do not match.');
+                                }
+
+                            }
+
+                        }
                     }
                 });
 

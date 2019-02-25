@@ -3,6 +3,7 @@
     display: grid;
     grid-gap: 15px;
     grid-template-columns: 1fr; 
+    grid-auto-rows: 550px;
 
     @include breakpoint($break-xxs){
         grid-template-columns: repeat(2, 1fr);
@@ -12,36 +13,130 @@
         grid-template-columns: repeat(3, 1fr);
     }
     @include breakpoint($break-lg) {
+        border-bottom: 1px solid #eeeeee;
         width: 100%;
         max-width: 1350px;
         grid-template-columns: repeat(4, 1fr);
-        grid-auto-rows: 250px;
+        grid-template-rows: repeat(5, 225px);
         grid-gap: 30px;
+        margin-bottom: 48px;
 
         .product__instance {
             &:nth-child(1) {
-                
+                grid-column: 1 / 3;
+                grid-row: 1 / 4;
             }
             &:nth-child(2) {
-
+                grid-column: 3 / 4;
+                grid-row: 1 / 3;
             }
             &:nth-child(3) {
-
+                grid-column: 4 / 5;
+                grid-row: 1 / 3;
             }
             &:nth-child(4) {
-
+                grid-row: 4 / 6;
+                grid-column: 1 / 2;
             }
             &:nth-child(5) {
-
+                grid-row: 4 / 6;
+                grid-column: 2 / 3;
             }
             &:nth-child(6) {
-
+                grid-row: 3 / 6;
+                grid-column: 3 / 5;
             }
         }
+
 
     }
     @include breakpoint($break-hd) {
         width: 100%;
         max-width: 1800px;
     }
+}
+
+.frontpage__lookbook {
+    
+    @include breakpoint($break-md) {
+        display: grid;
+        grid-gap: 15px;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 450px;
+    }
+    @include breakpoint($break-lg) {
+        grid-gap: 30px;
+    }
+
+    .lookbook {
+        &__instance {
+
+            background: #f8f8f8;
+            margin-bottom: 16px;
+
+            @include breakpoint($break-md) {
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                grid-gap: 20px;
+                margin-bottom: 0;
+            }
+        }
+        &__image  {
+            position: relative;
+            display: none;
+
+            @include breakpoint($break-hd) {
+                display: block;
+                grid-column: 1 / 3;
+            }
+
+            &-fix {
+                display: block;
+                width: 100%;
+                height: 100%;
+                background-repeat: no-repeat;
+                background-position: center bottom;
+                background-size: contain;
+            }
+
+        }
+        &__content {
+
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            padding: 26px;
+
+            @include breakpoint($break-md) {
+                grid-column: 1 / 6;
+            }
+            @include breakpoint($break-hd) {
+                grid-column: 3 / 6;
+                padding: 0 26px 0 0;
+            } 
+            
+        }
+        &__desc,
+        &__headline,
+        &__action {
+            display: block;
+            width: 100%;
+        }
+        &__headline {
+            font-family: $f-primary;
+            font-size: 48px;
+            line-height: 54px;
+            color: $c-headlines;
+            margin: 0 0 25px;
+        }
+        &__desc {
+            font-family: $f-body;
+            font-size: 15px;
+            color: $c-body;
+            line-height: 22px;
+            margin-top: 0;
+        }
+    }
+
 }

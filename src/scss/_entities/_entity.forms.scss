@@ -72,17 +72,20 @@
     }
     &__error-message {
 
-        margin-bottom: 6px;
-        position: relative;
+        background-color: #c41b37;
+        border-radius: 4px;
+        padding: 12px 6px;
+        margin-bottom: 10px;
+        position: relative; 
 
-        p {
+        ul {
             margin: 0;
-            background-color: #c41b37;
+        }
+
+        li {
             color: #fff;
             font-family: $f-primary;
             font-size: 13px;
-            border-radius: 4px;
-            padding: 12px 6px;
         }
 
     }

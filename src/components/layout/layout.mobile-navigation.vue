@@ -79,6 +79,7 @@
                                 elementType: 'email',
                                 elementName: 'mobilelogin-email',
                                 elementPlaceholder: 'Your Email..',
+                                elementLabel: 'Email',
                                 renderLabel: false,
                                 isRequired: true
                             },
@@ -86,6 +87,7 @@
                                 elementType: 'password',
                                 elementName: 'mobilelogin-password',
                                 elementPlaceholder: 'Your Password..',
+                                elementLabel: 'Password',
                                 renderLabel: false,
                                 isRequired: true
                             }

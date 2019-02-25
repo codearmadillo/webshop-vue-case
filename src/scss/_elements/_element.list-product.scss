@@ -1,7 +1,7 @@
 .product-list {
     .product {
         &__instance {
-            background: red;
+            background: #f3f3f3;
             position: relative;
             transition: 300ms;
 
@@ -21,7 +21,7 @@
         &__image {   
             position: absolute;
             width: 100%;
-            height: 100%;
+            height: 100%;   
 
             img {
                 width: 100%;
@@ -63,7 +63,7 @@
             background: #fff;
             bottom: -1px;
 
-            @include breakpoint($break-md) {
+            @include breakpoint($break-lg) {
                 display: none;
                 height: 155px;  
                 bottom: -155px;
@@ -73,11 +73,10 @@
         &__name {
             margin: 0; padding: 0;
 
-            height: 16px; line-height: 16px;
+            line-height: 16px;
 
-            text-overflow: ellipsis;
-            white-space: nowrap;
             overflow: hidden;
+            height: 38px;
 
             font-size: 13px;
             font-family: $f-primary;
@@ -85,6 +84,14 @@
             color: $c-body;
             text-align: center;
             text-transform: uppercase;
+
+            @include breakpoint($break-lg) {
+                height: 16px;
+                white-space: nowrap; 
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
         }
         &__description {
             margin: 12px 0 0; padding: 0;
@@ -92,10 +99,11 @@
             color: #8e8c8c;
             font-size: 15px;
             text-align: center;
+            height: 54px;
+            overflow: hidden;
 
             @include breakpoint($break-md) {
                 height: 36px;
-                overflow: hidden;
             }
         }
         &__controls {
