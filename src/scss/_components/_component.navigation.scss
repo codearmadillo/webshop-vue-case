@@ -1,5 +1,16 @@
 .site-navigation {
     
+    .shop-content {
+        @include breakpoint($break-lg) {
+            width: 100%;
+            max-width: 1350px;
+        }
+        @include breakpoint($break-hd) {
+            width: 100%;
+            max-width: 1800px;
+        }
+    }
+
     &.navigation--homepage {
         position: relative;
         z-index: 50;

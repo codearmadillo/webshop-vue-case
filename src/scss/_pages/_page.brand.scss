@@ -1,0 +1,55 @@
+.brand {
+    &__wrapper {
+
+        @include breakpoint($break-md) {
+            columns: 2;
+            column-gap: 30px;
+        }
+    }
+    &__element {
+
+        &:not(:first-of-type) {
+            padding: 16px 0;
+        }
+
+        @include breakpoint($break-md) {
+
+            break-inside: avoid;
+            page-break-inside: avoid;
+            
+            &:not(:first-of-type) {
+                padding: 30px 0 0;
+            }
+
+        }
+
+        .element {
+            &__image {
+                max-width: 100%;
+                width: 100%;
+                height: auto;
+            }
+            &__title {
+                font-family: $f-primary;
+                font-size: 18px;
+                margin: 0 0 21px;
+                color: $c-secondary;
+                text-transform: uppercase;
+            }
+            &__subtitle {
+                margin: 5px 0;
+                line-height: 25px;
+                font-family: $f-primary;
+                font-size: 13px;
+                text-transform: uppercase;
+            }
+            &__body {
+                margin: 8px 0;
+                font-family: $f-body;
+                color: $c-body;
+                font-size: 15px;
+                line-height: 22px;
+            }
+        }   
+    }
+}

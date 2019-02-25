@@ -31,13 +31,12 @@
         }
         &__price {
 
-            display: none;
-
+            z-index: 500;   
             position: absolute;
             width: 100%;
             padding: 15px;
             font-family: $f-primary;
-            font-weight: lighter;
+            font-weight: normal;
             color: #9a9a9a;
             padding-left: 16px;
             font-size: 21px;
