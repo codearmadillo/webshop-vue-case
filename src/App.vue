@@ -9,9 +9,9 @@
 
     <page-header/>
 
-    <main class="site-content">
+    <section role="main" class="site-content">
       <router-view/>
-    </main>
+    </section>
 
     <page-footer/>
 

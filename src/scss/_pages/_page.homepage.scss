@@ -6,18 +6,18 @@
     grid-auto-rows: 550px;
 
     @include breakpoint($break-xxs){
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr 1fr;
     }
     @include breakpoint($break-md) {
         grid-gap: 20px;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 1fr 1fr 1fr;
     }
     @include breakpoint($break-lg) {
         border-bottom: 1px solid #eeeeee;
         width: 100%;
         max-width: 1350px;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(5, 225px);
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 225px 225px 225px 225px 225px;
         grid-gap: 30px;
         margin-bottom: 48px;
 
@@ -67,7 +67,7 @@
     @include breakpoint($break-md) {
         display: grid;
         grid-gap: 15px;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 450px;
     }
     @include breakpoint($break-lg) {
@@ -82,7 +82,7 @@
 
             @include breakpoint($break-md) {
                 display: grid;
-                grid-template-columns: repeat(5, 1fr);
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
                 grid-gap: 20px;
                 margin-bottom: 0;
             }

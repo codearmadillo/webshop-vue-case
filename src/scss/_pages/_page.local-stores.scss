@@ -66,11 +66,11 @@
 
         @include breakpoint($break-xs) {
             grid-column-gap: 16px;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr 1fr;
         }
         @include breakpoint($break-md) {
             grid-column-gap: 30px;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr 1fr 1fr;
         }
     }
     &__detail-wrapper {

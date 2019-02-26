@@ -10,21 +10,21 @@
                             <li class="submenu__section section--50">
                                 <span class="section__headline">Casual</span>
                                 <ul class="section__content">
-                                    <li><router-link tag="a" to="/products/men/casual/jackets">Jackets</router-link></li>
-                                    <li><router-link tag="a" to="/products/men/casual/hoodies-and-sweatshirts">Hoodies &amp; Sweatshirts</router-link></li>
-                                    <li><router-link tag="a" to="/products/men/casual/polo-shirts">Polo Shirts</router-link></li>
-                                    <li><router-link tag="a" to="/products/men/casual/sportswear">Sportswear</router-link></li>
-                                    <li><router-link tag="a" to="/products/men/casual/trousers-and-chinos">Trousers &amp; Chinos</router-link></li>
-                                    <li><router-link tag="a" to="/products/men/casual/tshirts">T-Shirts</router-link></li>
+                                    <li><router-link tag="a" to="/products/men/casual/jackets" title="Jackets">Jackets</router-link></li>
+                                    <li><router-link tag="a" to="/products/men/casual/hoodies-and-sweatshirts" title="Hoodies &amp; Sweatshirts">Hoodies &amp; Sweatshirts</router-link></li>
+                                    <li><router-link tag="a" to="/products/men/casual/polo-shirts" title="Polo Shirts">Polo Shirts</router-link></li>
+                                    <li><router-link tag="a" to="/products/men/casual/sportswear" title="Sportswear">Sportswear</router-link></li>
+                                    <li><router-link tag="a" to="/products/men/casual/trousers-and-chinos" title="Trouserss &amp; Chinos">Trousers &amp; Chinos</router-link></li>
+                                    <li><router-link tag="a" to="/products/men/casual/tshirts" title="T-Shirts">T-Shirts</router-link></li>
                                 </ul>
                             </li>
                             <li class="submenu__section section--50">
                                 <span class="section__headline">Formal</span>
                                 <ul class="section__content">
-                                    <li><router-link tag="a" to="/products/men/formal/jackets">Jackets</router-link></li>
-                                    <li><router-link btag="a" to="/products/men/formal/shirts">Shirts</router-link></li>
-                                    <li><router-link tag="a" to="/products/men/formal/suits">Suits</router-link></li>
-                                    <li><router-link tag="a" to="/products/men/formal/trousers">Trousers</router-link></li>
+                                    <li><router-link tag="a" to="/products/men/formal/jackets" title="Jackets">Jackets</router-link></li>
+                                    <li><router-link tag="a" to="/products/men/formal/shirts" title="Shirts">Shirts</router-link></li>
+                                    <li><router-link tag="a" to="/products/men/formal/suits" title="Suits">Suits</router-link></li>
+                                    <li><router-link tag="a" to="/products/men/formal/trousers" title="Trousers">Trousers</router-link></li>
                                 </ul>
                             </li>
                             <li class="submenu__section section__sale section--100">
@@ -39,22 +39,22 @@
                             <li class="submenu__section section--50">
                                 <span class="section__headline">Casual</span>
                                 <ul class="section__content">
-                                    <li><router-link tag="a" to="/products/women/casual/tshirts">T-Shirts</router-link></li>
-                                    <li><router-link tag="a" to="/products/women/casual/hoodies-and-sweatshirts">Hoodies &amp; Sweatshirts</router-link></li>
-                                    <li><router-link tag="a" to="/products/women/casual/camis">Camis</router-link></li>
-                                    <li><router-link tag="a" to="/products/women/casual/sweatpants">Swetpants</router-link></li>
-                                    <li><router-link tag="a" to="/products/women/casual/jeans">Jeans</router-link></li>
+                                    <li><router-link tag="a" to="/products/women/casual/tshirts" title="T-Shirts">T-Shirts</router-link></li>
+                                    <li><router-link tag="a" to="/products/women/casual/hoodies-and-sweatshirts" title="Hoodies &amp; Sweatshirts">Hoodies &amp; Sweatshirts</router-link></li>
+                                    <li><router-link tag="a" to="/products/women/casual/camis" title="Camis">Camis</router-link></li>
+                                    <li><router-link tag="a" to="/products/women/casual/sweatpants" title="Sweatpants">Sweatpants</router-link></li>
+                                    <li><router-link tag="a" to="/products/women/casual/jeans" title="Jeans">Jeans</router-link></li>
                                 </ul>
                             </li>
                             <li class="submenu__section section--50">
                                 <span class="section__headline">Formal</span>
                                 <ul class="section__content">
-                                    <li><router-link tag="a" to="/products/women/formal/skirts">Skirts</router-link></li>
-                                    <li><router-link tag="a" to="/products/women/formal/blouses">Blouses</router-link></li>
-                                    <li><router-link tag="a" to="/products/women/formal/slacks">Slacks</router-link></li>
-                                    <li><router-link tag="a" to="/products/women/formal/pants">Pants</router-link></li>
-                                    <li><router-link tag="a" to="/products/women/formal/cocktail-dresses">Cocktail Dresses</router-link></li>
-                                    <li><router-link tag="a" to="/products/women/formal/gowns">Gowns</router-link></li>
+                                    <li><router-link tag="a" to="/products/women/formal/skirts" title="Skirts">Skirts</router-link></li>
+                                    <li><router-link tag="a" to="/products/women/formal/blouses" title="Blouses">Blouses</router-link></li>
+                                    <li><router-link tag="a" to="/products/women/formal/slacks" title="Slacks">Slacks</router-link></li>
+                                    <li><router-link tag="a" to="/products/women/formal/pants" title="Pants">Pants</router-link></li>
+                                    <li><router-link tag="a" to="/products/women/formal/cocktail-dresses" title="Cocktail Dresses">Cocktail Dresses</router-link></li>
+                                    <li><router-link tag="a" to="/products/women/formal/gowns" title="Gowns">Gowns</router-link></li>
                                 </ul>
                             </li>
                             <li class="submenu__section section__sale section--100">
@@ -64,13 +64,13 @@
                         </ul>
                     </li>
                     <li>
-                        <router-link tag="a" class="item__link" to="/brand">The Brand</router-link>
+                        <router-link tag="a" class="item__link" to="/brand" title="The Brand">The Brand</router-link>
                     </li>
                     <li>
-                        <router-link tag="a" class="item__link" to="/local-stores">Local stores</router-link>
+                        <router-link tag="a" class="item__link" to="/local-stores" title="Local Stores">Local stores</router-link>
                     </li>
                     <li>
-                        <router-link class="item__link" tag="a" to="/look-book">Look Book</router-link>
+                        <router-link class="item__link" tag="a" to="/look-book" title="Look Book">Look Book</router-link>
                     </li>
                 </ul>
             </nav>

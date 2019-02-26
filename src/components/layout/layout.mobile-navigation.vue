@@ -23,9 +23,70 @@
             <section class="offcanvas__content">
                 <span class="offcanvas__close" @click="close('offcanvasleft')"></span>
                 <header class="offcanvas__header">Menu</header>
-                <section class="offcanvas__body">
+                <section class="offcanvas__body offcanvas__body--navigation">
                     
-                    Offcanvas Content
+                    <nav class="navigation__mobile">
+                        <div class="nav__category has-submenu">
+                            <span class="label label--primary" @click="e => e.target.classList.toggle('active')">Men</span>
+                            <div class="submenu">
+                                <div class="nav__category has-submenu">
+                                    <span class="label label--secondary" @click="e => e.target.classList.toggle('active')">Casual</span>
+                                    <div class="submenu">
+                                        <router-link class="submenu__link" tag="a" to="/products/men/casual/jackets" title="Jackets">Jackets</router-link>
+                                        <router-link class="submenu__link" tag="a" to="/products/men/casual/hoodies-and-sweatshirts" title="Hoodies &amp; Sweatshirs">Hoodies &amp; Sweatshirts</router-link>
+                                        <router-link class="submenu__link" tag="a" to="/products/men/casual/polo-shirts" title="Polo Shifts">Polo Shirts</router-link>
+                                        <router-link class="submenu__link" tag="a" to="/products/men/casual/sportswear" title="Sportswear" >Sportswear</router-link>
+                                        <router-link class="submenu__link" tag="a" to="/products/men/casual/trousers-and-chinos" title="Trousers &amp; Chinos">Trousers &amp; Chinos</router-link>
+                                        <router-link class="submenu__link" tag="a" to="/products/men/casual/tshirts" title="T-Shirts">T-Shirts</router-link>
+                                    </div>
+                                </div>
+                                <div class="nav__category has-submenu">
+                                    <span class="label label--secondary" @click="e => e.target.classList.toggle('active')">Formal</span>
+                                    <div class="submenu">
+                                        <router-link class="submenu__link" tag="a" to="/products/men/formal/jackets" title="Jackets">Jackets</router-link>
+                                        <router-link class="submenu__link" tag="a" to="/products/men/formal/shirts" title="Shirts">Shirts</router-link>
+                                        <router-link class="submenu__link" tag="a" to="/products/men/formal/suits" title="Suits">Suits</router-link>
+                                        <router-link class="submenu__link" tag="a" to="/products/men/formal/trousers" title="Trousers">Trousers</router-link>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nav__category has-submenu">
+                            <span class="label label--primary" @click="e => e.target.classList.toggle('active')">Women</span>
+                            <div class="submenu">
+                                <div class="nav__category has-submenu">
+                                    <span class="label label--secondary" @click="e => e.target.classList.toggle('active')">Casual</span>
+                                    <div class="submenu">
+                                        <router-link class="submenu__link" tag="a" to="/products/women/casual/tshirts" title="T-Shirts">T-Shirts</router-link>
+                                        <router-link class="submenu__link" tag="a" to="/products/women/casual/hoodies-and-sweatshirts" title="Hoodies &amp; Sweatshirts">Hoodies &amp; Sweatshirts</router-link>
+                                        <router-link class="submenu__link" tag="a" to="/products/women/casual/camis" title="Camis">Camis</router-link>
+                                        <router-link class="submenu__link" tag="a" to="/products/women/casual/sweatpants" title="Sweatpants">Sweatpants</router-link>
+                                        <router-link class="submenu__link" tag="a" to="/products/women/casual/jeans" title="Jeans">Jeans</router-link>
+                                    </div>
+                                </div>
+                                <div class="nav__category has-submenu">
+                                    <span class="label label--secondary" @click="e => e.target.classList.toggle('active')">Formal</span>
+                                    <div class="submenu">
+                                        <router-link class="submenu__link" tag="a" to="/products/women/formal/skirts" title="Skirts">Skirts</router-link>
+                                        <router-link class="submenu__link" tag="a" to="/products/women/formal/blouses" title="Blouses">Blouses</router-link>
+                                        <router-link class="submenu__link" tag="a" to="/products/women/formal/slacks" title="Slacks">Slacks</router-link>
+                                        <router-link class="submenu__link" tag="a" to="/products/women/formal/pants" title="Pants">Pants</router-link>
+                                        <router-link class="submenu__link" tag="a" to="/products/women/formal/cocktail-dresses" title="Cocktail Dresses">Cocktail Dresses</router-link>
+                                        <router-link class="submenu__link" tag="a" to="/products/women/formal/gowns" title="Gowns">Gowns</router-link>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nav__category">
+                            <router-link tag="a" to="/brand" title="The Brand" class="label label--primary">The Brand</router-link>
+                        </div>
+                        <div class="nav__category">
+                            <router-link tag="a" to="/local-stores" title="Local Stores" class="label label--primary">Local Stores</router-link>
+                        </div>
+                        <div class="nav__category">
+                            <router-link tag="a" to="/look-book" title="Look Book" class="label label--primary">Look Book</router-link>
+                        </div>
+                    </nav>
 
                 </section>
             </section>

@@ -165,14 +165,6 @@
                         display: block;
                     }
                 }
-
-                .item__link.has-submenu {
-                    &:hover, &:focus, &:active {
-                        & + .item__submenu {
-                            display: block;
-                        }
-                    }
-                }
             }
         }
         &__search {

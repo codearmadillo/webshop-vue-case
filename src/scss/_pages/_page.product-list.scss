@@ -6,18 +6,18 @@
     grid-auto-rows: 550px;
 
     @include breakpoint($break-xxs){
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr 1fr;
     }
     @include breakpoint($break-md) {
         grid-gap: 20px;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 1fr 1fr 1fr;
         grid-auto-rows: 550px;
     }
     @include breakpoint($break-lg) {
         width: 100%;
         max-width: 1350px;
         grid-gap: 30px;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: 1fr 1fr 1fr 1fr;
     }
     @include breakpoint($break-hd) {
         width: 100%;

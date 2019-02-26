@@ -347,7 +347,7 @@
                     padding: 30px 0;
                     display: grid;
                     grid-gap: 4px;
-                    grid-template-columns: repeat(6, 1fr);
+                    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
                     grid-template-rows: auto;
                     grid-template-areas: "a a b b c c";
                 }
@@ -471,7 +471,7 @@
             &__tabs {
 
                 display: grid;
-                grid-template-columns: repeat(5, 1fr);
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
                 grid-template-rows: 40px;
                 list-style: none;
                 background-color: #f8f8f8;
@@ -545,7 +545,7 @@
                                 @include breakpoint($break-md) {
                                     display: grid;
                                     grid-column-gap: 16px;
-                                    grid-template-columns: repeat(2, 1fr);
+                                    grid-template-columns: 1fr 1fr;
                                     grid-template-areas: 
                                         "a b"
                                         "c b"
@@ -588,7 +588,7 @@
                                 grid-template-columns: 1fr 1fr;
                             }
                             @include breakpoint($break-lg) {
-                                grid-template-columns: repeat(3, 1fr);
+                                grid-template-columns: 1fr 1fr 1fr;
                             }
 
                             .review {
