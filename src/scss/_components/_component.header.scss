@@ -32,9 +32,12 @@
                 position: static;
                 height: 100%;
                 display: flex;
-                align-items: flex-end;
                 justify-content: flex-end;
-                // background: yellow;
+                
+                .header__interactive {
+                    align-self: flex-end;
+                };
+
             }
 
         }
@@ -138,9 +141,12 @@
             @include breakpoint($break-md) {
 
                 flex-direction: column;
-                justify-content: center;    
-                align-items: center;
+                justify-content: center;   
                 text-transform: uppercase;
+
+                & > * {
+                    align-self: center;
+                }
 
             }  
 

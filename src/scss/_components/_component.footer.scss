@@ -37,9 +37,8 @@
 
                 &.element--event {
                     display: flex;
-                    align-items: center;
-                    justify-content: center;
                     text-align: center;
+                    justify-content: center;
 
                     background-color: $c-secondary;
                     color: #fff;
@@ -47,15 +46,19 @@
                     font-size: 36px;
                     text-decoration: none;
 
+                    span {
+                        align-self: center;
+                    }
+
                 }
                 &.element--social-media {
                     display: flex;
                     color: #fff;
                     background-color: $c-primary;
-                    align-items: center;
                     justify-content: center;
 
                     & .media-account__element {
+                        align-self: center;
                         padding: 0 22px;
 
                         a {

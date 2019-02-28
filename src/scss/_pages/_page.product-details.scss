@@ -44,10 +44,10 @@
             width: 100%;
             height: 100%;
             z-index: 1000;
-            align-items: center;
             justify-content: space-between;
 
             .image-controls__handle {
+                align-self: center;
                 height: 55px; width: 55px;
                 text-align: center; line-height: 55px;
                 cursor: pointer; transition: 300ms;

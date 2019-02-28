@@ -4,9 +4,14 @@
         width: 100%;
         grid-template-rows: auto;
         grid-template-columns: 75px auto 50px 75px;
-        align-items: center;
 
         .line {
+            &__description,
+            &__quantity,
+            &__price,
+            &__image {
+                align-self: center;
+            }
             &__description,
             &__quantity,
             &__price {
@@ -16,8 +21,9 @@
             }
             &__image {
                 display: flex;
-                align-items: center;
+                
                 img {
+                    align-self: center;
                     object-fit: cover;
                     width: 54px;
                     height: 54px;

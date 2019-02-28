@@ -6,11 +6,19 @@ import axios from "axios";
 import VueCookie from 'vue-cookie';
 import { EventBus } from './event-bus';
 
+import * as VueGoogleMaps from 'vue2-google-maps'
+
 import ProductListView from "./views/view.product-list.vue";
 import ProductInfoView from "./views/view.product-details.vue";
 import NotFoundView from "./views/view.not-found.vue";
 
-Vue.use(VueCookie);    
+Vue.use(VueCookie);  
+Vue.use(VueGoogleMaps, {
+    load: {
+        key: 'AIzaSyCZft9sNsKMXzoMMurNQ-zwrq2W8H7qDc4',
+        libraries: 'places'
+    }
+});
 Vue.config.productionTip = false;
 
 const Application = new Vue({

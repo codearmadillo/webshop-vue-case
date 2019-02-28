@@ -127,6 +127,8 @@ export default new Router({
                         'store-detail': () => import('@/views/view.local-stores-detail.vue')
                     },
                     meta: {
+                        title: "Local stores",
+                        subtitle: "Find a store near you",
                         locationTitle: "London",
                         locationAddress: "180-182 Regent Street, London, W1B 5BT",
                         locationDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing esi elit. Vivamus at arcu sem. Vestibulum ornare eleifendit massa, nec tempor odio. Fusce posuere nunc iaculis ligula viverra iaculis. Aliquam erat volutpat.",
@@ -187,6 +189,8 @@ export default new Router({
                         'store-detail': () => import('@/views/view.local-stores-detail.vue')
                     },
                     meta: {
+                        title: "Local stores",
+                        subtitle: "Find a store near you",
                         locationTitle: "New York",
                         locationAddress: "109 Columbus Circle, New York, NY 10023",
                         locationDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing esi elit. Vivamus at arcu sem. Vestibulum ornare eleifendit massa, nec tempor odio. Fusce posuere nunc iaculis ligula viverra iaculis. Aliquam erat volutpat.",
@@ -247,6 +251,8 @@ export default new Router({
                         'store-detail': () => import('@/views/view.local-stores-detail.vue')
                     },
                     meta: {
+                        title: "Local stores",
+                        subtitle: "Find a store near you",
                         locationTitle: "Paris",
                         locationAddress: "2133 Rue Saint-Honoré, 75001 Paris",
                         locationDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing esi elit. Vivamus at arcu sem. Vestibulum ornare eleifendit massa, nec tempor odio. Fusce posuere nunc iaculis ligula viverra iaculis. Aliquam erat volutpat.",

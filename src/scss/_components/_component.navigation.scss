@@ -170,9 +170,9 @@
         &__search {
             display: flex;
             position: relative;
-            align-items: center; 
 
             label {
+                align-self: center;
                 position: relative;
                 
                 & .input__icon,

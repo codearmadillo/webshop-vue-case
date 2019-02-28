@@ -1,5 +1,6 @@
 module.exports = {
-  presets: [
-    '@vue/app'
-  ]
+    presets: [
+        '@babel/polyfill',
+        '@vue/app'
+    ]
 }

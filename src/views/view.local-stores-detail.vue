@@ -2,7 +2,7 @@
     <div class="local-stores__detail-wrapper">
 
         <section class="store__map">
-            
+            Map will be placed here
         </section>
         <section class="store__information">
             <header class="store__header">
@@ -39,13 +39,46 @@
                 </li>
             </ul>
         </section>
-    
     </div>
 </template>
 
 <script>
 
-    export default { }
+    export default {
+        data() {
+            return {
+                markers: [
+                    {
+                        name: 'London',
+                        position: {
+                            lat: 51.510377,
+                            lng: -0.138312
+                        }
+                    },
+                    {
+                        name: 'New York',
+                        position: {
+                            lat: 40.768387,
+                            lng: -73.983178 
+                        }
+                    },
+                    {
+                        name: 'Paris',
+                        position: {
+                            lat: 48.866544,
+                            lng: 2.328724
+                        }
+                    },
+                ]
+            }
+        },
+        computed: {
+            activemarker() {
+                let active = this.markers.find(x => x.name.toLowerCase() == this.$route.meta.locationTitle.toLowerCase()).position;
+                return active;
+            }
+        }
+    }
 
 </script>
   

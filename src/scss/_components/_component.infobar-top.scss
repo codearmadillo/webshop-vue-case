@@ -17,13 +17,13 @@
 
         float: left;
         height: 45px;
-        align-items: center;
 
         .v-input__label,
         .v-input__select-wrapper {
             display: inline-block;
             height: 45px;
             line-height: 45px;
+            align-self: center;
         }
         .v-input__label {
             padding: 0;
@@ -146,19 +146,24 @@
                 &__line {
                     display: grid;
                     grid-template-columns: 50px auto 50px 75px;
-                    align-items: center;
 
                     .line {
+                        &__image,
+                        &__qty,
+                        &__desc,
+                        &__total {
+                            align-self: center;
+                        }
                         &__image {
                             text-align: left;
                             a {
                                 display: grid;
-                                align-items: center;    
                             }
                             img {
                                 width: 38px;
                                 height: 38px;
                                 object-fit: cover;
+                                align-self: center;
                             }
                         }
                         &__qty,
