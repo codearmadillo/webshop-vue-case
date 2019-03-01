@@ -54,6 +54,10 @@
         width: 100%;
         max-width: 1800px;
     }
+
+    .product__instance {
+        height: auto !important;
+    }
 }
 .product-list__sorting.sorting--homepage {
     display: none;

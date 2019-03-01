@@ -2,7 +2,7 @@
     <section :class="'site-navigation ' + homepage()">
         <div class="shop-content">
             <site-search/>
-            <nav>
+            <nav class="navigation__nav-wrapper">
                 <ul class="navigation__menu">
                     <li>
                         <a href="javascript:null" class="item__link has-submenu">Men</a>
@@ -74,6 +74,11 @@
                     </li>
                 </ul>
             </nav>
+            <span class="navigation__site-logo">
+                <router-link class="site-logo__link" to="/" title="Homepage" tag="a">
+                    <img class="site-logo__image" alt="Avenue Fashion" src="/assets/images/site-logo.svg" />
+                </router-link>
+            </span>
         </div>
     </section>
 </template>

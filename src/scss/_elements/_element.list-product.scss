@@ -5,6 +5,8 @@
             position: relative;
             transition: 300ms;
 
+            height: 550px;
+
             @include breakpoint($break-md) {
                 &:hover {
                     & > .product__meta {
@@ -23,6 +25,13 @@
             width: 100%;
             height: 100%;   
 
+            span {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-position: center center;
+                background-size: cover;
+            }
             img {
                 width: 100%;
                 height: 100%;

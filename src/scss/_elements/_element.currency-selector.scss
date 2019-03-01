@@ -50,5 +50,9 @@
 
         background: transparent;
         z-index: 250;
+        
+        &::-ms-expand {
+            display: none !important;
+        }
     }
 }
