@@ -222,7 +222,7 @@ const Application = new Vue({
 
                         let Match = Tags.find(x => x.type === dTag.type);
 
-                        if(Match) {
+                        if(Match && Match.content !== 'default') {
                             PageMetaDataspace.push(Match);
                         } else {
                             PageMetaDataspace.push(dTag);

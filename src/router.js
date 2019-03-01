@@ -52,11 +52,11 @@ const PageRouter = new Router({
                     },
                     {
                         type: 'og:title',
-                        content: 'default'
+                        content: 'Welcome'
                     },
                     {
                         type: 'title',
-                        content: 'default',
+                        content: 'Welcome',
                     },
                     {
                         type: 'description',

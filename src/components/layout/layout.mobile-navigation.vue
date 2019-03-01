@@ -12,8 +12,8 @@
                 <span class="menu__link" @click="reset('dropdownuser'); elements.dropdownuser = !elements.dropdownuser">
                     <i class="fa fa-lock"></i>
                 </span>
-                <span class="menu__link" @click="reset('offcanvasright'); elements.offcanvasright = !elements.offcanvasright">
-                    <i class="fa fa-shopping-cart"></i>
+                <span class="menu__link link--cart" @click="reset('offcanvasright'); elements.offcanvasright = !elements.offcanvasright">
+                    <i :class="'fa fa-shopping-cart' + (basketitems.length > 0 ? ' cart--full' : '')"></i>
                 </span>
             </nav>
         </div>
