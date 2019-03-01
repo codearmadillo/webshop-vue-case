@@ -42,6 +42,12 @@
             font-size: 21px;
 
             .price {
+                &--previous {
+                    position: relative;
+                    padding-left: 13px;
+                    text-decoration: line-through;
+                    margin-right: 6px;
+                }
                 &--current {
                     position: relative;
                     padding-left: 13px;

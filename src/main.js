@@ -236,7 +236,7 @@ const Application = new Vue({
                 /* Render page meta tags */
                 PageMetaDataspace.forEach(metatag => {
                     if(metatag.type === 'title') {
-                        document.title = metatag.content;
+                        document.title = metatag.content + " • Avenue Fashion";
                     } else {
 
                         Array.from(document.querySelectorAll('[data-vue-router="'+metatag.type+'"]')).map(el => el.parentNode.removeChild(el));

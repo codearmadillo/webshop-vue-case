@@ -2,6 +2,7 @@
     <article class="product__instance">
         <router-link tag="a" :title="data.productName" :to="productUrl">
             <header class="product__price">
+                <span v-if="previousprice" class="price--previous"><span class="price__currency">{{ currentCurrency }}</span>{{ previousprice }}</span>
                 <span class="price--current"><span class="price__currency">{{ currentCurrency }}</span>{{ currentprice }}</span>
             </header>
             <section class="product__image">
@@ -32,7 +33,8 @@
     export default {
         data() {
             return { 
-                currentprice: null
+                currentprice: null,
+                previousprice: null
             }
         },
         props: {
@@ -73,6 +75,9 @@
                     currency = this.$root.shop.settings.currency;
                 }
                 this.currentprice = this.data.productSalesPrices.find(x => x.currency === currency).tagPrice;
+                if(this.data.productSalesPrices.find(x => x.currency === currency).hasPreviousPrice === true) {
+                    this.previousprice = this.data.productSalesPrices.find(x => x.currency === currency).previousPrice;
+                }
                 
             }
         },
