@@ -2,7 +2,30 @@
     <div class="local-stores__detail-wrapper">
 
         <section class="store__map">
-            Map will be placed here
+            <GmapMap
+                :center="activemarker"
+                :zoom="12"
+                map-type-id="terrain"
+                style="width: 100%; height: 100%"
+                :options="{
+                    zoomControl: false,
+                    mapTypeControl: false,
+                    scaleControl: false,
+                    streetViewControl: false,
+                    rotateControl: false,
+                    fullscreenControl: false,
+                    disableDefaultUi: false
+                }"
+            >
+            <GmapMarker
+                :key="index"
+                v-for="(m, index) in markers"
+                :position="m.position"
+                :clickable="true"
+                :draggable="true"
+                @click="center=m.position"
+            />
+            </GmapMap>
         </section>
         <section class="store__information">
             <header class="store__header">

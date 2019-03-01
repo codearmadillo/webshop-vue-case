@@ -3,7 +3,7 @@
         <div class="shop-content local-stores__wrapper">
             <section class="local-stores__list">
 
-                <article v-for="store in descendants" :key="store.name">
+                <article class="store__instance" v-for="store in descendants" :key="store.name">
                     <header class="store__header">
                         <h2>{{ store.meta.locationTitle }}</h2>
                         <h4>{{ store.meta.locationAddress }}</h4>

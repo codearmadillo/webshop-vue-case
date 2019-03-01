@@ -205,6 +205,7 @@
                         height: 40px;
                         padding: 0 32px 0 12px;
 
+                        
                         appearance: none;
                         border: medium none;
                         border-radius: 0;
@@ -215,6 +216,10 @@
 
                         option:disabled {
                             color: rgb(209, 209, 209);
+                        }
+
+                        &::-ms-expand {
+                            display: none;
                         }
 
                     }

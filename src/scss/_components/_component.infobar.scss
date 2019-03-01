@@ -24,9 +24,15 @@
         line-height: 45px;
 
         .infobar__grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 45px;
+            display: flex;
+
+            & .grid--text-left,
+            & .grid--text-right {
+                display: block;
+                float: left;
+                width: 50%;
+                height: 45px;
+            }
 
             & .grid--text-left  {
                 text-align: left;

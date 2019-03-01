@@ -33,18 +33,18 @@
             border: medium none;
             font-weight: bold;
             font-size: 13px;
-            height: unset;
+            height: auto;
             margin-left: 8px;
             
             .v-input__output {
                 color: $c-infobar;
-                height: unset;
+                height: auto;
                 line-height: unset;
                 padding-left: 0;
             }
 
             &::after {
-                height: unset;
+                height: auto;
                 line-height: unset;
             }
         }

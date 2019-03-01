@@ -27,7 +27,6 @@
                 :id="elementId"
                 :type="elementType"
                 :placeholder="elementPlaceholder"
-                :value="Value"
                 :class="elementClass.output + (Valid || elementType == 'search' ? '' : ' error')"
                 :min="numberMin" :max="numberMax"
 

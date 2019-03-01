@@ -1,6 +1,11 @@
 module.exports = {
     presets: [
-        '@babel/polyfill',
-        '@vue/app'
+        ['@vue/app', {
+            polyfills: [
+                'es6.promise',
+                'es6.symbol',
+                'es7.object.entries'
+        ]}
+        ]
     ]
 }

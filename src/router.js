@@ -3,25 +3,35 @@ import Router from "vue-router";
 
 Vue.use(Router);
 
-export default new Router({
+const PageRouter = new Router({
     mode: "history",
     base: process.env.BASE_URL,
     routes: [
         {
-            path: "/not-found",
-            name: "not-found",
+            path: '/not-found',
+            name: '404',
             component: () => import("@/views/view.not-found.vue"),
             meta: {
-                title: "OOPS.. SOMETHING WENT WRONG",
-                subtitle: "Page not found",
-                metaTags: [
+                page: {
+                    title: 'Oops!.. Something went wrong',
+                    subtitle: 'It seems the page you are looking for has not been found.',
+                },
+                pageMetaTags: [
                     {
-                        name: "description",
-                        content: ""
+                        type: 'og:description',
+                        content: '404 - Page not found'
                     },
                     {
-                        name: "og:description",
-                        content: ""
+                        type: 'og:title',
+                        content: '404 - Page not found'
+                    },
+                    {
+                        type: 'title',
+                        content: '404 - Page not found',
+                    },
+                    {
+                        type: 'description',
+                        content: '404 - Page not found'
                     }
                 ]
             }
@@ -31,15 +41,26 @@ export default new Router({
             name: "homepage",
             component: () => import("@/views/view.homepage.vue"),
             meta: {
-                title: "Homepage",
-                metaTags: [
+                page: {
+                    title: 'Welcome',
+                    subtitle: 'Avenue Fashion Welcomes You',
+                },
+                pageMetaTags: [
                     {
-                        name: "description",
-                        content: ""
+                        type: 'og:description',
+                        content: 'default'
                     },
                     {
-                        name: "og:description",
-                        content: ""
+                        type: 'og:title',
+                        content: 'default'
+                    },
+                    {
+                        type: 'title',
+                        content: 'default',
+                    },
+                    {
+                        type: 'description',
+                        content: 'default'
                     }
                 ]
             }
@@ -49,16 +70,26 @@ export default new Router({
             name: "sign-up",
             component: () => import("@/views/view.sign-up.vue"),
             meta: {
-                title: "Welcome to AVE",
-                subtitle: "Sign in or register",
-                metaTags: [
+                page: {
+                    title: 'Welcome to AVE',
+                    subtitle: 'Sign in or register',
+                },
+                pageMetaTags: [
                     {
-                        name: "description",
-                        content: ""
+                        type: 'og:description',
+                        content: 'default'
                     },
                     {
-                        name: "og:description",
-                        content: ""
+                        type: 'og:title',
+                        content: 'Sign In or Register Now!'
+                    },
+                    {
+                        type: 'title',
+                        content: 'Sign In or Register Now!',
+                    },
+                    {
+                        type: 'description',
+                        content: 'default'
                     }
                 ]
             }
@@ -68,6 +99,30 @@ export default new Router({
             name: "search",
             component: () => import("@/views/view.search.vue"),
             meta: {
+
+                page: {
+                    title: '',
+                    subtitle: 'Your search results',
+                },
+                pageMetaTags: [
+                    {
+                        type: 'og:description',
+                        content: 'default'
+                    },
+                    {
+                        type: 'og:title',
+                        content: 'Search Results'
+                    },
+                    {
+                        type: 'title',
+                        content: 'Search Results',
+                    },
+                    {
+                        type: 'description',
+                        content: 'default'
+                    }
+                ],
+
                 title: null,
                 subtitle: "Your search results",
                 metaTags: [
@@ -87,16 +142,26 @@ export default new Router({
             name: "brand",
             component: () => import("@/views/view.brand.vue"),
             meta: {
-                title: "The brand",
-                subtitle: "Company slogan goes here",
-                metaTags: [
+                page: {
+                    title: 'About Avenue Fashion',
+                    subtitle: 'We dress you up like a movie star',
+                },
+                pageMetaTags: [
                     {
-                        name: "description",
-                        content: ""
+                        type: 'og:description',
+                        content: 'We are Avenue Fashion, the hottest online brand bringing you the best in fashion and accessories from around the world.'
                     },
                     {
-                        name: "og:description",
-                        content: ""
+                        type: 'og:title',
+                        content: 'About Us'
+                    },
+                    {
+                        type: 'title',
+                        content: 'About Us',
+                    },
+                    {
+                        type: 'description',
+                        content: 'We are Avenue Fashion, the hottest online brand bringing you the best in fashion and accessories from around the world.'
                     }
                 ]
             }
@@ -106,16 +171,26 @@ export default new Router({
             name: "local-stores",
             component: () => import("@/views/view.local-stores.vue"),
             meta: {
-                title: "Local stores",
-                subtitle: "Find a store near you",
-                metaTags: [
+                page: {
+                    title: 'Local Stores',
+                    subtitle: 'Find a store near you',
+                },
+                pageMetaTags: [
                     {
-                        name: "description",
-                        content: ""
+                        type: 'og:description',
+                        content: 'Find a store near you'
                     },
                     {
-                        name: "og:description",
-                        content: ""
+                        type: 'og:title',
+                        content: 'Local Stores'
+                    },
+                    {
+                        type: 'title',
+                        content: 'Local Stores',
+                    },
+                    {
+                        type: 'description',
+                        content: 'Find a store near you'
                     }
                 ]
             },
@@ -127,8 +202,28 @@ export default new Router({
                         'store-detail': () => import('@/views/view.local-stores-detail.vue')
                     },
                     meta: {
-                        title: "Local stores",
-                        subtitle: "Find a store near you",
+                        page: {
+                            title: 'AVE London',
+                            subtitle: 'Find a store near you',
+                        },
+                        pageMetaTags: [
+                            {
+                                type: 'og:description',
+                                content: 'Find a store near you'
+                            },
+                            {
+                                type: 'og:title',
+                                content: 'London'
+                            },
+                            {
+                                type: 'title',
+                                content: 'London',
+                            },
+                            {
+                                type: 'description',
+                                content: 'Find a store near you'
+                            }
+                        ],
                         locationTitle: "London",
                         locationAddress: "180-182 Regent Street, London, W1B 5BT",
                         locationDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing esi elit. Vivamus at arcu sem. Vestibulum ornare eleifendit massa, nec tempor odio. Fusce posuere nunc iaculis ligula viverra iaculis. Aliquam erat volutpat.",
@@ -189,6 +284,30 @@ export default new Router({
                         'store-detail': () => import('@/views/view.local-stores-detail.vue')
                     },
                     meta: {
+
+                        page: {
+                            title: 'AVE New York',
+                            subtitle: 'Find a store near you',
+                        },
+                        pageMetaTags: [
+                            {
+                                type: 'og:description',
+                                content: 'Find a store near you'
+                            },
+                            {
+                                type: 'og:title',
+                                content: 'New York'
+                            },
+                            {
+                                type: 'title',
+                                content: 'New York',
+                            },
+                            {
+                                type: 'description',
+                                content: 'Find a store near you'
+                            }
+                        ],
+
                         title: "Local stores",
                         subtitle: "Find a store near you",
                         locationTitle: "New York",
@@ -251,6 +370,30 @@ export default new Router({
                         'store-detail': () => import('@/views/view.local-stores-detail.vue')
                     },
                     meta: {
+
+                        page: {
+                            title: 'AVE Paris',
+                            subtitle: 'Find a store near you',
+                        },
+                        pageMetaTags: [
+                            {
+                                type: 'og:description',
+                                content: 'Find a store near you'
+                            },
+                            {
+                                type: 'og:title',
+                                content: 'Paris'
+                            },
+                            {
+                                type: 'title',
+                                content: 'Paris',
+                            },
+                            {
+                                type: 'description',
+                                content: 'Find a store near you'
+                            }
+                        ],
+
                         title: "Local stores",
                         subtitle: "Find a store near you",
                         locationTitle: "Paris",
@@ -308,15 +451,7 @@ export default new Router({
                 }
             ]
         },
-        {
-            path: "/product/(.*-)?:product(\\d+)",
-            name: "product-details",
-            components: {
-                default: () => import("@/views/view.product-details.vue")
-            },
-            meta: {
-                fluidViewbag: true
-            }
-        }
-  ]
+    ]
 });
+
+export default PageRouter;

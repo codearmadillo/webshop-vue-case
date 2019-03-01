@@ -640,9 +640,11 @@
         mounted() {
 
             let self = this;
+
             EventBus.$on('currency-change', currency => {
                 self.changeCurrentSalesPrice(currency);
             });
+
             this.configuratorAvailableSizes = this.configuratorLoadSizes(false);
 
         },  
@@ -666,10 +668,53 @@
                         EventBus.$emit('viewbag-resolve', this.product.productName);
 
                     } else {
+                        
                         this.$router.push({path: '/not-found'});
+                        
                     }
                 }
+            }).then(() => {
+
+                let routeParams = {
+                    matched: [
+                        {
+                            meta: {
+                                pageMetaTags: [
+                                    {
+                                        type: 'title',
+                                        content: this.product.productName
+                                    },
+                                    {
+                                        type: 'description',
+                                        content: this.product.productShortDesc
+                                    },
+                                    {
+                                        type: 'og:title',
+                                        content: this.product.productName
+                                    },
+                                    {
+                                        type: 'og:description',
+                                        content: this.product.productShortDesc
+                                    },
+                                    {
+                                        type: 'og:image',
+                                        content: this.product.productVariants[0].variantImages[0]
+                                    },
+                                ],
+                                page: {
+                                    title: this.product.productName,
+                                    subtitle: '',
+                                    breadcrumbs: this.$route.meta.breadcrumbs
+                                }
+                            }
+                        }
+                    ]
+                }
+
+                this.$root.fetchMeta(routeParams);
+
             });
+
             EventBus.$emit('viewbag-change'); 
 
         }

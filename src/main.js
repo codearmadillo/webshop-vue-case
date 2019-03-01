@@ -26,11 +26,6 @@ const Application = new Vue({
     router,
     store,
     render: h => h(App),
-    created() {
-      
-        this.fetchAndRouteCategories();
-
-    },
     beforeMount() {
         /* Cookies */
         let cookieBasket = this.$cookie.get('ave-activebasket');
@@ -39,6 +34,10 @@ const Application = new Vue({
         }
     },
     mounted() {
+        this.fetchAndRouteCategories();
+    },
+    created() {
+
         /* Events */
         EventBus.$on('add-to-basket', data => {
             
@@ -85,9 +84,21 @@ const Application = new Vue({
             EventBus.$emit('update-basket');
 
         }); 
+
+        EventBus.$on('header-request', () => {
+            this.fetchMeta(this.$route);
+        });
+
     },
     data: {
         viewbag: {
+
+            page: {
+                title: null,
+                subtitle: null,
+                breadcrumbs: null
+            },
+
             title: null,
             subtitle: null,
             breadcrumbs: null
@@ -108,7 +119,29 @@ const Application = new Vue({
                 vat: 0.2,
                 currency: "eur",
                 logo: "/assets/images/site-logo.svg",
-                deliveryandreturns: "<h3>Delivery</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sollicitudin erat eleifend, iaculis ipsum quis, dignissim enim. Nullam in cursus sapien, quis rutrum ipsum. Phasellus pharetra semper odio, vitae varius justo condimentum vitae. Nam quis dolor bibendum, auctor purus et, sagittis odio. Mauris turpis dui, condimentum a massa vitae, consequat pellentesque risus.</p><h3>Returns</h3><p>Vivamus non porttitor risus, non luctus lacus. Maecenas vel congue odio. Maecenas quis suscipit mi, fringilla accumsan dolor. Vestibulum porttitor ullamcorper ultricies. Praesent felis leo, posuere a pulvinar et, consectetur molestie odio.</p>"
+                deliveryandreturns: "<h3>Delivery</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sollicitudin erat eleifend, iaculis ipsum quis, dignissim enim. Nullam in cursus sapien, quis rutrum ipsum. Phasellus pharetra semper odio, vitae varius justo condimentum vitae. Nam quis dolor bibendum, auctor purus et, sagittis odio. Mauris turpis dui, condimentum a massa vitae, consequat pellentesque risus.</p><h3>Returns</h3><p>Vivamus non porttitor risus, non luctus lacus. Maecenas vel congue odio. Maecenas quis suscipit mi, fringilla accumsan dolor. Vestibulum porttitor ullamcorper ultricies. Praesent felis leo, posuere a pulvinar et, consectetur molestie odio.</p>",
+                seo: [
+                    {
+                        type: 'title',
+                        content: 'Avenue Fashion'
+                    },
+                    {
+                        type: 'description',
+                        content: 'We are Avenue Fashion, the hottest online brand bringing you the best in fashion and accessories from around the world.'
+                    },
+                    {
+                        type: 'og:title',
+                        content: 'Avenue Fashion'
+                    },
+                    {
+                        type: 'og:description',
+                        content: 'We are Avenue Fashion, the hottest online brand bringing you the best in fashion and accessories from around the world.'
+                    },
+                    {
+                        type: 'og:image',
+                        content: './image.jpg'
+                    }
+                ]
             },
             socialMedia: [
                 {
@@ -168,6 +201,66 @@ const Application = new Vue({
         }
     },
     methods: {
+        fetchMeta(to) {
+
+            if(to === null) {
+
+                return null;
+
+            } else {
+
+                const nearestWithHeaderAttributes = to.matched.slice().reverse().find(x => x.meta && x.meta.page);
+                const nearestWithMetaTags = to.matched.slice().reverse().find(x => x.meta && x.meta.pageMetaTags);
+
+                let PageMetaDataspace = [];
+
+                /* Resolve page meta tags */
+                if(nearestWithMetaTags) {
+                    let Tags = nearestWithMetaTags.meta.pageMetaTags;
+                    
+                    this.shop.settings.seo.forEach(dTag => {
+
+                        let Match = Tags.find(x => x.type === dTag.type);
+
+                        if(Match) {
+                            PageMetaDataspace.push(Match);
+                        } else {
+                            PageMetaDataspace.push(dTag);
+                        }
+                        
+                    });
+                } else {
+                    PageMetaDataspace = this.shop.settings.seo;
+                }
+
+                /* Render page meta tags */
+                PageMetaDataspace.forEach(metatag => {
+                    if(metatag.type === 'title') {
+                        document.title = metatag.content;
+                    } else {
+
+                        Array.from(document.querySelectorAll('[data-vue-router="'+metatag.type+'"]')).map(el => el.parentNode.removeChild(el));
+
+                        let html = document.createElement('meta');
+                            html.setAttribute('type', metatag.type);
+                            html.setAttribute('content', metatag.content);
+                            html.setAttribute('data-vue-router', metatag.type);
+
+                        document.head.appendChild(html);
+                    }
+                }); 
+
+                /* Resolve page header attributes */
+                if(nearestWithHeaderAttributes) {
+                    EventBus.$emit('header-resolve', nearestWithHeaderAttributes.meta.page);
+                } else {
+                    // fallback
+                }
+                /* Resolve page header attributes */
+
+            }
+
+        },
         fetchAndRouteCategories() {
             return axios.get("/data/data.product-categories.json").then(response => {
 
@@ -188,6 +281,31 @@ const Application = new Vue({
                             Routes.push({
                                 path: path + element.slug,
                                 meta: {
+
+                                    page: {
+                                        title: element.title,
+                                        subtitle: '',
+                                        breadcrumbs: Breadcrumbs
+                                    },
+                                    pageMetaTags: [
+                                        {
+                                            type: 'og:description',
+                                            content: 'See latest products from category ' + element.title
+                                        },
+                                        {
+                                            type: 'og:title',
+                                            content: element.title
+                                        },
+                                        {
+                                            type: 'title',
+                                            content: element.title
+                                        },
+                                        {
+                                            type: 'description',
+                                            content: 'See latest products from category ' + element.title
+                                        }
+                                    ],
+
                                     title: element.title,
                                     breadcrumbs: Breadcrumbs,
                                     catId: element.id,
@@ -199,9 +317,17 @@ const Application = new Vue({
                                 component: ProductListView,
                             });
                             Routes.push({
-                                path: path + element.slug + "/(.*-)?:product(\\d+)",
+                                path: path + element.slug + "/(.*-)?:product(\\d+|\\w+)",
                                 component: ProductInfoView,
+                                name: 'product-view',
                                 meta: {
+
+                                    page: {
+                                        title: 'Product view',
+                                        subtitle: '',
+                                        breadcrumbs: Breadcrumbs
+                                    },
+
                                     breadcrumbs: Breadcrumbs
                                 }
                             });
@@ -216,17 +342,12 @@ const Application = new Vue({
                 }
 
                 ParseTree(response.data.children, response.data.root, []);
-                Routes.push({
-                    name: 'Not found',
-                    path: '*',
-                    meta: {
-                        'title': 'Oops.. something went wrong',
-                        'subtitle': 'Page not found'
-                    },
-                    component: NotFoundView
-                });
 
                 this.$router.addRoutes(Routes);
+
+            }).then(() => {
+
+                this.fetchMeta(this.$route);
 
             });
         }
@@ -241,10 +362,18 @@ router.beforeEach((to, from, next) => {
         breadcrumbs: to.meta.breadcrumbs
     }
 
-    next();
+    if(!to.matched.length) {
+        next('/not-found');
+    } else {
+        next();
+    }
 
     window.scrollTo(0, 0);
     
     EventBus.$emit('viewbag-change');
 
+});
+
+router.afterEach((to, from) => {
+    router.app.fetchMeta(to);
 });

@@ -1,7 +1,7 @@
 <template>  
 
     <header :class="homepage()">
-        <div class="shop-content">
+        <div class="shop-content" v-if="fetched">
             <template v-if="this.$route.name == 'homepage'">
                 
                 <div class="header__interactive">
@@ -18,7 +18,7 @@
 
                 <h2 class="header__subtitle" v-if="viewbag && viewbag.subtitle">{{ viewbag.subtitle }}</h2>
 
-                <ul class="header__breadcrumbs" v-if="viewbag && viewbag.subtitle == null && viewbag.breadcrumbs && viewbag.breadcrumbs.length > 1">
+                <ul class="header__breadcrumbs" v-if="viewbag && (viewbag.subtitle == null || viewbag.subtitle == '') && viewbag.breadcrumbs && viewbag.breadcrumbs.length > 1">
                     <li class="breadcrumbs__crumb" v-for="(crumb, index) in viewbag.breadcrumbs">
                         <template v-if="index === viewbag.breadcrumbs.length - 1">
                             <router-link tag="a" class="breadcrumb__link" :to="crumb.path">{{ crumb.title }}</router-link>
@@ -42,6 +42,7 @@
     export default {
         data() {
             return {
+                fetched: false,
                 viewbag: null
             }
         },  
@@ -51,39 +52,20 @@
                 let page = this.$route.name == 'homepage' ? 'header--homepage' : 'header--default';
 
                 return prefix + ' ' + page;
-            },
-            fetchViewbag() {
-                this.viewbag = {
-                    title: this.$route.meta.title,
-                    subtitle: this.$route.meta.subtitle,
-                    breadcrumbs: this.$route.meta.breadcrumbs
-                }
             }
+        },
+        mounted() {
+            EventBus.$emit('header-request');
         },
         created() {
 
-            this.fetchViewbag();
-
-            EventBus.$on('viewbag-change', () => {
-                this.fetchViewbag();
+            EventBus.$on('header-resolve', (data) => {
+                this.fetched = true;
+                this.viewbag = data;
             });
-            EventBus.$on('viewbag-resolve', title => {
 
-                if(!this.viewbag.hasOwnProperty('title')) {
-                    this.fetchViewbag();
-                }
-                
-                this.viewbag.title = title;
-
-            });
         },
         computed: {
-            subtitle() {
-                return this.$route.meta.hasOwnProperty('subtitle') ? this.$route.meta.subtitle : null;
-            },
-            breadcrumbs() {
-                return this.$route.meta.hasOwnProperty('breadcrumbs') ? this.$route.meta.breadcrumbs : null;
-            },
             isSearch() {
                 return this.$route.name == 'search' && this.$route.params.query;
             },

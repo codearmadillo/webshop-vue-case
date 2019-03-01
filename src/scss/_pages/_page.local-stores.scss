@@ -58,19 +58,35 @@
         }
     }
     &__list {
-        display: grid;
-        grid-template-rows: auto;
-        grid-template-columns: 1fr;
+        
+        display: block;
+        width: 100%;
 
-        grid-row-gap: 42px;
-
-        @include breakpoint($break-xs) {
-            grid-column-gap: 16px;
-            grid-template-columns: 1fr 1fr;
-        }
         @include breakpoint($break-md) {
-            grid-column-gap: 30px;
+
+            display: grid;
+            grid-template-rows: auto;
             grid-template-columns: 1fr 1fr 1fr;
+            grid-column-gap: 30px;
+            grid-row-gap: 42px;
+
+        }
+
+        .store {
+            &__instance {
+                display: block;
+                float: left;
+                width: 100%;
+                margin-bottom: 36px;
+
+                @include breakpoint($break-md) {
+
+                    float: none;
+                    width: auto;
+                    margin-bottom: 0;
+
+                }
+            }
         }
     }
     &__detail-wrapper {
