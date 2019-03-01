@@ -6,12 +6,10 @@
                 <span class="price--current"><span class="price__currency">{{ currentCurrency }}</span>{{ currentprice }}</span>
             </header>
             <section class="product__image">
-                <template v-if="requiresFallback == true">
-                    <span :style="'background-image: url('+productImage+')'"></span>
-                </template>
-                <template v-if="requiresFallback == false">
-                    <img :src="productImage" :title="data.productName" :alt="data.productName" />
-                </template>
+
+                <span v-if="requiresFallback() == true" :style="'background-image: url('+productImage+')'"></span>
+                <img v-if="requiresFallback() == false" :src="productImage" :title="data.productName" :alt="data.productName" />
+
             </section>
         </router-link>
         <footer class="product__meta">
@@ -70,9 +68,6 @@
             },
             currentCurrency() {
                 return this.$root.currencies[this.$root.shop.settings.currency].symbol;
-            },
-            requiresFallback() {
-                return Modernizr.objectfit == false;
             }
         },
         methods: {
@@ -87,6 +82,9 @@
                     this.previousprice = this.data.productSalesPrices.find(x => x.currency === currency).previousPrice;
                 }
                 
+            },
+            requiresFallback() {
+                return Modernizr.objectfit == false;
             }
         },
         mounted() {
