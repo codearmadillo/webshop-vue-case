@@ -49,12 +49,7 @@
             productUrl() {      
 
                 let url = this.data.productName.split(' ').join('-').toLowerCase() + '-' + this.data.productId;
-
-                if(this.$route.name === 'homepage') {
-                    return '/products/women/casual/tshirts/' + url;
-                } else {
-                    return this.$route.fullPath + '/' + url;
-                }
+                return '/products/women/casual/tshirts/' + url;
     
             },
             productImage() {

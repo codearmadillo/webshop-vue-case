@@ -1,6 +1,8 @@
 <template>
   <div id="app" class="application">
 
+    <page-popup/>
+
     <info-top/>
 
     <page-navigation/>  
@@ -23,6 +25,7 @@
 <script>
     export default {
         components: {
+            'page-popup' : () => import('@/components/layout/layout.popup.vue'),
             'page-header' : () => import('@/components/layout/layout.header.vue'),
             'page-footer' : () => import('@/components/layout/layout.footer.vue'),
             'page-navigation' : () => import('@/components/layout/layout.navigation.vue'),

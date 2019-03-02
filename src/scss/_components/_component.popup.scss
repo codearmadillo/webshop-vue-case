@@ -1,0 +1,73 @@
+.page__popup {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 5000;
+    align-items: center;
+    justify-content: center;
+
+    animation: fadein 300ms;
+
+    .popup {
+        &__msg {
+            position: relative;
+            justify-self: center;
+            z-index: 100;
+            background: #fff;
+            border-radius: 6px;
+            padding: 18px 25px 16px;
+            width: 85%;
+            text-align: center;
+
+            @include breakpoint($break-xs) {
+                min-width: 340px;
+                max-width: 500px;
+            }
+
+            @include breakpoint($break-md) {
+                max-width: 620px;
+            }
+
+            .msg {
+                &__instance {
+                    font-family: $f-primary;
+                    font-size: 16px;
+                    line-height: 27px;
+                }
+                &__close {
+                    position: absolute;
+                    display: block;
+                    width: 32px; height: 32px;
+                    background-color: $c-primary; color: #fff;
+                    border-radius: 50%;
+                    line-height: 32px; text-align: center;
+                    top: -16px; right: -16px;
+                    cursor: pointer;
+                }
+            }
+        }
+        &__close {
+            top: 0; left: 0;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(13, 13, 13, 0.4);
+            cursor: pointer;
+        }
+    }
+
+    &.closing {
+        animation: fadeout 300ms;
+        animation-fill-mode: forwards;  
+    }
+}
+
+@keyframes fadein {
+    from    {opacity: 0;}
+    to      {opacity: 1};
+}
+@keyframes fadeout {
+    from    {opacity: 1;}
+    to      {opacity: 0;}
+}

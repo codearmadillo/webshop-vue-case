@@ -102,18 +102,18 @@
                 <section class="offcanvas__body offcanvas__basket">
 
                     <template v-if="basketitems.length > 0">
-                        <article v-for="line in basketitems" class="offcanvas-basket__line">
+                        <article v-for="(line, index) in basketitems" class="offcanvas-basket__line">
                             <span class="line__image">
                                 <img :src="line.productVariantImage" :alt="line.productName" />
                             </span>
                             <span class="line__description">
-                                {{ line.size + ' ' + line.productName }}
-                            </span>
-                            <span class="line__quantity">
-                                {{ line.quantity }}
+                                {{ line.quantity + 'x ' + line.size + ' ' + line.productName }}
                             </span>
                             <span class="line__price">
                                 {{ line.lineprice }}
+                            </span>
+                            <span class="line__remove" @click="removeLine(index)">
+                                <i class="fa fa-times"></i>
                             </span>
                         </article>  
                     </template>
@@ -121,6 +121,7 @@
 
                 </section>
                 <section class="offcanvas__footer offcanvas__basket-footer">
+                    <button @click.prevent="emptyBasket()" class="btn btn--default footer__empty-basket">Empty</button>
                     <router-link to="/not-found" tag="a" class="btn btn--action" title="Basket">View basket</router-link>
                 </section>
             </section>
@@ -276,12 +277,19 @@
             /*
             Callbacks
             */
+            removeLine(i) {
+                EventBus.$emit('basket-empty', {id: i, line: null});
+            },
+            emptyBasket() {
+                EventBus.$emit('basket-empty');
+            },
             mobileLoginFailure(message) {
                 console.log('Mobile login: Validation Failure');
             },
             mobileLoginSuccess(data) {
-                console.log('Mobile login: Validation Passed');
-                console.log('Mobile login: Postback');
+                EventBus.$emit('open-popup', {
+                    msg: `If this was a real app, you would be logged in! The validation has passed.`
+                });
             }
         }
     }

@@ -3,7 +3,7 @@
         display: grid;
         width: 100%;
         grid-template-rows: auto;
-        grid-template-columns: 75px auto 50px 75px;
+        grid-template-columns: 75px auto 55px 40px;
 
         .line {
             &__description,
@@ -37,9 +37,29 @@
                 text-align: right;
                 font-weight: bold;
             }
+            &__remove {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+
+                i {
+                    position: relative;
+                    display: block;
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 10px;
+                    background: $c-primary;
+                    text-align: center;
+                    line-height: 20px;
+                    font-size: 12px;
+                    color: #fff;
+                    
+                }
+
+            }
         }
 
-        padding: 16px;
+        padding: 16px 8px;
 
         &:first-child {
             padding-top: 0;

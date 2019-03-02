@@ -7,14 +7,16 @@
         </span>
         <div v-if="basket.items.length > 0 && open" class="mini-basket__dropdown">
             <div class="mini-basket__content">
-                <article v-for="line in basket.items" class="mini-basket__line">    
-                    <span class="line__image"><router-link :to="line.url" tag="a"><img :src="line.productVariantImage" /></router-link></span>
-                    <span class="line__desc"><router-link :to="line.url" tag="a">{{ line.size + ' ' + line.productName  }}</router-link></span>
+                <article v-for="(line, index) in basket.items" class="mini-basket__line">    
+                    <span class="line__image"><img :src="line.productVariantImage" /></span>
+                    <span class="line__desc">{{ line.size + ' ' + line.productName  }}</span>
                     <span class="line__qty">{{ line.quantity }}</span>
                     <span class="line__total">{{ line.lineprice }}</span>
+                    <span class="line__remove" @click="removeLine(index, line)"><i class="fa fa-times"></i></span>
                 </article>
             </div>
             <div class="mini-basket__footer">
+                <button @click.prevent="emptyBasket()" class="btn btn--default footer__empty-basket">Empty</button>
                 <router-link to="/not-found" tag="a" class="btn btn--action">Go to checkout</router-link>
             </div>
         </div>
@@ -48,6 +50,12 @@
             });
         },
         methods: {
+            emptyBasket() {
+                EventBus.$emit('basket-empty');
+            },
+            removeLine(index, line) {
+                EventBus.$emit('basket-empty', {id: index, line: line});
+            }, 
             formatBasket() {
                 let currency = this.$root.shop.settings.currency;
                 let lines = this.basket.items;

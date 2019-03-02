@@ -83,6 +83,7 @@
 <script>
 
     import VForm from '@/components/entities/entity.form.vue';
+    import { EventBus } from "@/event-bus";
 
     export default {
         components: {
@@ -94,13 +95,17 @@
                 console.log('signup error');
             },
             successRegister(event) {
-                console.log('signup success');
+                EventBus.$emit('open-popup', {
+                    msg: `If this was a real app, you would have an account! The validation has passed.`
+                });
             },
             failureLogin(event) {
                 console.log('login error');
             },
             successLogin(event) {
-                console.log('login success');
+                EventBus.$emit('open-popup', {
+                    msg: `If this was a real app, you would be logged in! The validation has passed.`
+                });
             }
         }
     }

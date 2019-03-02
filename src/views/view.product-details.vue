@@ -123,6 +123,9 @@
                     @submit="addToBasket()" 
                 />  
             </section>
+            <section class="product__atb-msg" v-if="configuratorAvailability == false">
+                Selected variant / size combination is not in stock
+            </section>
             <section class="product__submission">
                 <button class="btn btn--default" @click.prevent="addToBasket()">
                     <i class="fa fa-shopping-cart"></i> Add to cart
@@ -437,7 +440,8 @@
                 selectedVariantImages: null,
                 imageShowIndex: 0,
 
-                shareurl: window.location.href
+                shareurl: window.location.href,
+                atbenabled: true
             }
         },
         methods: {
@@ -484,6 +488,11 @@
             },
             reviewSuccess() {
                 this.isAddReviewActive = false;
+
+                EventBus.$emit('open-popup', {
+                    msg: `Your review has been added`
+                });
+                
             },
 
             /*
@@ -492,17 +501,31 @@
             addToBasket() {
                 if(this.configuratorAvailability) {
                     if(this.userinput.qty.value > 0) {
-                        EventBus.$emit('add-to-basket', {
-                            basketMatrix: this.product.productId + '-' + this.configuratorSelectedVariant.variantColor + '-' + this.configuratorAvailableSizes[this.userinput.size.value + 1].value,
-                            productId: this.product.productId,
-                            productName: this.product.productName,
-                            productVariant: this.configuratorSelectedVariant.variantColor,
-                            productVariantImage: this.configuratorSelectedVariant.variantImages[0],
-                            productSalesPrices: this.product.productSalesPrices,
-                            quantity: this.userinput.qty.value,
-                            size: this.configuratorAvailableSizes[this.userinput.size.value + 1].value,
-                            url: "/product/" + this.product.productName.split(' ').join('-').toLowerCase() + '-' + this.product.productId
-                        });
+                        if(this.atbenabled === true) {
+                            
+                            let _self = this;
+                            _self.atbenabled = false;
+
+                            EventBus.$emit('add-to-basket', {
+                                basketMatrix: this.product.productId + '-' + this.configuratorSelectedVariant.variantColor + '-' + this.configuratorAvailableSizes[this.userinput.size.value + 1].value,
+                                productId: this.product.productId,
+                                productName: this.product.productName,
+                                productVariant: this.configuratorSelectedVariant.variantColor,
+                                productVariantImage: this.configuratorSelectedVariant.variantImages[0],
+                                productSalesPrices: this.product.productSalesPrices,
+                                quantity: this.userinput.qty.value,
+                                size: this.configuratorAvailableSizes[this.userinput.size.value + 1].value,
+                                url: "/product/" + this.product.productName.split(' ').join('-').toLowerCase() + '-' + this.product.productId
+                            });
+
+                            EventBus.$emit('open-popup', {
+                                msg: `Item ${this.userinput.qty.value}x ${this.product.productName} (${this.configuratorSelectedVariant.variantColor}) has been added to basket`
+                            });
+
+                            let Timeout = setTimeout(function(){
+                                _self.atbenabled = true;
+                            }, 1500);
+                        }
                     } else {
                         return false;
                     }

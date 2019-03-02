@@ -78,6 +78,24 @@ const Application = new Vue({
             this.$cookie.set('ave-activebasket', JSON.stringify(this.shop.basket), 1);
 
         });
+        EventBus.$on('basket-empty', res => {
+
+            let ctx = this.shop.basket.items;
+
+            if(res) {
+                if(ctx[res.id]) {
+                    ctx.splice(res.id, 1);
+                }
+            } else {
+                this.shop.basket.items = [];
+            }
+
+            EventBus.$emit('open-popup', {
+                msg: `Your basket has been updated`
+            });
+            EventBus.$emit('update-basket');
+
+        });
         EventBus.$on('currency-change', value => {
 
             this.shop.settings.currency = value;
@@ -341,6 +359,11 @@ const Application = new Vue({
 
                 ParseTree(response.data.children, response.data.root, []);
 
+                Routes.push({
+                    path: '*',
+                    redirect: '/not-found'
+                });
+
                 this.$router.addRoutes(Routes);
 
             }).then(() => {
@@ -354,12 +377,7 @@ const Application = new Vue({
 
 router.beforeEach((to, from, next) => {
 
-    if(!to.matched.length) {
-        next('/not-found');
-    } else {
-        next();
-    }
-
+    next();
     window.scrollTo(0, 0);
 
 });
