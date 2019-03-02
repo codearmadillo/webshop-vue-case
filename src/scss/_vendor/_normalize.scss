@@ -425,3 +425,16 @@ td,
 th {
   padding: 0;
 }
+
+/*
+Remove select dropdown
+*/
+select {
+    appearance: none;
+    text-indent: 0.01px;
+    text-overflow: "";
+
+    &::-ms-expand {
+        display: none !important;
+    }
+}
