@@ -15,7 +15,7 @@ import NotFoundView from "./views/view.not-found.vue";
 Vue.use(VueCookie);  
 Vue.use(VueGoogleMaps, {
     load: {
-        key: 'AIzaSyCZft9sNsKMXzoMMurNQ-zwrq2W8H7qDc4',
+        key: '',
         libraries: 'places'
     }
 });
