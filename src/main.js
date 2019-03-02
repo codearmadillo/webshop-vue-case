@@ -319,15 +319,13 @@ const Application = new Vue({
                             Routes.push({
                                 path: path + element.slug + "/(.*-)?:product(\\d+|\\w+)",
                                 component: ProductInfoView,
-                                name: 'product-view',
                                 meta: {
-
+                                    type: 'product-view',
                                     page: {
                                         title: 'Product view',
                                         subtitle: '',
                                         breadcrumbs: Breadcrumbs
                                     },
-
                                     breadcrumbs: Breadcrumbs
                                 }
                             });
@@ -355,12 +353,6 @@ const Application = new Vue({
 });
 
 router.beforeEach((to, from, next) => {
-    
-    router.app._data.viewbag = {
-        title: to.meta.title,
-        subtitle: to.meta.subtitle,
-        breadcrumbs: to.meta.breadcrumbs
-    }
 
     if(!to.matched.length) {
         next('/not-found');
@@ -369,11 +361,12 @@ router.beforeEach((to, from, next) => {
     }
 
     window.scrollTo(0, 0);
-    
-    EventBus.$emit('viewbag-change');
 
 });
 
 router.afterEach((to, from) => {
+
+    EventBus.$emit('offcanvas-close');
     router.app.fetchMeta(to);
+
 });

@@ -223,6 +223,12 @@
             EventBus.$on('add-to-basket', () => {
                 this.update();
             });
+            EventBus.$on('offcanvas-close', () => {
+
+                this.close('offcanvasright');
+                this.close('offcanvasleft');
+                
+            });
 
             this.$nextTick(function(){
                 let self = this;
